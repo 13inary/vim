@@ -216,8 +216,8 @@ hi Folded	   ctermfg=39	ctermbg=127  cterm=NONE
 hi FoldColumn	   ctermfg=39	ctermbg=127  cterm=NONE
 " column where 'signs' are displayed TODO
 hi SignColumn	   ctermfg=39	ctermbg=127  cterm=NONE
-" 'incsearch' highlighting. also used for the text replaced with(use '/' to search) TODO TODO TODO
-hi Incsearch	   ctermfg=39	ctermbg=121  cterm=NONE
+" 'incsearch' highlighting. also used for the text replaced with(use '/' to search) 
+hi Incsearch	   ctermfg=232	ctermbg=121  cterm=BOLD
 
 " line number for ":number" and ":#" commands(left number)
 hi LineNr	   ctermfg=121	ctermbg=NONE cterm=NONE

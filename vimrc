@@ -86,7 +86,7 @@ color note_code
 set wrap
 
 " <CR> automaticly
-set textwidth=80
+set textwidth=999
 
 " show cmd
 set showcmd
