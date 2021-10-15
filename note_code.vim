@@ -111,8 +111,8 @@ hi Repeat	   ctermfg=226 ctermbg=NONE cterm=NONE
 hi Label	   ctermfg=226 ctermbg=NONE cterm=NONE
 " sizeof, +, *, etc,
 hi Operator	   ctermfg=196 ctermbg=NONE cterm=NONE
-"TODO
-hi Keyword	   ctermfg=196 ctermbg=121  cterm=bold
+"keyword of golang
+hi Keyword	   ctermfg=199 ctermbg=NONE cterm=NONE
 " try, catch, throw
 hi Exception	   ctermfg=226 ctermbg=NONE cterm=NONE
 
