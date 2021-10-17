@@ -108,6 +108,8 @@ nnoremap <CR> o<Esc>
 ":autocmd CmdwinEnter * nnoremap <CR> <CR>
 ":autocmd BufReadPost quickfix nnoremap <CR> <CR>
 inoremap <s-tab> <c-x><c-f>
+" space in normal model
+nnoremap <space> i <Esc>
 
 " ================
 " match vimium
