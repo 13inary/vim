@@ -187,8 +187,9 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 
 " curl ....
 
-"call plug#begin('<path>')
-"
+call plug#begin('~/.vim/plugged')
+
+Plug 'fatih/vim-go', {'for':'go'}
 "Plug 'scrooloose/nerdtree'
 "Plug 'coc'
 "Plug 'iamcco/markdown-preview.nvim'
@@ -197,8 +198,8 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 "Plug 'vim-signiture'
 "Plug 'hte nerd tree'
 "Plug ''
-"
-"call plug#end()
+
+call plug#end()
 
 " PlugInstall
 
