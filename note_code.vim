@@ -50,24 +50,21 @@ let myWhite		=   253
 let myGray		=   248
 " 232
 let myBlack		=   232
-
 " 32 38 39
 let myBlue		=   39
-
 " 79 121 85 49 122
 let myGreen		=   121
-
 " 11 226
-let myYellow		=   226
+let myYellow	=   226
 " 172 214
-let myOrange		=   214
+let myOrange	=   214
 " 160 9 196
 let myRed		=   196
-
 " 199 162
 let myPink		=   199
 " 127~129
-let myPurple		=   127
+let myPurple	=   127
+
 
 
 
@@ -88,18 +85,18 @@ let myPurple		=   127
 " Basic Highlighting (see :help group-name)
 " =========================================
 " 196 121 is the test
-hi Comment	   ctermfg=248 ctermbg=NONE cterm=NONE
+hi Comment 			ctermfg=248  ctermbg=NONE cterm=NONE
 
-hi Constant	   ctermfg=39  ctermbg=NONE cterm=NONE
-hi String	   ctermfg=214 ctermbg=NONE cterm=NONE
-hi Character	   ctermfg=214 ctermbg=NONE cterm=NONE
+hi Constant 		ctermfg=39 	 ctermbg=NONE cterm=NONE
+hi String 			ctermfg=214  ctermbg=NONE cterm=NONE
+hi Character 		ctermfg=214  ctermbg=NONE cterm=NONE
 " Number
 " Boolean
 " Float
 
 " any variable name 
-hi Identifier	   ctermfg=121 ctermbg=NONE cterm=NONE
-hi Function	   ctermfg=127 ctermbg=NONE cterm=NONE
+hi Identifier 		ctermfg=121  ctermbg=NONE cterm=NONE
+hi Function 		ctermfg=127  ctermbg=NONE cterm=NONE
 
 " (such as: echo, grep, printf, exit, ;;, command...)
 hi Statement	   ctermfg=127 ctermbg=NONE cterm=bold
@@ -180,8 +177,8 @@ hi CursorColumn	   ctermfg=39	ctermbg=127  cterm=NONE
 " the screen line that the cursor is in when 'cursorline' is set(:set cursorline and right line
 " block)
 hi CursorLine	   ctermfg=NONE	ctermbg=NONE  cterm=underline
-" directory names and other special names in listings TODO
-hi Directory	   ctermfg=39	ctermbg=127  cterm=NONE
+" directory names and other special names in listings head of vim-go error
+hi Directory	   ctermfg=39	ctermbg=232  cterm=NONE
 
 " diff mode: add line
 "hi DiffAdd	   ctermfg=121  ctermbg=39 cterm=NONE
@@ -214,8 +211,8 @@ hi VertSplit	   ctermfg=232 	ctermbg=253  cterm=NONE
 hi Folded	   ctermfg=39	ctermbg=127  cterm=NONE
 " 'foldcolumn' TODO
 hi FoldColumn	   ctermfg=39	ctermbg=127  cterm=NONE
-" column where 'signs' are displayed TODO
-hi SignColumn	   ctermfg=39	ctermbg=127  cterm=NONE
+" column where 'signs' are displayed vim-ale-left-column
+hi SignColumn	   ctermfg=39	ctermbg=NONE  cterm=BOLD
 " 'incsearch' highlighting. also used for the text replaced with(use '/' to search) 
 hi Incsearch	   ctermfg=232	ctermbg=121  cterm=BOLD
 
@@ -240,22 +237,22 @@ hi NonText	   ctermfg=214	ctermbg=NONE cterm=NONE
 " nomal text(normal mode)
 hi Normal	   ctermfg=253	ctermbg=NONE cterm=NONE
 
-" popup menu: normal item
-"hi Pmenu	   ctermfg=#947D72 ctermbg=#292621 cterm=NONE
-" popup menu: selected item
-"hi PmenuSel	   ctermfg=#96A6CF ctermbg=#252B2F cterm=NONE
-" popup menu: scrollbar
-"hi PmenuSbar	   ctermfg=NONE    ctermbg=#232019 cterm=NONE
-" popup menu: thumb of the scrollbar
-"hi PmenuThumb	   ctermfg=NONE    ctermbg=#283238 cterm=NONE
+" popup menu: normal item ctrl + p
+hi Pmenu	   ctermfg=214  ctermbg=232 cterm=italic
+" popup menu: selected item crl + p
+hi PmenuSel	   ctermfg=232  ctermbg=214 cterm=BOLD
+" popup menu: scrollbar ctrl + p
+hi PmenuSbar	   ctermfg=39   ctermbg=232 cterm=NONE
+" popup menu: thumb of the scrollbar ctrl + p
+hi PmenuThumb	   ctermfg=39   ctermbg=248 cterm=NONE
 
 " 'hit-enter' prompt and yes/no questions TODO
 hi Question	   ctermfg=127	ctermbg=121  cterm=NONE
-" current 'quickfix' item in the quickfix window TODO
-hi QuickFixLine	   ctermfg=127	ctermbg=121  cterm=NONE
+" current 'quickfix' item in the quickfix window vim-go-error
+hi QuickFixLine	   ctermfg=196	ctermbg=NONE  cterm=NONE
 " last search pattern highlighting(hlsearch). also used for similar items that need to stand out.
-" TODO
-hi Search	   ctermfg=127	ctermbg=121  cterm=NONE
+" like vim-go all same variate hilight
+hi Search	   ctermfg=232	ctermbg=214  cterm=BOLD
 " meta 	and special keys listed with ":map", also for text used. to show unprintable characters in
 " the text, 'listchars'. Generally: text that is displayed dirrently from what is reallyis. TODO
 hi SpecialKey	   ctermfg=127	ctermbg=121  cterm=NONE
@@ -276,10 +273,10 @@ hi StatusLine	   ctermfg=232	ctermbg=253  cterm=NONE
 " status lines of not-current windows. if this is equal to 'statusline' vim will use '^^^' in the
 " status line of the current window.(other bottom)
 hi StatusLineNC	   ctermfg=232	ctermbg=244  cterm=NONE
-" status line of current window. if it is a 'terminal' window. TODO
-hi StatusLineTerm  ctermfg=127	ctermbg=121  cterm=NONE
-" status lines of not-current windows that is a 'terminal' window TODO
-hi StatusLineTermNC ctermfg=127	ctermbg=121  cterm=NONE
+" status line of current window. if it is a 'terminal' window. command :term ...
+hi StatusLineTerm  ctermfg=232	ctermbg=253  cterm=NONE
+" status lines of not-current windows that is a 'terminal' window  command :term ...
+hi StatusLineTermNC ctermfg=232	ctermbg=244  cterm=NONE
 
 " tab pages line, not ative tab page label TODO
 hi TabLine	   ctermfg=127	ctermbg=121  cterm=NONE
@@ -287,8 +284,8 @@ hi TabLine	   ctermfg=127	ctermbg=121  cterm=NONE
 hi TabLineFill	   ctermfg=127	ctermbg=121  cterm=NONE
 " tab pages line, active tab page label TODO
 hi TabLineSel	   ctermfg=127	ctermbg=121  cterm=NONE
-" 'terminal' window TODO
-hi Terminal	   ctermfg=127	ctermbg=121  cterm=NONE
+" 'terminal' window command :term ...
+hi Terminal	   ctermfg=214	ctermbg=NONE  cterm=NONE
 " titles for output from ':set all', ':autocmd' etc(such as: markdown ## xxx)
 hi Title	   ctermfg=121	ctermbg=NONE cterm=NONE
 " visual mode selection
@@ -349,6 +346,8 @@ hi link helpHyperTextJump Type
 "hi helpExample        ctermfg=#806456 ctermbg=NONE    cterm=NONE
 "hi helpCommand        ctermfg=#8A8A8A ctermbg=NONE    cterm=NONE
 "hi helpHyperTextEntry ctermfg=#89A1DE ctermbg=#13181D cterm=NONE
+
+
 
 
 
@@ -429,3 +428,144 @@ hi cssFunctionName  ctermfg=127 ctermbg=NONE cterm=NONE
 hi link xmlTag     Repeat
 hi link xmlTagName xmlTag
 hi link xmlEndTag  xmlTag
+
+
+
+
+" vim-go
+" =============
+" use function
+hi goFunctionCall 		ctermfg=127 ctermbg=NONE cterm=NONE
+" function name 
+"hi goFunction 			
+" "string"
+hi goString				ctermfg=214 ctermbg=NONE cterm=NONE
+" i := 
+hi goVarDefs 			ctermfg=121 ctermbg=NONE cterm=NONE
+" i = 
+hi goVarAssign 			ctermfg=253 ctermbg=NONE cterm=NONE
+" name in tyep ... XXXX
+hi goTypeName 			ctermfg=199 ctermbg=NONE cterm=NONE
+" type
+hi goTypeDecl 			ctermfg=199 ctermbg=NONE cterm=NONE
+" Stucdent{}
+hi goTypeConstructor 	ctermfg=199 ctermbg=NONE cterm=NONE
+" strut in type name ....
+hi goDeclType 			ctermfg=199 ctermbg=NONE cterm=NONE
+hi goGenerateVariables 	ctermfg=121 ctermbg=121  cterm=underline
+hi goGenerate 			ctermfg=121 ctermbg=121  cterm=underline
+" "%t"
+"hi link goEscapeC 				yellow_NONE_NONE
+hi goEscapeX 			ctermfg=121 ctermbg=121  cterm=underline
+hi goEscapeU 			ctermfg=121 ctermbg=121  cterm=underline
+hi goEscapeBigU 		ctermfg=121 ctermbg=121  cterm=underline
+hi goEscapeOctal 		ctermfg=121 ctermbg=121  cterm=underline
+hi goEscapeError 		ctermfg=121 ctermbg=121  cterm=underline
+" "%c %d"
+"hi link goSpecialString 		yellow_NONE_NONE 
+hi goStringGroup 		ctermfg=121 ctermbg=121  cterm=underline
+
+" var
+hi goVar 				ctermfg=121 ctermbg=NONE cterm=NONE
+" const
+hi goConst 				ctermfg=39 	ctermbg=NONE cterm=NONE
+" spece in var xxx
+"hi goSingleDecl 			ctermfg=121 ctermbg=121 cterm=underline
+" 10
+"hi goDecimalInt 	
+hi goDecimalError 		ctermfg=121 ctermbg=121 cterm=underline
+" 16
+"hi goHexadecimalInt 	
+hi goHexadecimalError 	ctermfg=121 ctermbg=121 cterm=underline
+" 8
+"hi goOctalInt 	
+hi goOctalError 		ctermfg=121 ctermbg=121 cterm=underline
+" 2
+"hi goBinaryInt 	
+hi goBinaryError 		ctermfg=121 ctermbg=121 cterm=underline
+"hi Integer 			
+
+"hi goFloat 				
+hi goImaginary 			ctermfg=121 ctermbg=121 cterm=underline
+hi goImaginaryFloat 	ctermfg=121 ctermbg=121 cterm=underline
+
+
+" == * & + 
+"hi goOperator 			
+hi goPointerOperator 	ctermfg=121  ctermbg=NONE cterm=underline
+"hi goPointerOperator 	
+hi goVarArgs 			ctermfg=199  ctermbg=NONE cterm=NONE
+
+
+
+" struct.property
+hi goField 				ctermfg=253 ctermbg=NONE cterm=NONE
+
+
+
+" append cap close complex copy delete imag len
+" make new panic print println real recover
+hi goBuiltins 			ctermfg=199 ctermbg=NONE cterm=NONE
+
+
+" defer go goto return break continue fallthrough
+hi goStatement 			ctermfg=226 ctermbg=NONE cterm=NONE
+
+
+"import
+hi goImport 			ctermfg=226 ctermbg=NONE cterm=NONE
+
+
+" package
+hi goPackage 			ctermfg=226 ctermbg=NONE cterm=NONE
+
+
+hi goStringGroup 			ctermfg=121 ctermbg=121 cterm=underline
+hi goStringGroup 			ctermfg=121 ctermbg=121 cterm=underline
+hi goStringGroup 			ctermfg=121 ctermbg=121 cterm=underline
+hi goStringGroup 			ctermfg=121 ctermbg=121 cterm=underline
+hi goStringGroup 			ctermfg=121 ctermbg=121 cterm=underline
+hi goStringGroup 			ctermfg=121 ctermbg=121 cterm=underline
+
+
+
+
+
+
+
+
+
+
+"hi goVariableName 			ctermfg=127 ctermbg=127 cterm=NONE
+"hi goStruct 			ctermfg=127 ctermbg=127 cterm=NONE
+"hi goType 			ctermfg=127 ctermbg=127 cterm=NONE
+"hi goVariable 			ctermfg=127 ctermbg=127 cterm=NONE
+"let g:go_highlight_types = 1
+"let g:go_highlight_variable_assignments = 0
+"let g:go_highlight_variable_declarations = 0
+"let g:go_highlight_array_whitespace_error = 1
+"let g:go_highlight_build_constraints = 1
+"let g:go_highlight_chan_whitespace_error = 1
+"let g:go_highlight_extra_types = 1
+"let g:go_highlight_fields = 1
+"let g:go_highlight_format_strings = 1
+"let g:go_highlight_generate_tags = 1
+"let g:go_highlight_methods = 1
+"let g:go_highlight_operators = 1
+"let g:go_highlight_space_tab_error = 1
+"let g:go_highlight_string_spellcheck = 1
+"let g:go_highlight_structs = 1
+"let g:go_highlight_trailing_whitespace_error = 1
+"let g:go_doc_keywordprg_enabled = 0
+"let g:go_term_mode = "vertical splist"
+"let g:go_echo_go_info = 0
+"let g:go_doc_popup_window = 1
+"let g:go_def_mapping_enabled = 0
+"let g:go_template_autocreate = 0
+"let g:go_textobj_enabled = 0
+"let g:go_auto_type_info = 1
+"let g:go_def_mapping_enabled = 0
+
+
+
+
