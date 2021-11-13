@@ -557,7 +557,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go', {'for':'go'}
 "Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'for':['go','vim'], 'branch':'release'}
-Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs', {'for':['go','vim']}
 "Plug 'ianva/vim-youdao-translater'
 "Plug 'scrooloose/nerdtree'
 "Plug 'coc'
