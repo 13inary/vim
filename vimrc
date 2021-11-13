@@ -541,6 +541,13 @@ endfunc
 
 
 
+" =======
+" auto-pairs
+" =======
+let g:AutoPairsShortcutFastWrap = 'E'
+
+
+
 " =================
 " vim plug manager
 " =================
@@ -550,7 +557,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go', {'for':'go'}
 "Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'for':['go','vim'], 'branch':'release'}
-"Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 "Plug 'ianva/vim-youdao-translater'
 "Plug 'scrooloose/nerdtree'
 "Plug 'coc'
