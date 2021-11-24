@@ -25,6 +25,8 @@ set ruler
 set mouse=a
 " bottom status
 set laststatus=1
+" status : ctrl + g | :f
+set statusline+=%F
 " execute oder in current dir
 set autochdir
 " encoding
@@ -80,6 +82,8 @@ set tabstop=4
 " lenght of -> for all level
 set shiftwidth=4
 
+
+
 " ============
 " basic map
 " ============
@@ -91,6 +95,14 @@ nnoremap <CR> o<Esc>
 inoremap <s-tab> <c-x><c-f>
 " space in normal model
 nnoremap <space> i <Esc>
+" bottom information
+nnoremap <C-g> 1<c-g>
+" return to last place and view in middle
+"nnoremap <C-o> <c-g>zz
+" return to new place and view in middle
+"nnoremap <C-i> <c-g>zz
+
+
 
 " ================
 " match vimium
@@ -396,10 +408,12 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-"nmap <silent> gd <Plug>(coc-definition)
+" go to define and show path of file
+nmap <silent> gd <Plug>(coc-definition)
 "nmap <silent> gy <Plug>(coc-type-definition)
 "nmap <silent> gi <Plug>(coc-implementation)
-"nmap <silent> gr <Plug>(coc-references)
+" go to place of use
+nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 "nnoremap <silent> K :call <SID>show_documentation()<CR>

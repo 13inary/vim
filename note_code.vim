@@ -518,6 +518,7 @@ hi goImport 			ctermfg=226 ctermbg=NONE cterm=NONE
 
 " package
 hi goPackage 			ctermfg=226 ctermbg=NONE cterm=NONE
+"hi goPackageComment 	ctermfg=226 ctermbg=226 cterm=NONE
 
 
 hi goStringGroup 			ctermfg=121 ctermbg=121 cterm=underline
