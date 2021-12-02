@@ -81,6 +81,8 @@ set splitbelow
 set tabstop=4
 " lenght of -> for all level
 set shiftwidth=4
+" set count of "yy"
+set viminfo='1000,<1000
 
 
 
