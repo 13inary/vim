@@ -573,6 +573,22 @@ autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTa
 let g:NERDTreeWinSize = 15
 
 
+" ============
+" ultisnips
+" ===========
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpForwardTrigger=",f"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpBackwardTrigger=",F"
+"let g:UltiSnipsSnippetDirectories =['','']
+
+" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
+
 
 
 
@@ -589,6 +605,8 @@ Plug 'jiangmiao/auto-pairs', {'for':['go','vim','markdown','json']}
 "Plug 'junegunn/fzf'
 "Plug 'ianva/vim-youdao-translater'
 Plug 'scrooloose/nerdtree', {'for':'go'}
+Plug 'SirVer/ultisnips', {'for':'go'}
+Plug 'honza/vim-snippets', {'for':'go'}
 "Plug 'scrooloose/nerdtree' , {'on': 'NERDTreeToggle'}
 "Plug 'iamcco/markdown-preview.nvim'
 "Plug 'vim-table-mode'
