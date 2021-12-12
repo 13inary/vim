@@ -313,11 +313,23 @@ let g:go_auto_type_info = 1
 " update time
 let g:go_updatetime = 100
 " hilight for same variate
-"let g:go_auto_sameids = 1
+"let g:go_auto_sameids = 0
 " inside terminal
 let g:go_term_enabled = 1
-let g:go_term_width = 30
+let g:go_term_width = 40
+"let g:go_term_height = 5
 let g:go_term_mode = "rightbelow vsplit"
+" do after save 
+"let g:go_fmt_autosave = 1
+"let g:go_imports_autosave = 1
+"let g:go_mod_fmt_autosave = 1
+"let g:go_asmfmt_autosave = 0
+let g:go_metalinter_autosave = 1
+"let g:go_template_autocreate = 1
+" Possible options are: `snakecase`(_), `camelcase`(aBc), `lispcase`, `pascalcase`, `keep`
+let g:go_addtags_transform = 'camelcase'
+
+
 "let g:go_highlight_array_whitespace_error = 1
 "let g:go_highlight_build_constraints = 1
 "let g:go_highlight_chan_whitespace_error = 1
@@ -602,7 +614,7 @@ Plug 'fatih/vim-go', {'for':'go'}
 "Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'for':['go','vim'], 'branch':'release'}
 Plug 'jiangmiao/auto-pairs', {'for':['go','vim','markdown','json']}
-"Plug 'junegunn/fzf'
+"Plug 'junegunn/fzf.vim'
 "Plug 'ianva/vim-youdao-translater'
 Plug 'scrooloose/nerdtree', {'for':'go'}
 Plug 'SirVer/ultisnips', {'for':'go'}
