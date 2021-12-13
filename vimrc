@@ -24,9 +24,102 @@ set ruler
 " can use mouse in vim
 set mouse=a
 " bottom status
-set laststatus=1
+" :so $VIMRUNTIME/syntax/hitest.vim
+set laststatus=2
 " status : ctrl + g | :f
-set statusline+=%F
+set statusline=
+set statusline+=%#LineNr#
+set statusline+=\ %1*%M
+set statusline+=\ %6*>>
+set statusline+=\ %3*%f
+set statusline+=\ %l%4*-%3*%v
+set statusline+=\ %6*<<
+set statusline+=\ %=
+set statusline+=\ %4*%F
+set statusline+=\ %5*%Y
+set statusline+=\ %2*%{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ %3*%p%%
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+
+" 设置状态行显示常用信息
+" %F 完整文件路径名
+" %m 当前缓冲被修改标记
+" %m 当前缓冲只读标记
+" %h 帮助缓冲标记
+" %w 预览缓冲标记
+" %Y 文件类型
+" %b ASCII值
+" %B 十六进制值
+" %l 行数
+" %v 列数
+" %p 当前行数占总行数的的百分比
+" %L 总行数
+" %{...} 评估表达式的值，并用值代替
+" %{"[fenc=".(&fenc==""?&enc:&fenc).((exists("+bomb") && &bomb)?"+":"")."]"} 显示文件编码
+" %{&ff} 显示文件类型
+"set statusline=%F%m%r%h%w%=\ [ft=%Y]\ %{\"[fenc=\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\"+\":\"\").\"]\"}\ [ff=%{&ff}]\ [asc=%03.3b]\ [hex=%02.2B]\ [pos=%04l,%04v][%p%%]\ [len=%L]
+"%(...%)	定义一个项目组。
+"%{n}*	%对其余的行使用高亮显示组Usern，直到另一个%n*。数字n必须从1到9。用%*或%0*可以恢复正常的高亮显示。
+"%<	如果状态行过长，在何处换行。缺省是在开头。
+"%=	左对齐和右对齐项目之间的分割点。
+"%	字符%
+"%B	光标下字符的十六进制形式
+"%F	缓冲区的文件完整路径
+"%H	如果为帮助缓冲区则显示为HLP
+"%L	缓冲区中的行数
+"%M	如果缓冲区修改过则显示为+
+"%N	打印机页号
+"%O	以十六进制方式显示文件中的字符偏移
+"%P	文件中光标前的%
+"%R	如果缓冲区只读则为RO
+"%V	列数。如果与%c相同则为空字符串
+"%W	如果窗口为预览窗口则为PRV
+"%Y	缓冲区的文件类型，如vim
+"%a	如果编辑多行文本，这个字行串就是({current} of {arguments})，例如：(5 of 18)。如果在命令行中只有一行，这个字符串为空
+"%b	光标下的字符的十进制表示形式
+"%c	列号
+"%f	缓冲区的文件路径
+"%h	如果为帮助缓冲区显示为[Help]
+"%l	行号
+"%m	如果缓冲区已修改则表示为[+]
+"%n	缓冲区号
+"%o	在光标前的字符数（包括光标下的字符）
+"%p	文件中所在行的百分比
+"%r	如果缓冲区为只读则表示为[RO]
+"%t	文件名(无路径)
+"%v	虚列号
+"%w	如果为预览窗口则显示为[Preview]
+"%y	缓冲区的文件类型，如[vim]
+"%{expr}	表达式的结果
+
+" 设置 laststatus = 0 ，不显式状态行
+" 设置 laststatus = 1 ，仅当窗口多于一个时，显示状态行
+" 设置 laststatus = 2 ，总是显式状态
+"
+"function! GitBranch()
+  "return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+"endfunction
+"
+"function! StatuslineGit()
+  "let l:branchname = GitBranch()
+  "return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+"endfunction
+"
+"set statusline=
+"set statusline+=%#PmenuSel#
+"set statusline+=%{StatuslineGit()}
+"set statusline+=%#LineNr#
+"set statusline+=\ %f
+"set statusline+=%m\
+"set statusline+=%=
+"set statusline+=%#CursorColumn#
+"set statusline+=\ %y
+"set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+"set statusline+=\[%{&fileformat}\]
+"set statusline+=\ %p%%
+"set statusline+=\ %l:%c
+"set statusline+=\
+"
 " execute oder in current dir
 set autochdir
 " encoding

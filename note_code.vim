@@ -277,6 +277,13 @@ hi StatusLineNC	   ctermfg=232	ctermbg=244  cterm=NONE
 hi StatusLineTerm  ctermfg=232	ctermbg=253  cterm=NONE
 " status lines of not-current windows that is a 'terminal' window  command :term ...
 hi StatusLineTermNC ctermfg=232	ctermbg=244  cterm=NONE
+" statu line custom
+hi User1 			ctermfg=196 ctermbg=NONE  cterm=BOLD
+hi User2 			ctermfg=214 ctermbg=NONE  cterm=NONE
+hi User3 			ctermfg=121 ctermbg=NONE  cterm=NONE
+hi User4 			ctermfg=253 ctermbg=NONE  cterm=NONE
+hi User5 			ctermfg=199 ctermbg=NONE  cterm=NONE
+hi User6 			ctermfg=199 ctermbg=NONE  cterm=BOLD
 
 " tab pages line, not ative tab page label TODO
 hi TabLine	   ctermfg=127	ctermbg=121  cterm=NONE
