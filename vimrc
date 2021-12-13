@@ -141,11 +141,6 @@ nnoremap - <c-w>-
 "nunmap =
 nnoremap = <c-w>=
 
-" ====================
-" command in terminal
-" ===================
-" translate
-nnoremap tl :!yd 
 
 " ===================
 " unmap
