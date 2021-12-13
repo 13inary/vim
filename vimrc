@@ -328,6 +328,7 @@ let g:go_metalinter_autosave = 1
 "let g:go_template_autocreate = 1
 " Possible options are: `snakecase`(_), `camelcase`(aBc), `lispcase`, `pascalcase`, `keep`
 let g:go_addtags_transform = 'camelcase'
+let g:go_metalinter_command = "gopls"
 
 
 "let g:go_highlight_array_whitespace_error = 1
