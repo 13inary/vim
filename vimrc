@@ -30,10 +30,10 @@ set laststatus=2
 set statusline=
 set statusline+=%#LineNr#
 set statusline+=\ %1*%M
-set statusline+=\ %6*>>
+set statusline+=\ %6*>>>
 set statusline+=\ %3*%f
 set statusline+=\ %l%4*-%3*%v
-set statusline+=\ %6*<<
+set statusline+=\ %6*<<<
 set statusline+=\ %=
 set statusline+=\ %4*%F
 set statusline+=\ %5*%Y
