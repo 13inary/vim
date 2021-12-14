@@ -397,6 +397,26 @@ endif
 " ============
 " ===vim-go===
 " ============
+" debug window
+let g:go_debug_windows = {
+	            \ 'vars':       'leftabove 40vnew',
+	            \ 'stack':      'botright 3new',
+	  \ }
+	            "\ 'goroutines': 'botright 3new',
+	            "\ 'out':        'botright 5new',
+" debug key mapping
+let g:go_debug_breakpoint_sign_text = '='
+let g:go_debug_mappings = {
+	     \ '(go-debug-print)':      {'key': '<F3>'},
+	     \ '(go-debug-breakpoint)': {'key': '<F4>'},
+	     \ '(go-debug-continue)':   {'key': '<F5>'},
+	     \ '(go-debug-next)':       {'key': '<F6>'},
+	     \ '(go-debug-step)':       {'key': '<F7>'},
+	     \ '(go-debug-stepout)':    {'key': '<F8>'},
+	     \ '(go-debug-halt)':       {'key': '<F10>'},
+	     \ '(go-debug-restart)':    {'key': '<F11>'},
+	     \ '(go-debug-stop)':       {'key': '<F12>'},
+	  \ }
 "show type of function , variate
 let g:go_auto_type_info = 1
 " update time
