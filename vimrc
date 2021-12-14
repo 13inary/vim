@@ -34,6 +34,7 @@ set statusline+=\ %6*>>>
 set statusline+=\ %4*%f
 set statusline+=\ %3*%l%4*-%3*%v
 set statusline+=\ %6*<<<
+set statusline+=\ \ \ \ \ \ %4*================================
 set statusline+=\ %=
 set statusline+=\ %4*%F
 set statusline+=\ %5*%Y
