@@ -605,7 +605,7 @@ function! s:check_back_space() abort
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
+"return !col || getline('.')[col - 1]  =~ '\s'
 
 " Use <c-space> to trigger completion.
 " call complement
@@ -633,6 +633,8 @@ nmap <silent> gd <Plug>(coc-definition)
 "nmap <silent> gi <Plug>(coc-implementation)
 " go to place of use
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gn <plug>(coc-rename)
+nmap <silent> gl <plug>(coc-openlink)
 
 " Use K to show documentation in preview window.
 "nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -732,6 +734,7 @@ nmap <silent> gr <Plug>(coc-references)
 "nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 "" Resume latest coc list.
 "nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+let g:coc_default_semantic_highlight_groups = 1
 
 
 
