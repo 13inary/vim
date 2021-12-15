@@ -443,7 +443,7 @@ Plug 'jiangmiao/auto-pairs', {'for':['go','vim','markdown','json']}
 "Plug 'ianva/vim-youdao-translater'
 "Plug 'scrooloose/nerdtree', {'for':'go'}
 Plug 'SirVer/ultisnips', {'for':'go'}
-Plug 'cweill/gotests', {'for':'go'}
+Plug 'buoto/gotests-vim', {'for':'go'}
 "Plug 'honza/vim-snippets', {'for':'go'}
 "Plug 'godlygeek/tabular'
 "Plug 'scrooloose/nerdtree' , {'on': 'NERDTreeToggle'}
