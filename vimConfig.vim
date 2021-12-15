@@ -639,6 +639,8 @@ nmap <silent> <space>gu <Plug>(coc-references)
 nmap <silent> <space>gc <plug>(coc-rename)
 nmap <silent> <space>gl <plug>(coc-openlink)
 
+nnoremap <silent> <space>h :call CocActionAsync('doHover')<cr>
+
 " Use K to show documentation in preview window.
 "nnoremap <silent> K :call <SID>show_documentation()<CR>
 
