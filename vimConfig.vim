@@ -25,6 +25,9 @@ set showmatch
 " cursor status in riht corner
 "set ruler
 
+" display by 2character
+"set ambiwidth=double
+
 " can use mouse in vim
 "set mouse=a
 
