@@ -9,6 +9,7 @@
 
 " help
 " ====
+" :highlight
 " help document
 " 	$VIMRUNTIME/vimXX/doc/syntax.txt
 " teacher of colorscheme
@@ -577,3 +578,131 @@ hi goStringGroup 			ctermfg=121 ctermbg=121 cterm=underline
 
 
 
+
+" ===============
+" coc
+" ==============
+" ' ' before character
+"hi Quote ctermfg=121 ctermbg=121 cterm=underline
+
+" Markdown related~
+"hi CocBold* for bold text.
+"hi CocItalic* for italic text.
+"hi CocUnderline* for underlined text.
+"hi CocStrikeThrough* for strikethrough text, like usage of deprecated API.
+"hi CocMarkdownCode* for inline code in markdown content.
+"hi CocMarkdownHeader* for markdown header in floating window/popup.
+"hi CocMarkdownLink* for markdown link text in floating window/popup.
+
+" ===Diagnostics related~
+"hi CocFadeOut* for faded out text, such as for highlighting unnecessary code.
+" sign
+hi   CocErrorSign              ctermfg=196   ctermbg=NONE   cterm=NONE
+hi   CocWarningSign            ctermfg=226   ctermbg=NONE   cterm=NONE
+hi   CocInfoSign               ctermfg=121   ctermbg=121    cterm=NONE
+hi   CocHintSign 			   ctermfg=121   ctermbg=121    cterm=NONE
+" specific content
+hi   CocErrorHighlight         ctermfg=253   ctermbg=196   cterm=BOLD
+hi   CocWarningHighlight       ctermfg=253   ctermbg=226   cterm=BOLD
+hi   CocInfoHighlight          ctermfg=121   ctermbg=121    cterm=NONE
+hi   CocHintHighlight          ctermfg=121   ctermbg=121    cterm=NONE
+"hi CocDeprecatedHighlight* for deprecated code range, links to
+" |CocStrikeThrough| by default.
+"hi CocUnusedHighlight* for unnecessary code range, links to |CocFadeOut| by default.
+" line
+hi   CocErrorLine     ctermfg=NONE   ctermbg=NONE   cterm=NONE
+hi   CocWarningLine   ctermfg=NONE   ctermbg=NONE   cterm=NONE
+hi   CocInfoLine      ctermfg=121   ctermbg=121    cterm=NONE
+hi   CocHintLine      ctermfg=121   ctermbg=121    cterm=NONE
+
+" ===Document highlight related~
+"Highlights used for highlighting same symbols in the buffer at the current cursor position.
+"hi *CocHighlightText* default symbol highlight.
+"hi *CocHighlightRead* for `Read` kind of document symbol.
+"hi *CocHighlightWrite* for `Write` kind of document symbol.
+
+" ===Float window/popup related~
+"hi CocFloating ctermfg=121 ctermbg=121 cterm=NONE
+" Default link to |NormalFloat| on neovim and|`Pmenu| on vim.
+hi CocErrorFloat   ctermfg=196 ctermbg=232 cterm=NONE
+hi CocWarningFloat ctermfg=226 ctermbg=232 cterm=NONE
+hi CocInfoFloat ctermfg=121 ctermbg=121 cterm=NONE
+hi CocHintFloat ctermfg=121 ctermbg=121 cterm=NONE
+
+" ===List related~
+"hi CocSelectedText* for sign text of selected lines.
+"hi CocSelectedLine* for line highlight of selected lines.
+"hi CocListMode* for mode in statusline of CocList.
+"hi CocListPath* for current cwd in statusline of CocList.
+
+" ===Tree view related~
+"hi CocTreeTitle* for title in tree view.
+"hi CocTreeDescription* for description beside label.
+"hi CocTreeOpenClose* for open and close icon in tree view.
+"hi CocTreeSelected* for highlight lines contains selected node.
+
+" ===Symbol icons~
+"Highlight groups for symbol icons, including:
+"hi CocSymbolFile  
+"hi CocSymbolModule  
+"hi CocSymbolNamespace  
+"hi CocSymbolPackage  
+"hi CocSymbolClass  
+hi CocSymbolMethod  ctermfg=121 ctermbg=121 cterm=NONE
+"hi CocSymbolProperty  
+"hi CocSymbolField  
+"hi CocSymbolConstructor  
+"hi CocSymbolEnum  
+"hi CocSymbolInterface  
+"hi CocSymbolFunction  ctermfg=121 ctermbg=121 cterm=NONE
+"hi CocSymbolVariable ctermfg=121 ctermbg=121 cterm=NONE 
+"hi CocSymbolConstant  ctermfg=121 ctermbg=121 cterm=NONE
+"hi CocSymbolString  
+"hi CocSymbolNumber  
+"hi CocSymbolBoolean  
+"hi CocSymbolArray  ctermfg=121 ctermbg=121 cterm=NONE
+"hi CocSymbolObject  
+"hi CocSymbolKey  
+"hi CocSymbolNull  
+"hi CocSymbolEnumMember  
+"hi CocSymbolStruct  
+"hi CocSymbolEvent  
+"hi CocSymbolOperator  
+"hi CocSymbolTypeParameter  
+"hi CocSymbolDefault  
+" Note: Use configuration `suggest.completionItemKindLabels` for customized icon characters.
+
+" ===Others~
+"CocCodeLens* for virtual text of codeLens.
+"CocCursorRange* for ranges of activated cursors.
+"CocHoverRange* for range of current hovered symbol.
+"CocMenuSel* for current menu item in menu dialog, works on neovim only since
+"vim doesn't support change highlight group of cursorline inside popup.
+"CocSelectedRange* for highlight ranges of outgoing calls.
+
+" grammer for language
+"hi link CocSem_namespace Identifier
+"hi link CocSem_type Type
+"hi link CocSem_class Structure
+"hi link CocSem_enum Type
+"hi link CocSem_interface Type
+"hi link CocSem_struct Structure
+"hi link CocSem_typeParameter Type
+"hi link CocSem_parameter Identifier
+"hi link CocSem_variable Identifier
+hi CocSem_variable  ctermfg=121 ctermbg=121 cterm=NONE
+hi default link CocSem_variable Error
+"hi link CocSem_property Identifier
+"hi link CocSem_enumMember Constant
+"hi link CocSem_event Identifier
+"hi link CocSem_function Function
+"hi link CocSem_method Function
+"hi link CocSem_macro Macro
+"hi link CocSem_keyword Keyword
+"hi link CocSem_modifier StorageClass
+"hi link CocSem_comment Comment
+hi CocSem_comment  ctermfg=121 ctermbg=121 cterm=NONE
+"hi link CocSem_string String
+"hi link CocSem_number Number
+"hi link CocSem_regexp Normal
+"hi link CocSem_operator Operator
