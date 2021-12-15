@@ -628,13 +628,13 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 " go to define and show path of file
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> <space>gd <Plug>(coc-definition)
 "nmap <silent> gy <Plug>(coc-type-definition)
 "nmap <silent> gi <Plug>(coc-implementation)
 " go to place of use
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gn <plug>(coc-rename)
-nmap <silent> gl <plug>(coc-openlink)
+nmap <silent> <space>gu <Plug>(coc-references)
+nmap <silent> <space>gc <plug>(coc-rename)
+nmap <silent> <space>gl <plug>(coc-openlink)
 
 " Use K to show documentation in preview window.
 "nnoremap <silent> K :call <SID>show_documentation()<CR>
