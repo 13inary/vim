@@ -441,10 +441,10 @@ Plug 'neoclide/coc.nvim', {'for':['go','vim'], 'branch':'release'}
 Plug 'jiangmiao/auto-pairs', {'for':['go','vim','markdown','json']}
 "Plug 'junegunn/fzf.vim'
 "Plug 'ianva/vim-youdao-translater'
-Plug 'scrooloose/nerdtree', {'for':'go'}
+"Plug 'scrooloose/nerdtree', {'for':'go'}
 Plug 'SirVer/ultisnips', {'for':'go'}
-Plug 'honza/vim-snippets', {'for':'go'}
-Plug 'godlygeek/tabular'
+"Plug 'honza/vim-snippets', {'for':'go'}
+"Plug 'godlygeek/tabular'
 "Plug 'scrooloose/nerdtree' , {'on': 'NERDTreeToggle'}
 "Plug 'iamcco/markdown-preview.nvim'
 "Plug 'vim-table-mode'
