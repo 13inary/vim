@@ -4,47 +4,34 @@
 " === author : keysquivered
 " ================================
 
-" source xx/xx/vimrc
+"source xx/xx/vimrc
+"let g:load_change_color_scheme = 1
 "if exists("g:load_change_color_scheme")
 "    finish
 "endif
-"let g:load_change_color_scheme = 1
 "autocmd BufReadPost $MYVIMRC source $MYVIMRC
-
 
 " son version can use this configuration
 " fix bug for vi
 set nocompatible
+
 " check file type automaticly
 filetype on
 filetype indent on
-filetype plugin on
-filetype plugin indent on
+
 " such as ( ... )
 set showmatch
-" cursor status in riht corner
-set ruler
-" can use mouse in vim
-set mouse=a
-" bottom status
-" :so $VIMRUNTIME/syntax/hitest.vim
-set laststatus=2
-" status : ctrl + g | :f
-set statusline=
-set statusline+=%#LineNr#
-set statusline+=\ %1*%M
-set statusline+=\ %6*===
-set statusline+=\ %4*%f
-set statusline+=\ %3*%l%4*-%3*%v
-set statusline+=\ %6*===
-set statusline+=\ %=
-set statusline+=\ %4*%F
-set statusline+=\ %5*%Y
-set statusline+=\ %2*%{&fileencoding?&fileencoding:&encoding}
-set statusline+=\ %3*%p%%
-"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
-" 设置状态行显示常用信息
+" cursor status in riht corner
+"set ruler
+
+" can use mouse in vim
+"set mouse=a
+
+" bottom status
+" 0 : not display; 1 : display When one window; 2 : always display
+" show status : ctrl + g | :f
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 " %F 完整文件路径名
 " %m 当前缓冲被修改标记
 " %m 当前缓冲只读标记
@@ -65,7 +52,7 @@ set statusline+=\ %3*%p%%
 "%{n}*	%对其余的行使用高亮显示组Usern，直到另一个%n*。数字n必须从1到9。用%*或%0*可以恢复正常的高亮显示。
 "%<	如果状态行过长，在何处换行。缺省是在开头。
 "%=	左对齐和右对齐项目之间的分割点。
-"%	字符%
+"%%	字符%
 "%B	光标下字符的十六进制形式
 "%F	缓冲区的文件完整路径
 "%H	如果为帮助缓冲区则显示为HLP
@@ -94,10 +81,6 @@ set statusline+=\ %3*%p%%
 "%w	如果为预览窗口则显示为[Preview]
 "%y	缓冲区的文件类型，如[vim]
 "%{expr}	表达式的结果
-
-" 设置 laststatus = 0 ，不显式状态行
-" 设置 laststatus = 1 ，仅当窗口多于一个时，显示状态行
-" 设置 laststatus = 2 ，总是显式状态
 "
 "function! GitBranch()
   "return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
@@ -122,34 +105,37 @@ set statusline+=\ %3*%p%%
 "set statusline+=\ %p%%
 "set statusline+=\ %l:%c
 "set statusline+=\
-"
+set laststatus=2
+set statusline=
+set statusline+=%#LineNr#\ %1*%r\ %M\ %6*===\ %4*%f\ %3*%l%4*-%3*%v\ %6*===
+set statusline+=\ %=
+set statusline+=\ %4*%F\ %5*%Y\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*%p%%
+
 " execute oder in current dir
 set autochdir
+
 " encoding
 set encoding=utf-8
-" :let html_my_rendering=1
-" :let mysql_sql_query=1
-" "let g:is_bash =1
+
 " when open file go to pre position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
 " line number on left
 set number
-" set nonumber
 " line relative number on left
 set relativenumber
-"set norelativenumber
+
 " no set independent vim clipboard
 " press ctrl+shirt and use mouse to select, then use ctrl+shirt+c to copy
 set clipboard=unnamed
-""cursor position up from bottom
+
+" cursor position up from bottom
 set scrolloff=5
-""code hight light
-syntax enable
-syntax on
+
 " in : get tip by table key
 set wildmenu
+
 " hight light search result
-"set hlsearch
 set nohlsearch
 " hight light when search
 set noincsearch
@@ -157,32 +143,39 @@ set noincsearch
 set noignorecase
 " smart case when search
 set nosmartcase
+
 " show line of current line
 set nocursorline
+
 " display automaticly 
 set wrap
 " <CR> automaticly
 set textwidth=999
+
 " show cmd
 set showcmd
+
 " when split, make cursor on right
 "set splitright
 set nosplitright
 " when split, make cursor on below
 set splitbelow
-"set nosplitbelow
+
 " table
 set tabstop=4
 " lenght of -> for all level
 set shiftwidth=4
+
 " set count of "yy"
 set viminfo='1000,<1000
 
 
 
-" ============
-" basic map
-" ============
+
+
+" ================================
+" ===basic map
+" ================================
 " enter in normal model
 nnoremap <CR> o<Esc>
 "inoremap <S-CR> i<CR><Esc>
@@ -200,9 +193,11 @@ nnoremap <C-g> 1<c-g>
 
 
 
-" ================
+
+
+" ================================
 " match vimium
-" ================
+" ================================
 "unmap H
 "unmap L
 " -> decrease line
@@ -236,15 +231,12 @@ nnoremap - <c-w>-
 nnoremap = <c-w>=
 
 
-" ===================
-" unmap
-" ====================
 
 
 
-" =====================
-" appearance for cursor
-" =====================
+" ================================
+" ===appearance for cursor
+" ================================
 " cursor size Settings
 let &t_SI.="\e[5 q" "SI = INSERT mode
 let &t_SR.="\e[4 q" "SR = REPLACE mode
@@ -261,17 +253,12 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 "let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 
-" esec ""
 
 
 
-
-"-------------------------------
-
-
-" ===========
-" MarkDown
-" ===========
+" ================================
+" ===markdown
+" ================================
 " massage document: github:Markdown-here
 
 " tips: markdown,*.txt
@@ -290,7 +277,6 @@ autocmd Filetype markdown set spell
 autocmd Filetype markdown inoremap ,f <Esc>/口口口<CR>:nohlsearch<CR>c3l
 "autocmd Filetype markdown inoremap <s-CR> <Esc>A<CR>
 "autocmd Filetype markdown inoremap <CR> <Esc>/口口口<Enter>c3l
-
 
 " title
 " H1 ; other use: ===
@@ -387,197 +373,20 @@ endif
 
 
 
-" ===========
-" ===ranger===
-" ===========
+
+
+" ================================
+" ===ranger
+" ================================
 " let g:ranger_map_keys = 0
 
 
 
 
 
-
-
-
-" ===========
-" ===coc=====
-" ===========
-" automaticly install extensions when open vim
-" let g:coc_global_extensions = ['coc-go', 'coc-json', 'coc-marketplace']
-"
-"" TextEdit might fail if hidden is not set.
-"set hidden
-"
-"" Some servers have issues with backup files, see #649.
-"set nobackup
-"set nowritebackup
-"
-"" Give more space for displaying messages.
-"set cmdheight=2
-"
-"" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-"" delays and poor user experience.
-set updatetime=100
-"
-"" Don't pass messages to |ins-completion-menu|.
-"set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-" number of line and sign in same column
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-	" Recently vim can merge signcolumn and number column into one
-	set signcolumn=number
-else
-	set signcolumn=yes
-endif
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-autocmd Filetype go,vim inoremap <silent><expr> <TAB>
-	\ pumvisible() ? "\<C-n>" :
-	\ <SID>check_back_space() ? "\<TAB>" :
-	\ coc#refresh()
-autocmd Filetype go,vim inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-" call complement
-if has('nvim')
-	inoremap <silent><expr> <c-space> coc#refresh()
-else
-	inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-"" Make <CR> auto-select the first completion item and notify coc.nvim to
-"" format on enter, <cr> could be remapped by other vim plugin
-"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-	"\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-" swtich next error
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-" go to define and show path of file
-nmap <silent> gd <Plug>(coc-definition)
-"nmap <silent> gy <Plug>(coc-type-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
-" go to place of use
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-"nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-"function! s:show_documentation()
-	"if (index(['vim','help'], &filetype) >= 0)
-		"execute 'h '.expand('<cword>')
-	"elseif (coc#rpc#ready())
-		"call CocActionAsync('doHover')
-	"else
-		"execute '!' . &keywordprg . " " . expand('<cword>')
-	"endif
-"endfunction
-"
-"" Highlight the symbol and its references when holding the cursor.
-"autocmd CursorHold * silent call CocActionAsync('highlight')
-"
-"" Symbol renaming.
-"nmap <leader>rn <Plug>(coc-rename)
-"
-"" Formatting selected code.
-"xmap <leader>f  <Plug>(coc-format-selected)
-"nmap <leader>f  <Plug>(coc-format-selected)
-"
-"augroup mygroup
-	"autocmd!
-	"" Setup formatexpr specified filetype(s).
-	"autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-	"" Update signature help on jump placeholder.
-	"autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-"augroup end
-"
-"" Applying codeAction to the selected region.
-"" Example: `<leader>aap` for current paragraph
-"xmap <leader>a  <Plug>(coc-codeaction-selected)
-"nmap <leader>a  <Plug>(coc-codeaction-selected)
-"
-"" Remap keys for applying codeAction to the current buffer.
-"nmap <leader>ac  <Plug>(coc-codeaction)
-"" Apply AutoFix to problem on the current line.
-"nmap <leader>qf  <Plug>(coc-fix-current)
-"
-"" Map function and class text objects
-"" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-"xmap if <Plug>(coc-funcobj-i)
-"omap if <Plug>(coc-funcobj-i)
-"xmap af <Plug>(coc-funcobj-a)
-"omap af <Plug>(coc-funcobj-a)
-"xmap ic <Plug>(coc-classobj-i)
-"omap ic <Plug>(coc-classobj-i)
-"xmap ac <Plug>(coc-classobj-a)
-"omap ac <Plug>(coc-classobj-a)
-"
-"" Remap <C-f> and <C-b> for scroll float windows/popups.
-"if has('nvim-0.4.0') || has('patch-8.2.0750')
-	"nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-	"nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-	"inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-	"inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-	"vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-	"vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-"endif
-"
-"" Use CTRL-S for selections ranges.
-"" Requires 'textDocument/selectionRange' support of language server.
-"nmap <silent> <C-s> <Plug>(coc-range-select)
-"xmap <silent> <C-s> <Plug>(coc-range-select)
-"
-"" Add `:Format` command to format current buffer.
-"command! -nargs=0 Format :call CocAction('format')
-"
-"" Add `:Fold` command to fold current buffer.
-"command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-"
-"" Add `:OR` command for organize imports of the current buffer.
-"command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-"
-"" Add (Neo)Vim's native statusline support.
-"" NOTE: Please see `:h coc-status` for integrations with external plugins that
-"" provide custom statusline: lightline.vim, vim-airline.
-"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-"
-"" Mappings for CoCList
-"" Show all diagnostics.
-"nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-"" Manage extensions.
-"nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-"" Show commands.
-"nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-"" Find symbol of current document.
-"nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-"" Search workspace symbols.
-"nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-"" Do default action for next item.
-"nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-"" Do default action for previous item.
-"nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-"" Resume latest coc list.
-"nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-
-
-" =====================
-" ====function=========
-" =====================
+" ================================
+" ===function
+" ================================
 " Compile function
 if has ("autocmd")
 	autocmd Filetype go nnoremap go :call CompileRunGcc()<CR><c-w>h
@@ -595,8 +404,6 @@ func! CompileRunGcc()
 	exec "only"
 	if &filetype == 'go'
 		:GoRun %
-		":rightbelow vert term ++cols=30 go run %
-		":rightbelow vert term ++cols=40 go run 
 		":rightbelow vert term ++cols=40 go run .
 		":term go run .
 	elseif &filetype == 'sh'
@@ -614,29 +421,14 @@ endfunc
 
 
 
-" =======
-" auto-pairs
-" =======
-let g:AutoPairsShortcutFastWrap = '<c-e>'
-
-
-" ======
-" nerdtree
-" =======
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-" Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-let g:NERDTreeWinSize = 15
-
-
-
 
 
 " ================================
-" ===vim plug manager
+" ===plug manager
 " ================================
 " more plug search : vimawesome.com
+filetype plugin on
+filetype plugin indent on
 call plug#begin('~/.vim/plugged')
 Plug 'keysquivered/vim-go-markdown-colors'
 Plug 'fatih/vim-go', {'for':'go'}
@@ -656,7 +448,18 @@ Plug 'godlygeek/tabular'
 "Plug 'vim-signiture'
 call plug#end()
 " PlugInstall
-" set vim color
+
+
+
+
+
+" ================================
+" ===colors
+" ================================
+"code hight light
+syntax enable
+syntax on
+" :so $VIMRUNTIME/syntax/hitest.vim
 color vim-go-markdown-colors
 
 
@@ -929,3 +732,25 @@ nmap <silent> gr <Plug>(coc-references)
 "nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 "" Resume latest coc list.
 "nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+
+
+
+" ================================
+" ===auto-pairs
+" ================================
+let g:AutoPairsShortcutFastWrap = '<c-e>'
+
+
+
+
+
+" ================================
+" ===nerdtree
+" ================================
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+let g:NERDTreeWinSize = 15
