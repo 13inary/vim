@@ -1,11 +1,14 @@
-" source xx/xx/vimrc
+" ================================
+" === configuration of vim
+" === suit for go and markdown
+" === author : keysquivered
+" ================================
 
+" source xx/xx/vimrc
 "if exists("g:load_change_color_scheme")
 "    finish
 "endif
 "let g:load_change_color_scheme = 1
-"nnoremap mm :colors  
-"nnoremap mn :vsp ~/documents/git/git.md
 "autocmd BufReadPost $MYVIMRC source $MYVIMRC
 
 
@@ -30,10 +33,10 @@ set laststatus=2
 set statusline=
 set statusline+=%#LineNr#
 set statusline+=\ %1*%M
-set statusline+=\ %6*>>>
+set statusline+=\ %6*===
 set statusline+=\ %4*%f
 set statusline+=\ %3*%l%4*-%3*%v
-set statusline+=\ %6*<<<
+set statusline+=\ %6*===
 set statusline+=\ \ \ \ \ \ %4*========
 set statusline+=\ %=
 set statusline+=\ %4*%F
