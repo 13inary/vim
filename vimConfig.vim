@@ -183,7 +183,7 @@ nnoremap <CR> o<Esc>
 ":autocmd BufReadPost quickfix nnoremap <CR> <CR>
 inoremap <s-tab> <c-x><c-f>
 " space in normal model
-nnoremap <space> i <Esc>
+"nnoremap <space> i <Esc>
 " bottom information
 nnoremap <C-g> 1<c-g>
 " return to last place and view in middle
