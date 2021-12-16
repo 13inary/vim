@@ -493,6 +493,8 @@ let g:UltiSnipsJumpBackwardTrigger=",F"
 " ================================
 " ===vim-go===
 " ================================
+nmap <space>gc :GoRename<space>
+nmap <space>gt :GoAddTags<space>
 " debug window
 let g:go_debug_windows = {
 		\ 'vars':       'leftabove 40vnew',
@@ -637,8 +639,8 @@ nmap <silent> <space>gd <Plug>(coc-definition)
 "nmap <silent> gi <Plug>(coc-implementation)
 " go to place of use
 nmap <silent> <space>gu <Plug>(coc-references)
-nmap <silent> <space>gc <plug>(coc-rename)
 nmap <silent> <space>gl <plug>(coc-openlink)
+"nmap <silent> <space>gc <plug>(coc-rename)
 
 nnoremap <silent> <space>h :call CocActionAsync('doHover')<cr>
 
