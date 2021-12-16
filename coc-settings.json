@@ -1,31 +1,50 @@
 {
 	"suggest.completionItemKindLabels": {
-			"keyword": "\uf1de",
-			"variable": "\ue79b",
+			//"keyword": "\u039a",k K
+			"keyword": "\u049a",
+			//"variable": "\ue79b",[] V
+			"variable": "\u13d9",
 			"value": "\uf89f",
-			"operator": "\u03a8",
+			//"operator": "\u03a8",  O
+			"operator": "\u014c",
 			"constructor": "\uf0ad",
-			"function": "\u0192",
+			//"function": "\u00a3", f F
+			"function": "\u0191",
 			"reference": "\ufa46",
-			"constant": "\uf8fe",
-			"method": "\uf09a",
-			"struct": "\ufb44",
-			"class": "\uf0e8",
-			"interface": "\uf417",
+			//"constant": "\uf8fe",j
+			"constant": "\u0034",
+			//"method": "\u0192",f f
+			"method": "\u2a0d",
+			//"struct": "\ufb44", c 
+			//"struct": "\u01a7", S S
+			"struct": "\ua682",
+			//"class": "\uf0e8", []
+			//"class": "\ua50b", T T
+			"class": "\u03a4",
+			//"interface": "\u0406", I |
+			"interface": "\u23ae",
 			"text": "\ue612",
 			"enum": "\uf435",
 			"enumMember": "\uf02b",
-			"module": "\uf40d",
+			//"module": "\u01f7", P P
+			"module": "\u01a4",
 			"color": "\ue22b",
 			"property": "\ue624",
-			"field": "\uf9be",
+			//"field": "\u1d1f",3 -
+			//"field": "\u4dc0",
+			"field": "\u2630",
 			"unit": "\uf475",
 			"event": "\ufacd",
-			"file": "\uf723",
+			//"file": "\uf723",
+			"file": "\u103c",
 			"folder": "\uf114",
-			"snippet": "\ue60b",
+			//"snippet": "\ue60b",  
+			//"snippet": "\ua608",||
+			//"snippet": "\u2637", .. S
+			"snippet": "\ua843",
 			"typeParameter": "\uf728",
-			"default": "\uf29c"
+			//"default": "\uf29c"  ?
+			"default": "\u2754"
 	},
 	//"diagnostic.refreshAfterSave": false,
 	//"diagnostic.signOffset": 1,
