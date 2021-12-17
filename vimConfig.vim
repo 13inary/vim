@@ -179,6 +179,7 @@ set viminfo='1000,<1000
 " ================================
 " ===basic map
 " ================================
+"let mapleader = "\"
 " enter in normal model
 nnoremap <CR> o<Esc>
 "inoremap <S-CR> i<CR><Esc>
@@ -406,6 +407,7 @@ func! CompileRunGcc()
 	"exec "2close"
 	exec "only"
 	if &filetype == 'go'
+		" run current file
 		:GoRun %
 		":rightbelow vert term ++cols=40 go run .
 		":term go run .
@@ -433,13 +435,16 @@ endfunc
 filetype plugin on
 filetype plugin indent on
 call plug#begin('~/.vim/plugged')
+"Plug 'fatih/molokai'
 Plug 'keysquivered/vim-go-markdown-colors'
 Plug 'fatih/vim-go', {'for':'go'}
 "Plug 'dense-analysis/ale'
 " need install nodejs npm yarn
 Plug 'neoclide/coc.nvim', {'for':['go','vim'], 'branch':'release'}
 Plug 'jiangmiao/auto-pairs', {'for':['go','vim','markdown','json']}
+Plug 'ctrlpvim/ctrlp.vim', {'for':'go'}
 "Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf'
 "Plug 'ianva/vim-youdao-translater'
 "Plug 'scrooloose/nerdtree', {'for':'go'}
 Plug 'SirVer/ultisnips', {'for':'go'}
@@ -470,6 +475,11 @@ syntax enable
 syntax on
 " :so $VIMRUNTIME/syntax/hitest.vim
 color vim-go-markdown-colors
+" molokai
+"let g:rehash256 = 1
+"let g:molokai_original = 1
+"colorscheme molokai
+
 
 
 
@@ -498,8 +508,41 @@ let g:UltiSnipsJumpBackwardTrigger=",F"
 " ================================
 " ===vim-go===
 " ================================
-nmap <space>gc :GoRename<space>
-nmap <space>gt :GoAddTags<space>
+"autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+autocmd Filetype go nmap <space>gc :GoRename<space>
+
+autocmd Filetype go nmap <silent> <space>ga :GoAlternate<CR>
+
+" go to definition use guru but it may slow
+"let g:go_def_mode = 'godef'
+autocmd Filetype go nmap <silent> <space>gb :GoDefPop<CR>
+"nmap <silent> <space>gs :GoDefStack<CR>
+"
+autocmd Filetype go nmap <space>gi :GoImpl<space>
+
+"let g:go_fillstruct_mode = 'fillstruct'
+let g:go_fillstruct_mode = 'gopls'
+autocmd Filetype go nmap <silent> <space>gs :GoFillStruct<CR>
+
+autocmd Filetype go nmap <silent> <space>gv :GoSameIdsAutoToggle<CR>
+
+" show funciton struct
+"let g:go_decls_includes = "func,type"
+autocmd Filetype go nmap <silent> <space>gf :GoDecls<CR>
+autocmd Filetype go nmap <silent> <space>gF :GoDeclsDir<CR>
+
+" Possible options are: `snakecase`(_), `camelcase`(aBc), `lispcase`, `pascalcase`, `keep`
+autocmd Filetype go nmap <space>gt :GoAddTags<space>
+let g:go_addtags_transform = 'camelcase'
+
+"dif, daf...
+" jump to error
+":cnext
+":cprevious
+":cclose
+
+"let g:go_list_type = "quickfix"
+
 " debug window
 let g:go_debug_windows = {
 		\ 'vars':       'leftabove 40vnew',
@@ -520,47 +563,59 @@ let g:go_debug_mappings = {
 	     \ '(go-debug-restart)':    {'key': '<F11>'},
 	     \ '(go-debug-stop)':       {'key': '<F12>'},
 	  \ }
+
 "show type of function , variate
 let g:go_auto_type_info = 1
+
 " update time
 let g:go_updatetime = 100
+
 " hilight for same variate
 "let g:go_auto_sameids = 0
+"
 " inside terminal
 let g:go_term_enabled = 1
 let g:go_term_width = 40
 "let g:go_term_height = 5
 let g:go_term_mode = "rightbelow vsplit"
+
 " do after save 
 "let g:go_fmt_autosave = 1
 "let g:go_imports_autosave = 1
 "let g:go_mod_fmt_autosave = 1
 "let g:go_asmfmt_autosave = 0
-let g:go_metalinter_autosave = 1
 "let g:go_template_autocreate = 1
-" Possible options are: `snakecase`(_), `camelcase`(aBc), `lispcase`, `pascalcase`, `keep`
-let g:go_addtags_transform = 'camelcase'
-let g:go_metalinter_command = "gopls"
+"let g:go_fmt_command = "goimports"
 
-"let g:go_highlight_array_whitespace_error = 1
-"let g:go_highlight_build_constraints = 1
-"let g:go_highlight_chan_whitespace_error = 1
-"let g:go_highlight_extra_types = 1
-"let g:go_highlight_fields = 1
-"let g:go_highlight_format_strings = 0
+let g:go_metalinter_autosave = 1
+"let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_command = "gopls"
+"let g:go_metalinter_deadline = "5s"
+
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
 let	g:go_highlight_function_calls = 1
 let g:go_highlight_function_parameters = 1
-"let g:go_highlight_functions = 1
-let g:go_highlight_generate_tags = 1
-"let g:go_highlight_methods = 0
 let g:go_highlight_operators = 1
+let g:go_highlight_variable_declarations = 1
+" build flag on head of file
+"let g:go_highlight_build_constraints = 1
+" hightlight generate text
+"let g:go_highlight_generate_tags = 1
+
+"let g:go_highlight_structs = 1
+"let g:go_highlight_extra_types = 1
+
+
+"let g:go_highlight_array_whitespace_error = 1
+"let g:go_highlight_chan_whitespace_error = 1
+"let g:go_highlight_format_strings = 0
+"let g:go_highlight_functions = 1
+"let g:go_highlight_methods = 0
 "let g:go_highlight_space_tab_error = 1
 "let g:go_highlight_string_spellcheck = 1
-let g:go_highlight_structs = 1
 "let g:go_highlight_trailing_whitespace_error = 1
-let g:go_highlight_types = 1
 "let g:go_highlight_variable_assignments = 1
-let g:go_highlight_variable_declarations = 1
 "let g:go_doc_keywordprg_enabled = 
 
 
