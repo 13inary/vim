@@ -452,6 +452,11 @@ Plug 'buoto/gotests-vim', {'for':'go'}
 "Plug 'vim-signiture'
 call plug#end()
 " PlugInstall
+function! UpdateMyAllPlugins()
+	exec "PlugUpgrade"
+	exec "PlugUpdate"
+	exec "GoUpdateBinaries"
+endfunction
 
 
 
