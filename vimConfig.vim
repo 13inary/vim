@@ -627,9 +627,9 @@ let g:go_highlight_variable_declarations = 1
 " ================================
 " :h coc-variable
 "let g:coc_node_path =
-" automaticly install extensions when open vim
 
-"let g:coc_global_extensions = ['coc-go', 'coc-json', 'coc-marketplace']
+" automaticly install extensions when open vim
+let g:coc_global_extensions = ['coc-snippets']
 
 " TextEdit might fail if hidden is not set.
 "set hidden
