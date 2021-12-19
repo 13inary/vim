@@ -629,7 +629,9 @@ let g:go_highlight_variable_declarations = 1
 "let g:coc_node_path =
 
 " automaticly install extensions when open vim
-let g:coc_global_extensions = ['coc-snippets']
+"let g:coc_global_extensions = ['coc-snippets', 'coc-translator']
+"let g:coc_global_extensions = ['coc-snippets']
+"imap ,e <Plug>(coc-snippets-expand)
 
 " TextEdit might fail if hidden is not set.
 "set hidden
@@ -722,7 +724,7 @@ autocmd Filetype go,vim nnoremap <silent> <space>h :call CocActionAsync('doHover
 "endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold go silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 "nmap <leader>rn <Plug>(coc-rename)
