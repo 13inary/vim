@@ -57,7 +57,7 @@
 	"diagnostic.errorSign": "❯❯",
 	"diagnostic.warningSign": "❯❯",
 	"coc.preferences.colorSupport": true,
-	// "coc.preferences.formatOnSaveFiletypes":
+	//"coc.preferences.formatOnSaveFiletypes": [go],
 	//"coc.preferences.enableMarkdown": true,
 	"languageserver": {
 		"golang": {
