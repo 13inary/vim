@@ -449,6 +449,9 @@ Plug 'ctrlpvim/ctrlp.vim', {'for':'go'}
 "Plug 'scrooloose/nerdtree', {'for':'go'}
 Plug 'SirVer/ultisnips', {'for':'go'}
 Plug 'buoto/gotests-vim', {'for':'go'}
+"Plug 'tenfyzhong/gengotag', {'do': 'go build'}
+" need cd directory and go build
+Plug 'tenfyzhong/gengotag', {'for': 'go'}
 "Plug 'honza/vim-snippets', {'for':'go'}
 "Plug 'godlygeek/tabular'
 "Plug 'scrooloose/nerdtree' , {'on': 'NERDTreeToggle'}
