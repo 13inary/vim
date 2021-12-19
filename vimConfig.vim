@@ -709,7 +709,7 @@ autocmd Filetype go,vim nmap <silent> <space>gl <plug>(coc-openlink)
 "nmap <silent> <space>gc <plug>(coc-rename)
 
 " call help
-autocmd Filetype go,vim nnoremap <silent> <space>h :call CocActionAsync('doHover')<cr>
+autocmd Filetype go,vim nnoremap <silent> <space>gh :call CocActionAsync('doHover')<cr>
 
 " Use K to show documentation in preview window.
 "nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -724,7 +724,7 @@ autocmd Filetype go,vim nnoremap <silent> <space>h :call CocActionAsync('doHover
 "endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd FileType go autocmd CursorHold * silent call CocActionAsync('highlight')
+"autocmd FileType go autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 "nmap <leader>rn <Plug>(coc-rename)
