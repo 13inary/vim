@@ -724,7 +724,7 @@ autocmd Filetype go,vim nnoremap <silent> <space>h :call CocActionAsync('doHover
 "endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold go silent call CocActionAsync('highlight')
+autocmd FileType go autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 "nmap <leader>rn <Plug>(coc-rename)
