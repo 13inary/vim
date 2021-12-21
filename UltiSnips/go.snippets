@@ -1,12 +1,11 @@
-snippet iferr "if error not nil"
+snippet ie "if error not nil"
 if err != nil {
 	${1:<CONTENT>}
-	return err
 }
 ${0:<END>}
 endsnippet
 
-snippet ifok "if ok is false"
+snippet io "if ok is false"
 if !ok {
 	${1:<CONTENT>}
 }
