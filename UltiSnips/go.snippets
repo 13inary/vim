@@ -1,8 +1,7 @@
 snippet ie "if error not nil"
 if err != nil {
-	${1:<CONTENT>}
-}
-${0:<END>}
+	${1:return err}
+} ${0:}
 endsnippet
 
 snippet io "if ok is false"
