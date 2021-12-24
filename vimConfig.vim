@@ -519,6 +519,7 @@ autocmd Filetype go nmap <silent> <space>ga :GoAlternate<CR>
 
 " go to definition use guru but it may slow
 "let g:go_def_mode = 'godef'
+autocmd Filetype go nmap <silent> <space>gd :GoDef<CR>
 autocmd Filetype go nmap <silent> <space>gb :GoDefPop<CR>
 "nmap <silent> <space>gs :GoDefStack<CR>
 "
@@ -704,7 +705,7 @@ autocmd Filetype go,vim nmap <silent> <space>gn <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 " go to define and show path of file
-autocmd Filetype go,vim nmap <silent> <space>gd <Plug>(coc-definition)
+"autocmd Filetype go,vim nmap <silent> <space>gd <Plug>(coc-definition)
 "nmap <silent> gy <Plug>(coc-type-definition)
 "nmap <silent> gi <Plug>(coc-implementation)
 " go to place of use
