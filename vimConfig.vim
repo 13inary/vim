@@ -22,6 +22,9 @@ filetype indent on
 " such as ( ... )
 set showmatch
 
+" show tab line
+set showtabline=2
+
 " cursor status in riht corner
 "set ruler
 
