@@ -499,7 +499,7 @@ autocmd Filetype markdown nmap <silent> <space>mp :MarkdownPreviewToggle<CR>
 
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
-let g:mkdp_auto_start = 1
+let g:mkdp_auto_start = 0
 
 " set to 1, the MarkdownPreview command can be use for all files,
 " by default it can be use in markdown file
