@@ -205,34 +205,34 @@ nnoremap <C-g> 1<c-g>
 "unmap H
 "unmap L
 " -> decrease line
-nnoremap <c-w>j J
+"nnoremap <c-w>j J
 " -> man <command>
-nnoremap <c-w>k K
+"nnoremap <c-w>k K
 " move cursor to other window in vim
-nnoremap H <c-w>h
-nnoremap L <c-w>l
-nnoremap J <c-w>j
-nnoremap K <c-w>k
+"nnoremap H <c-w>h
+"nnoremap L <c-w>l
+"nnoremap J <c-w>j
+"nnoremap K <c-w>k
 " move window in vim
-nnoremap <c-s>h <c-w>H
-nnoremap <c-s>l <c-w>L
-nnoremap <c-s>j <c-w>J
-nnoremap <c-s>k <c-w>K
+"nnoremap <c-s>h <c-w>H
+"nnoremap <c-s>l <c-w>L
+"nnoremap <c-s>j <c-w>J
+"nnoremap <c-s>k <c-w>K
 " gg -> left
-nnoremap [ <c-w><
+"nnoremap [ <c-w><
 "nunmap [[
 " G -> right
-nnoremap ] <c-w>>
+"nnoremap ] <c-w>>
 "nunmap ]]
 " down -> high
 "nunmap +
-nnoremap + <c-w>+
+"nnoremap + <c-w>+
 " up -> low
 "nunmap -
-nnoremap - <c-w>-
+"nnoremap - <c-w>-
 " <<+^ -> AAA
 "nunmap =
-nnoremap = <c-w>=
+"nnoremap = <c-w>=
 
 
 
