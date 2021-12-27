@@ -113,7 +113,7 @@ set showtabline=2
 "set statusline+=\
 set laststatus=2
 set statusline=
-set statusline+=%#LineNr#\ %1*%r\ %M\ %6*===\ %4*%f\ %3*%l%4*-%3*%v\ %6*===
+set statusline+=%#LineNr#\ %1*%r\ %6*==\ %3*%l%4*-%3*%v\ %6*==
 set statusline+=\ %=
 set statusline+=\ %4*%F\ %5*%Y\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*%p%%
 
