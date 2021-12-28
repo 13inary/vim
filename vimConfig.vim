@@ -443,8 +443,8 @@ Plug 'keysquivered/vim-go-markdown-colors'
 Plug 'fatih/vim-go', {'for':'go'}
 "Plug 'dense-analysis/ale'
 " need install nodejs npm yarn
-Plug 'neoclide/coc.nvim', {'for':['go','vim'], 'branch':'release'}
-Plug 'jiangmiao/auto-pairs', {'for':['go','vim','markdown','json']}
+Plug 'neoclide/coc.nvim', {'for':['go','vim','sh'], 'branch':'release'}
+Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json']}
 Plug 'ctrlpvim/ctrlp.vim', {'for':'go'}
 "Plug 'junegunn/fzf.vim'
 "Plug 'junegunn/fzf'
