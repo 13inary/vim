@@ -1,7 +1,13 @@
-snippet ie "if error not nil"
+snippet e "if error not nil"
 if err != nil {
-	${1:return err}
-} ${0:}
+	return err
+} ${0}
+endsnippet
+
+snippet ne "if error not nil"
+if err != nil {
+	return nil, err
+} ${0}
 endsnippet
 
 snippet io "if ok is false"
