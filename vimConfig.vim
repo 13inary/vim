@@ -396,7 +396,7 @@ endif
 " ================================
 " Compile function
 if has ("autocmd")
-	autocmd Filetype go nnoremap go :call CompileRunGcc()<CR><c-w>h
+	autocmd Filetype go,sh nnoremap <silent> go :call CompileRunGcc()<CR><c-w>h
 	"autocmd Filetype go nnoremap gO <c-w>l:close<CR>
 	"autocmd Filetype go nnoremap gn :cnext<CR>
 	"autocmd Filetype go nnoremap gN :cprevious<CR>
@@ -416,6 +416,7 @@ func! CompileRunGcc()
 		":term go run .
 	elseif &filetype == 'sh'
 		":!time bash %
+		:rightbelow vert term ++cols=50 bash %
 	elseif &filetype == 'html'
 		"silent! exec "!".g:mkdp_browser." % &"
 	elseif &filetype == 'markdown'
