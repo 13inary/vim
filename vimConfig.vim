@@ -430,6 +430,11 @@ endfunc
 
 
 
+autocmd BufNewFile * exec ":r! InitNewFile.sh `pwd` %"
+"nmap <space>m :r! echo %<CR>
+
+
+
 
 
 " ================================
