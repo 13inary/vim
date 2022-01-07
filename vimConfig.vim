@@ -430,8 +430,9 @@ endfunc
 
 
 
-autocmd BufNewFile * exec ":r! InitNewFile.sh `pwd` %"
-"nmap <space>m :r! echo %<CR>
+"autocmd BufNewFile * silent exec ":r! InitNewFile.sh `pwd` %"
+"autocmd BufReadPost * silent <Esc>/口口口<CR>:nohlsearch<CR>c3l
+nmap <space>m :r! InitNewFile.sh `pwd` %<CR>ggdd<CR>/口口口<CR>:nohlsearch<CR>c3l
 
 
 
