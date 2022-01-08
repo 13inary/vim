@@ -173,7 +173,7 @@ set tabstop=4
 set shiftwidth=4
 
 " set count of "yy"
-set viminfo='1000,<1000
+set viminfo='1000,<100
 
 
 
@@ -429,10 +429,22 @@ func! CompileRunGcc()
 endfunc
 
 
+" au[tocmd] [group] {event} {pat} [nested] {cmd}
+" BufEnter : may tell you file is changed
+augroup myInitNewFileGroup
+	" clear old command of myInitNewFile
+	autocmd!
+	" do what you want
+	autocmd BufNewFile *.go,*.sh silent call MyInitNewFileFuc()
+	"autocmd BufNewFile *.go,*.sh 0r ~/vim/skeleton.go
+augroup END
 
-"autocmd BufNewFile * silent exec ":r! InitNewFile.sh `pwd` %"
-"autocmd BufReadPost * silent <Esc>/口口口<CR>:nohlsearch<CR>c3l
-nmap <space>, :r! InitNewFile.sh `pwd` %<CR>ggdd<CR>/口口口<CR>:nohlsearch<CR>c3l
+fun MyInitNewFileFuc()
+	:r! InitNewFile.sh `pwd` %
+	:%s/^\n//
+	let aaa = 11
+	:%s/口口口/echo &aaa/
+endfun
 
 
 
