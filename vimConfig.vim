@@ -9,7 +9,6 @@
 "if exists("g:load_change_color_scheme")
 "    finish
 "endif
-"autocmd BufReadPost $MYVIMRC source $MYVIMRC
 
 " son version can use this configuration
 " fix bug for vi
@@ -188,7 +187,7 @@ nnoremap <CR> o<Esc>
 "inoremap <S-CR> i<CR><Esc>
 ":autocmd CmdwinEnter * nnoremap <CR> <CR>
 ":autocmd BufReadPost quickfix nnoremap <CR> <CR>
-inoremap <s-tab> <c-x><c-f>
+"inoremap <s-tab> <c-x><c-f>
 " space in normal model
 "nnoremap <space> i <Esc>
 " bottom information
@@ -197,45 +196,6 @@ nnoremap <C-g> 1<c-g>
 "nnoremap <C-o> <c-g>zz
 " return to new place and view in middle
 "nnoremap <C-i> <c-g>zz
-
-
-
-
-
-" ================================
-" match vimium
-" ================================
-"unmap H
-"unmap L
-" -> decrease line
-"nnoremap <c-w>j J
-" -> man <command>
-"nnoremap <c-w>k K
-" move cursor to other window in vim
-"nnoremap H <c-w>h
-"nnoremap L <c-w>l
-"nnoremap J <c-w>j
-"nnoremap K <c-w>k
-" move window in vim
-"nnoremap <c-s>h <c-w>H
-"nnoremap <c-s>l <c-w>L
-"nnoremap <c-s>j <c-w>J
-"nnoremap <c-s>k <c-w>K
-" gg -> left
-"nnoremap [ <c-w><
-"nunmap [[
-" G -> right
-"nnoremap ] <c-w>>
-"nunmap ]]
-" down -> high
-"nunmap +
-"nnoremap + <c-w>+
-" up -> low
-"nunmap -
-"nnoremap - <c-w>-
-" <<+^ -> AAA
-"nunmap =
-"nnoremap = <c-w>=
 
 
 
@@ -395,16 +355,14 @@ endif
 " ===function
 " ================================
 " Compile function
-if has ("autocmd")
-	autocmd Filetype go,sh nnoremap <silent> go :call CompileRunGcc()<CR><c-w>h
-	"autocmd Filetype go nnoremap gO <c-w>l:close<CR>
-	"autocmd Filetype go nnoremap gn :cnext<CR>
-	"autocmd Filetype go nnoremap gN :cprevious<CR>
-	"autocmd Filetype go nnoremap gc :cclose<CR>
-	"autocmd Filetype go nnoremap gb :GoBuild<CR>
-	"autocmd Filetype go nnoremap gt :GoTest<CR>
-	"autocmd Filetype go nnoremap gt :GoRename<CR>
-endif
+autocmd Filetype go,sh nnoremap <silent> go :call CompileRunGcc()<CR><c-w>h
+"autocmd Filetype go nnoremap gO <c-w>l:close<CR>
+"autocmd Filetype go nnoremap gn :cnext<CR>
+"autocmd Filetype go nnoremap gN :cprevious<CR>
+"autocmd Filetype go nnoremap gc :cclose<CR>
+"autocmd Filetype go nnoremap gb :GoBuild<CR>
+"autocmd Filetype go nnoremap gt :GoTest<CR>
+"autocmd Filetype go nnoremap gt :GoRename<CR>
 func! CompileRunGcc()
 	exec "w"
 	"exec "2close"
@@ -442,8 +400,7 @@ augroup END
 fun MyInitNewFileFuc()
 	:r! InitNewFile.sh `pwd` %
 	:%s/^\n//
-	let aaa = 11
-	:%s/口口口/echo &aaa/
+	:%s/口口口//
 endfun
 
 
