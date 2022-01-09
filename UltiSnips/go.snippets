@@ -22,3 +22,10 @@ if !ok {
 }
 ${0:<END>}
 endsnippet
+
+# json field tag
+snippet .v "\`json:key\`"
+type ${1:`!v  go#util#snippetcase(matchstr(getline("."), '\w\+'))`} struct {
+	$2
+}
+endsnippet
