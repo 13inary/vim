@@ -405,6 +405,38 @@ endfun
 
 
 
+" match string int bool \t}
+"autocmd Filetype go nmap <silent> <c-j> <Esc>/".*"\\|[+-]\?\d\+\(\.\d*\)\?\\|false\\|\t}<CR>
+"autocmd Filetype go nmap <silent> <c-k> <Esc>?".*"\\|[+-]\?\d\+\(\.\d*\)\?\\|false\\|\t}<CR>
+"autocmd Filetype go imap <silent> <c-j> <Esc>/".*"\\|[+-]\?\d\+\(\.\d*\)\?\\|false\\|\t}<CR>
+"autocmd Filetype go imap <silent> <c-k> <Esc>?".*"\\|[+-]\?\d\+\(\.\d*\)\?\\|false\\|\t}<CR>
+" match : := =
+autocmd Filetype go nmap <silent> <c-j> <Esc>/: \\|:= \\|= \\|\t}<CR>w
+autocmd Filetype go nmap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
+autocmd Filetype go imap <silent> <c-j> <Esc>/: \\|:= \\|= \\|\t}<CR>w
+autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
+
+"autocmd TextChangedI *.go silent exec "call AutoFillStruct()"
+"autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
+fun AutoFillStruct()
+	"if &filetype == 'go'
+	let myCurrentTab = matchstr(getline(line(".")-1), '\t\+')
+	let myText = matchstr(getline("."), '\w\+{}')
+	let myStruct = tolower(matchstr(myText, '[a-z,A-Z,0-9]\+'))
+	let myLine = line(".")
+	let myCol = col(".")+3
+	if myText != ""
+		"call append(line("."), myText."456")
+		call setline(line("."), myCurrentTab.myStruct." := ".myText)
+		call cursor(myLine, myCol)
+		":GoFillStruct<CR>[m/:<CR>w
+		:GoFillStruct
+		call cursor(myLine, myCol)
+	endif
+endfun
+
+
+
 
 
 " ================================
