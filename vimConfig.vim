@@ -871,7 +871,7 @@ let g:coc_default_semantic_highlight_groups = 1
 " ================================
 " ===auto-pairs
 " ================================
-let g:AutoPairsShortcutFastWrap = '<c-l>'
+let g:AutoPairsShortcutFastWrap = '<c-m>'
 
 
 
