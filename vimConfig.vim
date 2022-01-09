@@ -576,7 +576,7 @@ autocmd Filetype go nmap <space>gi :GoImpl<space>
 
 "let g:go_fillstruct_mode = 'fillstruct'
 let g:go_fillstruct_mode = 'gopls'
-autocmd Filetype go nmap <silent> <space>gs :GoFillStruct<CR>
+autocmd Filetype go nmap <silent> <space>gs :GoFillStruct<CR>[m/:<CR>w
 
 autocmd Filetype go nmap <silent> <space>gv :GoSameIdsAutoToggle<CR>
 
