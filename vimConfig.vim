@@ -420,11 +420,11 @@ autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
 "autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
 fun AutoFillStruct()
 	"if &filetype == 'go'
-	let myCurrentTab = matchstr(getline(line(".")-1), '\t\+')
-	let myText = matchstr(getline("."), '\w\+{}')
-	let myStruct = tolower(matchstr(myText, '[a-z,A-Z,0-9]\+'))
-	let myLine = line(".")
-	let myCol = col(".")+3
+	let l:myCurrentTab = matchstr(getline(line(".")-1), '\t\+')
+	let l:myText = matchstr(getline("."), '\w\+{}')
+	let l:myStruct = tolower(matchstr(myText, '[a-z,A-Z,0-9]\+'))
+	let l:myLine = line(".")
+	let l:myCol = col(".")+3
 	if myText != ""
 		"call append(line("."), myText."456")
 		call setline(line("."), myCurrentTab.myStruct." := ".myText)
