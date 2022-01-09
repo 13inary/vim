@@ -393,7 +393,7 @@ augroup myInitNewFileGroup
 	" clear old command of myInitNewFile
 	autocmd!
 	" do what you want
-	autocmd BufNewFile *.go,*.sh silent call MyInitNewFileFuc()
+	autocmd BufNewFile *.go,*.sh,*,proto silent call MyInitNewFileFuc()
 	"autocmd BufNewFile *.go,*.sh 0r ~/vim/skeleton.go
 augroup END
 
