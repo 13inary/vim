@@ -420,18 +420,33 @@ autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
 "autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
 fun AutoFillStruct()
 	"if &filetype == 'go'
-	let l:myCurrentTab = matchstr(getline(line(".")-1), '\t\+')
 	let l:myText = matchstr(getline("."), '\w\+{}')
-	let l:myStruct = tolower(matchstr(myText, '[a-z,A-Z,0-9]\+'))
-	let l:myLine = line(".")
-	let l:myCol = col(".")+3
 	if myText != ""
+		let l:myCurrentTab = matchstr(getline(line(".")-1), '\t\+')
+		let l:myStruct = tolower(matchstr(myText, '[a-z,A-Z,0-9]\+'))
+		let l:myLine = line(".")
+		let l:myCol = col(".")+3
 		"call append(line("."), myText."456")
 		call setline(line("."), myCurrentTab.myStruct." := ".myText)
 		call cursor(myLine, myCol)
 		":GoFillStruct<CR>[m/:<CR>w
 		:GoFillStruct
 		call cursor(myLine, myCol)
+	endif
+endfun
+
+
+
+autocmd TextChangedI *.go silent exec "call AutoAnnotation()"
+fun AutoAnnotation()
+	let l:myText = matchstr(getline("."), 'func \w\+()')
+	if myText != ""
+		let l:myLastText = matchstr(getline(line(".")-1), '// \w\+ ')
+		let l:myFuncName = matchstr(matchstr(myText, '\w\+()'), '[a-z,A-Z,0-9,_]\+')
+		if myLastText != "// ".myFuncName." "
+			call append(line(".")-1, "// ".myFuncName." ")
+		endif
+		"call append(line(".")-2, myLastText."XX")
 	endif
 endfun
 
