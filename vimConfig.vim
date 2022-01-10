@@ -452,6 +452,48 @@ endfun
 
 
 
+autocmd Filetype go,sh,proto,vim nmap <silent> <c-h> :call DoAnnotation()<CR>
+fun DoAnnotation()
+	if &filetype == 'proto' || &filetype == 'go'
+		let l:myCurrentText = getline(".")
+		let l:myText = matchstr(myCurrentText, '^//.*')
+		"call append(line(".")+1, myText)
+		if myText == ""
+			" not have annotation
+			:execute "normal 0i//\<Esc>j"
+		else
+			" have annotation
+			:normal ^xxj
+		endif
+	endif
+	if &filetype == 'sh'
+		let l:myCurrentText = getline(".")
+		let l:myText = matchstr(myCurrentText, '^#.*')
+		"call append(line(".")+1, myText)
+		if myText == ""
+			" not have annotation
+			:execute "normal 0i#\<Esc>j"
+		else
+			" have annotation
+			:normal ^xj
+		endif
+	endif
+	if &filetype == 'vim'
+		let l:myCurrentText = getline(".")
+		let l:myText = matchstr(myCurrentText, '^".*')
+		"call append(line(".")+1, myText)
+		if myText == ""
+			" not have annotation
+			:execute "normal 0i\"\<Esc>j"
+		else
+			" have annotation
+			:normal ^xj
+		endif
+	endif
+endfun
+
+
+
 
 
 " ================================
