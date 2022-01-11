@@ -29,3 +29,9 @@ snippet .v "\`json:key\`"
 	`!v deletebufline(bufname(), getline("."))`
 }
 endsnippet
+
+snippet ielf ""
+if err != nil {
+	log.Printf("err = %+v\n", err)
+} ${0}
+endsnippet
