@@ -509,7 +509,7 @@ Plug 'fatih/vim-go', {'for':'go'}
 "Plug 'dense-analysis/ale'
 " need install nodejs npm yarn
 Plug 'neoclide/coc.nvim', {'for':['go','vim','sh'], 'branch':'release'}
-Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json']}
+Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto']}
 Plug 'ctrlpvim/ctrlp.vim', {'for':'go'}
 "Plug 'junegunn/fzf.vim'
 "Plug 'junegunn/fzf'
