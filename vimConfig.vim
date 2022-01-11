@@ -411,10 +411,11 @@ endfun
 "autocmd Filetype go imap <silent> <c-j> <Esc>/".*"\\|[+-]\?\d\+\(\.\d*\)\?\\|false\\|\t}<CR>
 "autocmd Filetype go imap <silent> <c-k> <Esc>?".*"\\|[+-]\?\d\+\(\.\d*\)\?\\|false\\|\t}<CR>
 " match : := =
-autocmd Filetype go nmap <silent> <c-j> <Esc>/: \\|:= \\|= \\|\t}<CR>w
-autocmd Filetype go nmap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
-autocmd Filetype go imap <silent> <c-j> <Esc>/: \\|:= \\|= \\|\t}<CR>w
-autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
+autocmd Filetype go nmap <silent> <c-j> <Esc>/: \\|:= \\|= <CR>w
+autocmd Filetype go nmap <silent> <c-k> <Esc>?: \\|:= \\|= <CR>nw
+autocmd Filetype go imap <silent> <c-j> <Esc>/: \\|:= \\|= <CR>w
+autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= <CR>nw
+autocmd Filetype go imap <silent> <c-n> <Esc>/\t}\\|\t)<CR>w
 
 "autocmd TextChangedI *.go silent exec "call AutoFillStruct()"
 "autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
