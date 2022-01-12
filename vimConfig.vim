@@ -405,6 +405,14 @@ endfun
 
 
 
+augroup myExitFileAddXGroup
+	"autocmd!
+	"autocmd BufNewFile *.go,*.sh,*.proto silent call MyInitNewFileFuc()
+	"autocmd BufNewFile *.go,*.sh 0r ~/vim/skeleton.go
+augroup END
+
+
+
 " match string int bool \t}
 "autocmd Filetype go nmap <silent> <c-j> <Esc>/".*"\\|[+-]\?\d\+\(\.\d*\)\?\\|false\\|\t}<CR>
 "autocmd Filetype go nmap <silent> <c-k> <Esc>?".*"\\|[+-]\?\d\+\(\.\d*\)\?\\|false\\|\t}<CR>
@@ -440,15 +448,20 @@ endfun
 
 autocmd TextChangedI *.go silent exec "call AutoAnnotation()"
 fun AutoAnnotation()
-	let l:myText = matchstr(getline("."), 'func \w\+()')
-	if myText != ""
-		let l:myLastText = matchstr(getline(line(".")-1), '// \w\+ ')
-		let l:myFuncName = matchstr(matchstr(myText, '\w\+()'), '[a-z,A-Z,0-9,_]\+')
-		if myLastText != "// ".myFuncName." "
-			call append(line(".")-1, "// ".myFuncName." ")
+	let l:currentText = getline(".")
+
+	let l:funcText = matchstr(currentText, 'func \w\+()')
+	if funcText != ""
+		let l:funcName = matchstr(matchstr(currentText, '\w\+()'), '[a-z,A-Z,0-9,_]\+')
+		let l:lastLine = line(".")-1
+		let l:lastText = getline(lastLine)
+		let l:lastHead = matchstr(lastText, '// \w\+ ')
+		if lastHead != "// ".funcName." "
+			call append(lastLine, "// ".funcName." ")
 		endif
 		"call append(line(".")-2, myLastText."XX")
 	endif
+
 endfun
 
 
