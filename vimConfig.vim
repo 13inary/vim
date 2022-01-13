@@ -407,20 +407,15 @@ endfun
 
 
 augroup myExitFileAddXGroup
-	"autocmd!
-	"autocmd BufWritePost *.sh silent call MyExitFileAddX()
+	autocmd!
+	autocmd BufWritePost *.sh silent call MyExitFileAddX()
 augroup END
 
 fun MyExitFileAddX()
 	if &filetype == "sh"
-
-		"call setfperm("aaaa.sh","777")
+		call setfperm("aaa.sh","rwxrwxr-x")
 		":r! chmod +x %
-		"echo "xxx"
-		"execute g:cccccc.bufname("%")
-		"let l:ddd = ":r! echo xxxxx"
 		"let kkkk = system(l:ddd)
-		"call append(line(".")-1, system($ccc))
 	endif
 endfun
 
