@@ -398,6 +398,7 @@ augroup myInitNewFileGroup
 augroup END
 
 fun MyInitNewFileFuc()
+	" system("InitNewFile.sh", getcwd() %)
 	:r! InitNewFile.sh `pwd` %
 	:%s/^\n//
 	:%s/口口口//
@@ -407,9 +408,34 @@ endfun
 
 augroup myExitFileAddXGroup
 	"autocmd!
-	"autocmd BufNewFile *.go,*.sh,*.proto silent call MyInitNewFileFuc()
-	"autocmd BufNewFile *.go,*.sh 0r ~/vim/skeleton.go
+	"autocmd BufWritePost *.sh silent call MyExitFileAddX()
 augroup END
+
+fun MyExitFileAddX()
+	if &filetype == "sh"
+
+		"call setfperm("aaaa.sh","777")
+		":r! chmod +x %
+		"echo "xxx"
+		"execute g:cccccc.bufname("%")
+		"let l:ddd = ":r! echo xxxxx"
+		"let kkkk = system(l:ddd)
+		"call append(line(".")-1, system($ccc))
+	endif
+endfun
+
+
+
+nnoremap <silent> yy yy:call SystemCopy()<CR>
+fun SystemCopy()
+	let l:currentYY = getreg()
+	let l:actualYY = strpart(currentYY, 0, strlen(currentYY)-1)
+	let l:escape1 = substitute(actualYY, '\', '\\\','g')
+	let l:escape2 = substitute(escape1, '`', '\\`','g')
+	let l:escape3 = substitute(escape2, "#", "\\\\#",'g')
+	let l:escape = substitute(escape3, "%", "\\\\%",'g')
+	call system("echo ".shellescape(expand(escape))." | xsel -b")
+endfun
 
 
 
