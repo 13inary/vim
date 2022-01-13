@@ -422,6 +422,7 @@ endfun
 
 
 nnoremap <silent> yy yy:call SystemCopy()<CR>
+xnoremap <silent> y y:call SystemCopy()<CR>
 fun SystemCopy()
 	let l:currentYY = getreg()
 	let l:actualYY = strpart(currentYY, 0, strlen(currentYY)-1)
