@@ -398,7 +398,7 @@ augroup myInitNewFileGroup
 augroup END
 
 fun MyInitNewFileFuc()
-	" system("InitNewFile.sh", getcwd() %)
+	" system("InitNewFile.sh", getcwd() bufname("%"))
 	:r! InitNewFile.sh `pwd` %
 	:%s/^\n//
 	:%s/口口口//
@@ -413,7 +413,12 @@ augroup END
 
 fun MyExitFileAddX()
 	if &filetype == "sh"
-		call setfperm("aaa.sh","rwxrwxr-x")
+		let l:fileName = bufname("%")
+		let l:myPerm = getfperm(fileName)
+		let l:ifX = matchstr(myPerm, "x")
+		if ifX == ""
+			call setfperm(fileName,"rwxrwxr-x")
+		endif
 		":r! chmod +x %
 		"let kkkk = system(l:ddd)
 	endif
