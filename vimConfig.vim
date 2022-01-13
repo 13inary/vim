@@ -452,22 +452,32 @@ autocmd Filetype go imap <silent> <c-j> <Esc>/: \\|:= \\|= \\|\t}\\|\t)<CR>w
 autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}\\|\t)<CR>nw
 "autocmd Filetype go imap <silent> <c-n> <Esc>/\t}\\|\t)<CR>w
 
-"autocmd TextChangedI *.go silent exec "call AutoFillStruct()"
+
+
+autocmd TextChangedI *.go silent exec "call AutoFillStruct()"
 "autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
 fun AutoFillStruct()
 	"if &filetype == 'go'
-	let l:myText = matchstr(getline("."), '\w\+{}')
-	if myText != ""
-		let l:myCurrentTab = matchstr(getline(line(".")-1), '\t\+')
-		let l:myStruct = tolower(matchstr(myText, '[a-z,A-Z,0-9]\+'))
-		let l:myLine = line(".")
-		let l:myCol = col(".")+3
-		"call append(line("."), myText."456")
-		call setline(line("."), myCurrentTab.myStruct." := ".myText)
-		call cursor(myLine, myCol)
+	let l:currentText = getline(".")
+	let l:lastText = getline(line(".")-1)
+	let l:ifStruct = matchstr(lastText, '\w\+ *:= *\w\+{$')
+	let l:ifStruct2 = matchstr(currentText, '\t\+$')
+	if ifStruct != "" && ifStruct2 != ""
+		let l:currentLine = line(".")
+		"let l:lastLineTab = matchstr(getline(currentLine-1), '\t\+')
+		"let l:structVar = tolower(matchstr(ifStruct, '[a-z,A-Z,0-9]\+{  }'))
+		"let l:myCol = col(".")+3
+		"call setline(currentLine, lastLineTab.structVar." := ".ifStruct)
+		"call cursor(currentLine, myCol)
 		":GoFillStruct<CR>[m/:<CR>w
 		:GoFillStruct
-		call cursor(myLine, myCol)
+		call cursor(currentLine, 1)
+"		normal $
+"		execute "/: \\|:= \\|= "
+"		normal w
+"		" end of follow have <space>
+		normal $cF 
+"		call cursor(currentLine+1, col(".")+1)
 	endif
 endfun
 
