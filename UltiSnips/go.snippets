@@ -23,15 +23,48 @@ if !ok {
 ${0:<END>}
 endsnippet
 
-# json field tag
-#type ${1:`!v  go#util#snippetcase(matchstr(getline("."), '\w\+'))`} struct {
-snippet .v "\`json:key\`"
-	`!v deletebufline(bufname(), getline("."))`
-}
-endsnippet
-
 snippet ielf ""
 if err != nil {
 	log.Printf("err = %+v\n", err)
 } ${0}
 endsnippet
+
+# full interface snippet
+snippet in "interface I { ... }"
+type ${1:Interface} interface {
+	${2:/* TODO: add methods */}
+}
+endsnippet
+
+# append assignment
+snippet app "a = append(a, value)"
+${1:slice} = append($1, ${0:value})
+endsnippet
+
+
+
+
+
+# =========================
+# follow is not complete or already exist
+# =========================
+
+# json field tag
+#type ${1:`!v  go#util#snippetcase(matchstr(getline("."), '\w\+'))`} struct {
+#snippet .v "\`json:key\`"
+#	`!v deletebufline(bufname(), getline("."))`
+#}
+#endsnippet
+
+# struct
+#snippet st "type T struct { ... }"
+#type ${1:Type} struct {
+#	${0}
+#}
+#endsnippet
+
+# append
+#snippet ap "append(slice, value)"
+#append(${1:slice}, ${0:value})
+#endsnippet
+
