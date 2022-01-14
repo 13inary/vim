@@ -386,6 +386,24 @@ func! CompileRunGcc()
 	endif
 endfunc
 "autocmd bufenter * if (winnr("$") == 2 && exists("b:NERDTree") && b:NERDTreeType == "primary") | qa | endif
+autocmd bufenter * silent call AutoExitWin()
+func AutoExitWin()
+"	echom currentBufName
+	let l:currentBufName = bufname("%")
+	let l:currentWinN = winnr()
+	let l:ifGoTerm = matchstr(currentBufName, "^goterm://.*")
+	let l:ifErrLis = matchstr(currentBufName, "[Location List]")
+	let l:tttt = matchstr(currentBufName, "main.go")
+	let l:firstWinBuf = winbufnr(1)
+	if ifGoTerm != "" && currentWinN == 1
+		exe "q"
+	endif
+"	if currentBufName == "" && currentWinN == 1 && firstWinBuf > 1
+	" parameter 2 : avoid open other window appear exit
+	if currentBufName == "" && currentWinN == 1
+		exe "q"
+	endif
+endfun
 
 
 
