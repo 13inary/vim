@@ -385,6 +385,8 @@ func! CompileRunGcc()
 		":term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
 	endif
 endfunc
+"autocmd bufenter * if (winnr("$") == 2 && exists("b:NERDTree") && b:NERDTreeType == "primary") | qa | endif
+
 
 
 " au[tocmd] [group] {event} {pat} [nested] {cmd}
@@ -446,10 +448,10 @@ endfun
 "autocmd Filetype go imap <silent> <c-j> <Esc>/".*"\\|[+-]\?\d\+\(\.\d*\)\?\\|false\\|\t}<CR>
 "autocmd Filetype go imap <silent> <c-k> <Esc>?".*"\\|[+-]\?\d\+\(\.\d*\)\?\\|false\\|\t}<CR>
 " match : := =
-autocmd Filetype go nmap <silent> <c-j> <Esc>/: \\|:= \\|= \\|\t}\\|\t)<CR>w
-autocmd Filetype go nmap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}\\|\t)<CR>nw
-autocmd Filetype go imap <silent> <c-j> <Esc>/: \\|:= \\|= \\|\t}\\|\t)<CR>w
-autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}\\|\t)<CR>nw
+"autocmd Filetype go nmap <silent> <c-j> <Esc>/: \\|:= \\|= \\|\t}\\|\t)<CR>w
+"autocmd Filetype go nmap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}\\|\t)<CR>nw
+"autocmd Filetype go imap <silent> <c-j> <Esc>/: \\|:= \\|= \\|\t}\\|\t)<CR>w
+"autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}\\|\t)<CR>nw
 "autocmd Filetype go imap <silent> <c-n> <Esc>/\t}\\|\t)<CR>w
 
 
@@ -457,27 +459,34 @@ autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}\\|\t)<CR>nw
 autocmd TextChangedI *.go silent exec "call AutoFillStruct()"
 "autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
 fun AutoFillStruct()
-	"if &filetype == 'go'
-	let l:currentText = getline(".")
-	let l:lastText = getline(line(".")-1)
-	let l:ifStruct = matchstr(lastText, '\w\+ *:= *\w\+{$')
-	let l:ifStruct2 = matchstr(currentText, '\t\+$')
-	if ifStruct != "" && ifStruct2 != ""
-		let l:currentLine = line(".")
-		"let l:lastLineTab = matchstr(getline(currentLine-1), '\t\+')
-		"let l:structVar = tolower(matchstr(ifStruct, '[a-z,A-Z,0-9]\+{  }'))
-		"let l:myCol = col(".")+3
-		"call setline(currentLine, lastLineTab.structVar." := ".ifStruct)
-		"call cursor(currentLine, myCol)
-		":GoFillStruct<CR>[m/:<CR>w
-		:GoFillStruct
-		call cursor(currentLine, 1)
-"		normal $
-"		execute "/: \\|:= \\|= "
-"		normal w
-"		" end of follow have <space>
-		normal $cF 
-"		call cursor(currentLine+1, col(".")+1)
+	if &filetype == 'go'
+		let l:currentText = getline(".")
+		let l:lastText = getline(line(".")-1)
+		let l:nextText = getline(line(".")+1)
+
+		let l:lastIfStruct = matchstr(lastText, '\w\+ *:= *\w\+{$')
+		let l:currentIfStruct = matchstr(currentText, '\t\+$')
+		if lastIfStruct != "" && currentIfStruct != ""
+			let l:currentLine = line(".")
+			"let l:lastLineTab = matchstr(getline(currentLine-1), '\t\+')
+			"let l:structVar = tolower(matchstr(ifStruct, '[a-z,A-Z,0-9]\+{  }'))
+			"let l:myCol = col(".")+3
+			"call setline(currentLine, lastLineTab.structVar." := ".ifStruct)
+			"call cursor(currentLine, myCol)
+			":GoFillStruct<CR>[m/:<CR>w
+			:GoFillStruct
+			:stopinsert
+			call cursor(currentLine, 1)
+			norm $
+			let l:wordEnd = col(".")
+	"		" end of follow have <space>
+			norm F 
+			let l:wordStart = col(".")
+			call cursor(currentLine, wordStart+1)
+			norm gh
+			call cursor(currentLine, wordEnd-1)
+	"		norm $vF \<c-g>
+		endif
 	endif
 endfun
 
