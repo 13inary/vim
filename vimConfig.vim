@@ -464,8 +464,8 @@ autocmd TextChangedI *.go silent exec "call AutoFillStruct()"
 "autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
 fun AutoFillStruct()
 	if &filetype == 'go'
-		let l:currentText = getline(".")
 		let l:lastText = getline(line(".")-1)
+		let l:currentText = getline(".")
 		let l:nextText = getline(line(".")+1)
 
 		let l:lastIfStruct = matchstr(lastText, '\w\+ *:= *\w\+{$')
@@ -492,6 +492,35 @@ fun AutoFillStruct()
 	"		norm $vF \<c-g>
 		endif
 	endif
+endfun
+
+
+
+autocmd Filetype go nmap <silent> <space>k :call JumpPreVal()<CR>
+autocmd Filetype go nmap <silent> <space>j :call JumpNextVal()<CR>
+fun JumpPreVal()
+	call search(".*:.*,","b")
+	let l:currentLine = line(".")
+	norm $
+	let l:wordEnd = col(".")
+	" end of follow have <space>
+	norm F 
+	let l:wordStart = col(".")
+	call cursor(currentLine, wordEnd-1)
+	norm gh
+	call cursor(currentLine, wordStart+1)
+endfun
+fun JumpNextVal()
+	call search(".*:.*,")
+	let l:currentLine = line(".")
+	norm $
+	let l:wordEnd = col(".")
+	" end of follow have <space>
+	norm F 
+	let l:wordStart = col(".")
+	call cursor(currentLine, wordEnd-1)
+	norm gh
+	call cursor(currentLine, wordStart+1)
 endfun
 
 
