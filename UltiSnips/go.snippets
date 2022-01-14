@@ -19,8 +19,7 @@ endsnippet
 snippet io "if ok is false"
 if !ok {
 	${1:<CONTENT>}
-}
-${0:<END>}
+} ${0}
 endsnippet
 
 snippet ielf ""
@@ -31,14 +30,14 @@ endsnippet
 
 # full interface snippet
 snippet in "interface I { ... }"
-type ${1:Interface} interface {
-	${2:/* TODO: add methods */}
+type ${1:<Interface>} interface {
+	${2:<add methods>}
 }
 endsnippet
 
 # append assignment
 snippet app "a = append(a, value)"
-${1:slice} = append($1, ${0:value})
+${1:<slice>} = append($1, ${0:<value>})
 endsnippet
 
 
@@ -57,14 +56,13 @@ endsnippet
 #endsnippet
 
 # struct
-#snippet st "type T struct { ... }"
-#type ${1:Type} struct {
-#	${0}
-#}
-#endsnippet
+snippet st "type T struct { ... }"
+type ${1:<Type>} struct {
+	${0:<END>}
+}
+endsnippet
 
 # append
-#snippet ap "append(slice, value)"
-#append(${1:slice}, ${0:value})
-#endsnippet
-
+snippet ap "append(slice, value)"
+append(${1:<slice>}, ${0:<value>})
+endsnippet
