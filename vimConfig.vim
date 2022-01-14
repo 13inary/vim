@@ -436,7 +436,8 @@ fun SystemCopy()
 	let l:escape1 = substitute(actualYY, '\', '\\\','g')
 	let l:escape2 = substitute(escape1, '`', '\\`','g')
 	let l:escape3 = substitute(escape2, "#", "\\\\#",'g')
-	let l:escape = substitute(escape3, "%", "\\\\%",'g')
+	let l:escape4 = substitute(escape3, "%", "\\\\%",'g')
+	let l:escape = substitute(escape4, "?", "\\\\?",'g')
 	call system("echo ".shellescape(expand(escape))." | xsel -b")
 endfun
 
