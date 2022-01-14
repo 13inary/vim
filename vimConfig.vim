@@ -550,8 +550,8 @@ endfun
 
 
 
-autocmd Filetype go imap <silent> ,k <Esc>:call JumpPreVal()<CR>
-autocmd Filetype go imap <silent> ,j <Esc>:call JumpNextVal()<CR>
+autocmd Filetype go imap <silent> ,F <Esc>:call JumpPreVal()<CR>
+autocmd Filetype go imap <silent> ,f <Esc>:call JumpNextVal()<CR>
 fun JumpPreVal()
 	call search(".*:.*,","b")
 	let l:currentLine = line(".")
