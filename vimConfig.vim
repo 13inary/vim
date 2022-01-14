@@ -386,21 +386,34 @@ func! CompileRunGcc()
 	endif
 endfunc
 "autocmd bufenter * if (winnr("$") == 2 && exists("b:NERDTree") && b:NERDTreeType == "primary") | qa | endif
-autocmd bufenter * silent call AutoExitWin()
+"nmap <space>m :call TestMyCode()<CR>
+"fun TestMyCode()
+"	let l:currentBufName = bufname("%")
+"	let l:ifSh = matchstr(currentBufName, "bash .*\.sh")
+"	echom ifSh
+"endfun
+augroup myAutoExitGroup
+	autocmd!
+	autocmd bufenter * silent call AutoExitWin()
+augroup END
 func AutoExitWin()
-"	echom currentBufName
 	let l:currentBufName = bufname("%")
 	let l:currentWinN = winnr()
 	let l:ifGoTerm = matchstr(currentBufName, "^goterm://.*")
+	let l:ifSh = matchstr(currentBufName, "^!bash .*\.sh")
 	let l:ifErrLis = matchstr(currentBufName, "[Location List]")
 	let l:tttt = matchstr(currentBufName, "main.go")
 	let l:firstWinBuf = winbufnr(1)
+"	echom ifSh
 	if ifGoTerm != "" && currentWinN == 1
 		exe "q"
 	endif
 "	if currentBufName == "" && currentWinN == 1 && firstWinBuf > 1
 	" parameter 2 : avoid open other window appear exit
 	if currentBufName == "" && currentWinN == 1
+		exe "q"
+	endif
+	if ifSh != "" && currentWinN == 1
 		exe "q"
 	endif
 endfun
@@ -479,7 +492,10 @@ autocmd Filetype go imap <silent> <c-k> <Esc>?\t}\\|\t)<CR>nw
 
 
 
-autocmd TextChangedI *.go silent exec "call AutoFillStruct()"
+augroup myAutoFillStructGroup
+	autocmd!
+	autocmd TextChangedI *.go silent exec "call AutoFillStruct()"
+augroup END
 "autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
 fun AutoFillStruct()
 	if &filetype == 'go'
@@ -544,7 +560,10 @@ endfun
 
 
 
-autocmd TextChangedI *.go silent exec "call AutoAnnotation()"
+augroup myAutoAnnotationGroup
+	autocmd!
+	autocmd TextChangedI *.go silent exec "call AutoAnnotation()"
+augroup END
 fun AutoAnnotation()
 	let l:currentText = getline(".")
 
