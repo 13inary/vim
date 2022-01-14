@@ -644,6 +644,22 @@ endfun
 
 
 
+"augroup mySnippetGroup
+"	autocmd!
+"	autocmd TextChangedI *.go silent exec "call MyAutoSnippet()"
+"augroup END
+"fun MyAutoSnippet()
+"	let l:currentText = getline(".")
+"	call system("echo ".shellescape(expand(currentText))." | xsel -b")
+"
+"	let l:funcText = matchstr(currentText, 'st')
+"	if funcText != ""
+"		call UltiSnips#ExpandSnippet()
+"	endif
+"endfun
+
+
+
 
 
 " ================================
@@ -792,6 +808,8 @@ let g:UltiSnipsJumpBackwardTrigger=",F"
 
 " If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnipsEditSplit="vertical"
+
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips'] 
 
 
 
