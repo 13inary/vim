@@ -366,11 +366,27 @@ autocmd Filetype go,sh nnoremap <silent> go :call CompileRunGcc()<CR><c-w>h
 func! CompileRunGcc()
 	exec "w"
 	"exec "2close"
-	exec "only"
+"	exec "only"
+	let l:currentBufName = bufname("%")
+	let l:goTermWinName = "!go run ".currentBufName
+	let l:ifGoTerm = bufexists(goTermWinName)
+	if ifGoTerm == 1
+		let l:bufN = bufnr(goTermWinName)
+		exec ":bdelete ".bufN
+		return
+	endif
+	let l:shTermWinName = "!bash ".currentBufName
+	let l:ifShTerm = bufexists(shTermWinName)
+	if ifShTerm == 1
+		let l:bufN = bufnr(shTermWinName)
+		exec ":bdelete ".bufN
+		return
+	endif
+
 	if &filetype == 'go'
 		" run current file
-		:GoRun %
-		":rightbelow vert term ++cols=40 go run .
+"		:GoRun %
+		:rightbelow vert term ++cols=40 go run %
 		":term go run .
 	elseif &filetype == 'sh'
 		":!time bash %
@@ -386,12 +402,14 @@ func! CompileRunGcc()
 	endif
 endfunc
 "autocmd bufenter * if (winnr("$") == 2 && exists("b:NERDTree") && b:NERDTreeType == "primary") | qa | endif
+
 "nmap <space>m :call TestMyCode()<CR>
 "fun TestMyCode()
 "	let l:currentBufName = bufname("%")
 "	let l:ifSh = matchstr(currentBufName, "bash .*\.sh")
 "	echom ifSh
 "endfun
+
 augroup myAutoExitGroup
 	autocmd!
 	autocmd bufenter * silent call AutoExitWin()
@@ -399,7 +417,7 @@ augroup END
 func AutoExitWin()
 	let l:currentBufName = bufname("%")
 	let l:currentWinN = winnr()
-	let l:ifGoTerm = matchstr(currentBufName, "^goterm://.*")
+	let l:ifGoTerm = matchstr(currentBufName, "^!go run .*\.go")
 	let l:ifSh = matchstr(currentBufName, "^!bash .*\.sh")
 	let l:ifErrLis = matchstr(currentBufName, "[Location List]")
 	let l:tttt = matchstr(currentBufName, "main.go")
@@ -496,6 +514,7 @@ augroup myAutoFillStructGroup
 	autocmd!
 	autocmd TextChangedI *.go silent exec "call AutoFillStruct()"
 augroup END
+
 "autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
 fun AutoFillStruct()
 	if &filetype == 'go'
