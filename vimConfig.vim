@@ -419,8 +419,6 @@ func AutoExitWin()
 	let l:currentWinN = winnr()
 	let l:ifGoTerm = matchstr(currentBufName, "^!go run .*\.go")
 	let l:ifSh = matchstr(currentBufName, "^!bash .*\.sh")
-	let l:ifErrLis = matchstr(currentBufName, "[Location List]")
-	let l:tttt = matchstr(currentBufName, "main.go")
 	let l:firstWinBuf = winbufnr(1)
 "	echom ifSh
 	if ifGoTerm != "" && currentWinN == 1
@@ -519,31 +517,33 @@ augroup END
 fun AutoFillStruct()
 	if &filetype == 'go'
 		let l:lastText = getline(line(".")-1)
-		let l:currentText = getline(".")
-		let l:nextText = getline(line(".")+1)
-
+"		let l:nextText = getline(line(".")+1)
 		let l:lastIfStruct = matchstr(lastText, '\w\+ *:= *\w\+{$')
-		let l:currentIfStruct = matchstr(currentText, '\t\+$')
-		if lastIfStruct != "" && currentIfStruct != ""
-			let l:currentLine = line(".")
-			"let l:lastLineTab = matchstr(getline(currentLine-1), '\t\+')
-			"let l:structVar = tolower(matchstr(ifStruct, '[a-z,A-Z,0-9]\+{  }'))
-			"let l:myCol = col(".")+3
-			"call setline(currentLine, lastLineTab.structVar." := ".ifStruct)
-			"call cursor(currentLine, myCol)
-			":GoFillStruct<CR>[m/:<CR>w
-			:GoFillStruct
-			:stopinsert
-			call cursor(currentLine, 1)
-			norm $
-			let l:wordEnd = col(".")
-	"		" end of follow have <space>
-			norm F 
-			let l:wordStart = col(".")
-			call cursor(currentLine, wordEnd-1)
-			norm gh
-			call cursor(currentLine, wordStart+1)
-	"		norm $vF \<c-g>
+
+		if lastIfStruct != "" 
+			let l:currentText = getline(".")
+			let l:currentIfStruct = matchstr(currentText, '\t\+$')
+			if currentIfStruct != ""
+				let l:currentLine = line(".")
+				"let l:lastLineTab = matchstr(getline(currentLine-1), '\t\+')
+				"let l:structVar = tolower(matchstr(ifStruct, '[a-z,A-Z,0-9]\+{  }'))
+				"let l:myCol = col(".")+3
+				"call setline(currentLine, lastLineTab.structVar." := ".ifStruct)
+				"call cursor(currentLine, myCol)
+				":GoFillStruct<CR>[m/:<CR>w
+				:GoFillStruct
+				:stopinsert
+				call cursor(currentLine, 1)
+				norm $
+				let l:wordEnd = col(".")
+				" end of follow have <space>
+				norm F 
+				let l:wordStart = col(".")
+				call cursor(currentLine, wordEnd-1)
+				norm gh
+				call cursor(currentLine, wordStart+1)
+"				norm $vF \<c-g>
+			endif
 		endif
 	endif
 endfun
@@ -579,26 +579,26 @@ endfun
 
 
 
-augroup myAutoAnnotationGroup
-	autocmd!
-	autocmd TextChangedI *.go silent exec "call AutoAnnotation()"
-augroup END
-fun AutoAnnotation()
-	let l:currentText = getline(".")
-
-	let l:funcText = matchstr(currentText, 'func \w\+()')
-	if funcText != ""
-		let l:funcName = matchstr(matchstr(currentText, '\w\+()'), '[a-z,A-Z,0-9,_]\+')
-		let l:lastLine = line(".")-1
-		let l:lastText = getline(lastLine)
-		let l:lastHead = matchstr(lastText, '// \w\+ ')
-		if lastHead != "// ".funcName." "
-			call append(lastLine, "// ".funcName." ")
-		endif
-		"call append(line(".")-2, myLastText."XX")
-	endif
-
-endfun
+"augroup myAutoAnnotationGroup
+"	autocmd!
+"	autocmd TextChangedI *.go silent exec "call AutoAnnotation()"
+"augroup END
+"fun AutoAnnotation()
+"	let l:currentText = getline(".")
+"
+"	let l:funcText = matchstr(currentText, 'func \w\+()')
+"	if funcText != ""
+"		let l:funcName = matchstr(matchstr(currentText, '\w\+()'), '[a-z,A-Z,0-9,_]\+')
+"		let l:lastLine = line(".")-1
+"		let l:lastText = getline(lastLine)
+"		let l:lastHead = matchstr(lastText, '// \w\+ ')
+"		if lastHead != "// ".funcName." "
+"			call append(lastLine, "// ".funcName." ")
+"		endif
+"		"call append(line(".")-2, myLastText."XX")
+"	endif
+"
+"endfun
 
 
 
