@@ -518,32 +518,35 @@ augroup END
 fun AutoFillStruct()
 	if &filetype == 'go'
 		let l:lastText = getline(line(".")-1)
-"		let l:nextText = getline(line(".")+1)
 		let l:lastIfStruct = matchstr(lastText, '\w\+ *:= *\w\+{$')
 
 		if lastIfStruct != "" 
-			let l:currentText = getline(".")
-			let l:currentIfStruct = matchstr(currentText, '\t\+$')
-			if currentIfStruct != ""
-				let l:currentLine = line(".")
-				"let l:lastLineTab = matchstr(getline(currentLine-1), '\t\+')
-				"let l:structVar = tolower(matchstr(ifStruct, '[a-z,A-Z,0-9]\+{  }'))
-				"let l:myCol = col(".")+3
-				"call setline(currentLine, lastLineTab.structVar." := ".ifStruct)
-				"call cursor(currentLine, myCol)
-				":GoFillStruct<CR>[m/:<CR>w
-				:GoFillStruct
-				:stopinsert
-				call cursor(currentLine, 1)
-				norm $
-				let l:wordEnd = col(".")
-				" end of follow have <space>
-				norm F 
-				let l:wordStart = col(".")
-				call cursor(currentLine, wordEnd-1)
-				norm gh
-				call cursor(currentLine, wordStart+1)
-"				norm $vF \<c-g>
+			let l:nextText = getline(line(".")+1)
+			let l:nextIfStruct = matchstr(nextText, '\t\+}$')
+			if nextIfStruct != ""
+				let l:currentText = getline(".")
+				let l:currentIfStruct = matchstr(currentText, '\t\+$')
+				if currentIfStruct != ""
+					let l:currentLine = line(".")
+					"let l:lastLineTab = matchstr(getline(currentLine-1), '\t\+')
+					"let l:structVar = tolower(matchstr(ifStruct, '[a-z,A-Z,0-9]\+{  }'))
+					"let l:myCol = col(".")+3
+					"call setline(currentLine, lastLineTab.structVar." := ".ifStruct)
+					"call cursor(currentLine, myCol)
+					":GoFillStruct<CR>[m/:<CR>w
+					:GoFillStruct
+					:stopinsert
+					call cursor(currentLine, 1)
+					norm $
+					let l:wordEnd = col(".")
+					" end of follow have <space>
+					norm F 
+					let l:wordStart = col(".")
+					call cursor(currentLine, wordEnd-1)
+					norm gh
+					call cursor(currentLine, wordStart+1)
+	"				norm $vF \<c-g>
+				endif
 			endif
 		endif
 	endif
