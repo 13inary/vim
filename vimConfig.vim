@@ -484,7 +484,8 @@ fun SystemCopy()
 	let l:escape2 = substitute(escape1, '`', '\\`','g')
 	let l:escape3 = substitute(escape2, "#", "\\\\#",'g')
 	let l:escape4 = substitute(escape3, "%", "\\\\%",'g')
-	let l:escape = substitute(escape4, "?", "\\\\?",'g')
+	let l:escape5 = substitute(escape4, "?", "\\\\?",'g')
+	let l:escape = substitute(escape5, "{", "\\\\{",'g')
 	call system("echo ".shellescape(expand(escape))." | xsel -b")
 endfun
 
@@ -644,19 +645,38 @@ endfun
 
 
 
-"augroup mySnippetGroup
-"	autocmd!
-"	autocmd TextChangedI *.go silent exec "call MyAutoSnippet()"
-"augroup END
-"fun MyAutoSnippet()
-"	let l:currentText = getline(".")
+"autocmd Filetype * nnoremap <silent> <expr><S-CR> dd<CR>
+"inoremap <expr> <cr> coc#_select_confirm()
+augroup mySnippetGroup
+	autocmd!
+	autocmd TextChangedP *.go silent call MyAutoSnippetP()
+	autocmd TextChangedI *.go silent call MyAutoSnippetI()
+augroup END
+fun MyAutoSnippetP()
+"	let l:ifExpand = pumvisible()
+"	let l:curCol = col(".")
+"	exe "norm <c-y>"
+"	call cursor(".", curCol+1)
+
+	let l:currentText = getline(".")
+	let l:funcText = matchstr(currentText, '^\t*..$')
 "	call system("echo ".shellescape(expand(currentText))." | xsel -b")
-"
-"	let l:funcText = matchstr(currentText, 'st')
-"	if funcText != ""
-"		call UltiSnips#ExpandSnippet()
-"	endif
-"endfun
+	if funcText != ""
+		call UltiSnips#ExpandSnippet()
+	endif
+
+"	let l:kkk = coc#refresh()
+endfun
+fun MyAutoSnippetI()
+	let l:currentText = getline(".")
+	let l:funcText = matchstr(currentText, '^\t*..$')
+"	call system("echo ".shellescape(expand(currentText))." | xsel -b")
+	if funcText != ""
+		call UltiSnips#ExpandSnippet()
+	endif
+
+"	:call coc#refresh()
+endfun
 
 
 
@@ -1120,6 +1140,13 @@ autocmd Filetype go,vim nnoremap <silent> <space>gh :call CocActionAsync('doHove
 " Resume latest coc list.
 "nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 let g:coc_default_semantic_highlight_groups = 1
+"call coc#config('languageserver', {
+"			\ 'ccls': {
+"			\   "command": "ccls",
+"			\   "trace.server": "verbose",
+"			\   "filetypes": ["c", "cpp", "objc", "objcpp"]
+"			\ }
+"			\})
 
 
 
