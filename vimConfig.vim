@@ -502,10 +502,10 @@ endfun
 "autocmd Filetype go imap <silent> <c-j> <Esc>/: \\|:= \\|= \\|\t}\\|\t)<CR>w
 "autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}\\|\t)<CR>nw
 "autocmd Filetype go imap <silent> <c-n> <Esc>/\t}\\|\t)<CR>w
-autocmd Filetype go nmap <silent> <c-j> <Esc>/\t}\\|\t)<CR>w
-autocmd Filetype go nmap <silent> <c-k> <Esc>?\t}\\|\t)<CR>nw
-autocmd Filetype go imap <silent> <c-j> <Esc>/\t}\\|\t)<CR>w
-autocmd Filetype go imap <silent> <c-k> <Esc>?\t}\\|\t)<CR>nw
+autocmd Filetype go nmap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>
+autocmd Filetype go nmap <silent> <c-k> <Esc>?^\t*}\\|^\t*)<CR>
+autocmd Filetype go imap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>
+autocmd Filetype go imap <silent> <c-k> <Esc>?^\t*}\\|^\t*)<CR>
 
 
 
