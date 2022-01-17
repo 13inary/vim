@@ -119,8 +119,14 @@ set statusline+=\ %4*%F\ %5*%Y\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*
 " execute oder in current dir
 set autochdir
 
-" encoding
+" encoding of display
+" in addition, :e ++enc=cp936 || :e ++enc=euc-cn
 set encoding=utf-8
+" encoding of save file
+"set fileencoding=utf-8
+" encoding list which display according to
+"set fileencodings=utf8,ucs-bom,default,latin1,gbk,cp936,gb2312,gb18030
+"set fileformat=unix
 
 " when open file go to pre position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
