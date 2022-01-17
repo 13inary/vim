@@ -14,3 +14,6 @@ git clone https://github.com/keysquivered/.vim
 
 3. install
 open one text and execute `:PlugUpgrade` and `:PlugInstall` 
+
+## 2 bug
+1. `yy` can't copy `$XXX` 
