@@ -454,7 +454,7 @@ augroup END
 
 fun MyInitNewFileFuc()
 	" system("InitNewFile.sh", getcwd() bufname("%"))
-	:r! InitNewFile.sh `pwd` %
+	:r! ~/.vim/InitNewFile.sh `pwd` %
 	:%s/^\n//
 	:%s/口口口//
 endfun
