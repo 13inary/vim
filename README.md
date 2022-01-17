@@ -17,3 +17,4 @@ open one text and execute `:PlugUpgrade` and `:PlugInstall`
 
 ## 2 bug
 1. `yy` can't copy `$XXX` 
+2. `yy` may add `$` to end of line
