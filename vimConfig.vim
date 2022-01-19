@@ -717,7 +717,7 @@ Plug 'buoto/gotests-vim', {'for':'go'}
 Plug 'tenfyzhong/gengotag', {'for': 'go'}
 "Plug 'preservim/nerdcommenter', {'for':['go','vim']}
 "Plug 'honza/vim-snippets', {'for':'go'}
-"Plug 'godlygeek/tabular'
+Plug 'godlygeek/tabular', {'for': 'markdown'}
 "Plug 'scrooloose/nerdtree' , {'on': 'NERDTreeToggle'}
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
 ":call mkdp#util#install()
