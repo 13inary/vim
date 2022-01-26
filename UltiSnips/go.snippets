@@ -142,7 +142,7 @@ endsnippet
 #}
 #endsnippet
 snippet fc "func Function(...) [error] { ... }"
-func ${1:<name>}(${2})${3/(.+)/ /}`!p opening_par(snip, 3)`$3`!p closing_par(snip, 3)` {
+func ${1:<name>}(${2}) ${3} {
 	${0:${VISUAL}}
 }
 endsnippet
