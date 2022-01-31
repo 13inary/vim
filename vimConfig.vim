@@ -112,8 +112,8 @@ set showtabline=2
 "set statusline+=\
 set laststatus=2
 set statusline=
-set statusline+=%#LineNr#\ %1*%r\ %6*==\ %3*%l%4*-%3*%v\ %6*==
-set statusline+=\ %1*%{GitStatus()}
+set statusline+=%#LineNr#\ %1*%r\ %5*==\ %3*%l%4*-%3*%v\ %5*==
+set statusline+=\ %3*+%4*%{GitStatusA()}\ %6*~%4*%{GitStatusM()}\ %1*-%4*%{GitStatusR()}
 set statusline+=\ %=
 set statusline+=\ %4*%F\ %5*%Y\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*%p%%
 
@@ -779,9 +779,18 @@ let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_removed_first_line = '^^'
 let g:gitgutter_sign_removed_above_and_below = '{'
 let g:gitgutter_sign_modified_removed = '~-'
-function! GitStatus()
+function! GitStatusA()
   let [a,m,r] = GitGutterGetHunkSummary()
-  return printf('+%d ~%d -%d', a, m, r)
+  return printf('%d', a)
+"  return printf('+%d ~%d -%d', a, m, r)
+endfunction
+function! GitStatusM()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('%d', m)
+endfunction
+function! GitStatusR()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('%d', r)
 endfunction
 
 
