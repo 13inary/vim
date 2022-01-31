@@ -716,6 +716,7 @@ Plug 'buoto/gotests-vim', {'for':'go'}
 " need cd directory and go build
 Plug 'tenfyzhong/gengotag', {'for': 'go'}
 "Plug 'preservim/nerdcommenter', {'for':['go','vim']}
+Plug 'tpope/vim-surround', {'for':'go'}
 "Plug 'honza/vim-snippets', {'for':'go'}
 Plug 'godlygeek/tabular', {'for': 'markdown'}
 "Plug 'scrooloose/nerdtree' , {'on': 'NERDTreeToggle'}
