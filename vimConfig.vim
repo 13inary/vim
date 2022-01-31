@@ -203,6 +203,7 @@ nnoremap <C-g> 1<c-g>
 "nnoremap <C-o> <c-g>zz
 " return to new place and view in middle
 "nnoremap <C-i> <c-g>zz
+imap <c-l> <del>
 
 
 
@@ -1199,7 +1200,7 @@ let g:coc_default_semantic_highlight_groups = 1
 " ================================
 " ===auto-pairs
 " ================================
-let g:AutoPairsShortcutFastWrap = '<c-l>'
+"let g:AutoPairsShortcutFastWrap = '<c-l>'
 
 
 
