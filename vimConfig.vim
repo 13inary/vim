@@ -722,6 +722,8 @@ Plug 'tpope/vim-surround', {'for':'go'}
 "Plug 'honza/vim-snippets', {'for':'go'}
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
 Plug 'godlygeek/tabular', {'for': 'markdown'}
+Plug 'airblade/vim-gitgutter', {'for': 'markdown'}
+"Plug 'junegunn/vim-easy-align'
 "Plug 'scrooloose/nerdtree' , {'on': 'NERDTreeToggle'}
 ":call mkdp#util#install()
 "Plug 'vim-table-mode'
@@ -1008,7 +1010,8 @@ set shortmess+=c
 " number of line and sign in same column
 if has("nvim-0.5.0") || has("patch-8.1.1564")
 	" Recently vim can merge signcolumn and number column into one
-	set signcolumn=number
+	"set signcolumn=number
+	set signcolumn=yes
 else
 	set signcolumn=yes
 endif
