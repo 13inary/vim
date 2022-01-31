@@ -703,6 +703,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'keysquivered/vim-go-markdown-colors'
 " neoranger rnvimr
 Plug 'francoiscabrol/ranger.vim'
+Plug 'airblade/vim-gitgutter'
 " need install nodejs npm yarn
 Plug 'neoclide/coc.nvim', {'for':['go','vim','sh'], 'branch':'release'}
 Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto']}
@@ -722,7 +723,6 @@ Plug 'tpope/vim-surround', {'for':'go'}
 "Plug 'honza/vim-snippets', {'for':'go'}
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
 Plug 'godlygeek/tabular', {'for': 'markdown'}
-Plug 'airblade/vim-gitgutter', {'for': 'markdown'}
 "Plug 'junegunn/vim-easy-align'
 "Plug 'scrooloose/nerdtree' , {'on': 'NERDTreeToggle'}
 ":call mkdp#util#install()
