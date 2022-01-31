@@ -725,6 +725,7 @@ Plug 'tpope/vim-surround', {'for':'go'}
 "Plug 'honza/vim-snippets', {'for':'go'}
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
 Plug 'godlygeek/tabular', {'for': 'markdown'}
+"Plug 'preservim/vim-markdown', {'for':'markdown'}
 "Plug 'junegunn/vim-easy-align'
 "Plug 'scrooloose/nerdtree' , {'on': 'NERDTreeToggle'}
 ":call mkdp#util#install()
