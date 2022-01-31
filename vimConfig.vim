@@ -113,6 +113,7 @@ set showtabline=2
 set laststatus=2
 set statusline=
 set statusline+=%#LineNr#\ %1*%r\ %6*==\ %3*%l%4*-%3*%v\ %6*==
+set statusline+=\ %1*%{GitStatus()}
 set statusline+=\ %=
 set statusline+=\ %4*%F\ %5*%Y\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*%p%%
 
@@ -762,6 +763,18 @@ color vim-go-markdown-colors
 " ================================
 let g:ranger_map_keys = 0
 nmap <silent> <space>ra :RangerCurrentFileExistingOrNewTab<CR>
+
+
+
+
+
+" ================================
+" ===gitgutter
+" ================================
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('+%d ~%d -%d', a, m, r)
+endfunction
 
 
 
