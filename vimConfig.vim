@@ -699,28 +699,30 @@ filetype plugin on
 filetype plugin indent on
 call plug#begin('~/.vim/plugged')
 "Plug 'fatih/molokai'
-Plug 'keysquivered/vim-go-markdown-colors'
-Plug 'fatih/vim-go', {'for':'go'}
 "Plug 'dense-analysis/ale'
+Plug 'keysquivered/vim-go-markdown-colors'
+" neoranger rnvimr
+Plug 'francoiscabrol/ranger.vim'
 " need install nodejs npm yarn
 Plug 'neoclide/coc.nvim', {'for':['go','vim','sh'], 'branch':'release'}
 Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto']}
+Plug 'fatih/vim-go', {'for':'go'}
 Plug 'ctrlpvim/ctrlp.vim', {'for':'go'}
-"Plug 'junegunn/fzf.vim'
-"Plug 'junegunn/fzf'
-"Plug 'ianva/vim-youdao-translater'
 "Plug 'scrooloose/nerdtree', {'for':'go'}
 Plug 'SirVer/ultisnips', {'for':'go'}
 Plug 'buoto/gotests-vim', {'for':'go'}
-"Plug 'tenfyzhong/gengotag', {'do': 'go build'}
 " need cd directory and go build
 Plug 'tenfyzhong/gengotag', {'for': 'go'}
-"Plug 'preservim/nerdcommenter', {'for':['go','vim']}
 Plug 'tpope/vim-surround', {'for':'go'}
+"Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf'
+"Plug 'ianva/vim-youdao-translater'
+"Plug 'tenfyzhong/gengotag', {'do': 'go build'}
+"Plug 'preservim/nerdcommenter', {'for':['go','vim']}
 "Plug 'honza/vim-snippets', {'for':'go'}
+Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
 Plug 'godlygeek/tabular', {'for': 'markdown'}
 "Plug 'scrooloose/nerdtree' , {'on': 'NERDTreeToggle'}
-Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
 ":call mkdp#util#install()
 "Plug 'vim-table-mode'
 "Plug 'vim-signiture'
@@ -748,6 +750,16 @@ color vim-go-markdown-colors
 "let g:rehash256 = 1
 "let g:molokai_original = 1
 "colorscheme molokai
+
+
+
+
+
+" ================================
+" ===ranger
+" ================================
+let g:ranger_map_keys = 0
+nmap <silent> <space>ra :RangerCurrentFileExistingOrNewTab<CR>
 
 
 
