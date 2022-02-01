@@ -622,7 +622,7 @@ fun DoAnnotation()
 		"call append(line(".")+1, myText)
 		if myText == ""
 			" not have annotation
-			:execute "normal ^i//\<Esc>j"
+			:execute "normal ^F i//\<Esc>j"
 		else
 			" have annotation
 			:normal ^xxj
