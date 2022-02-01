@@ -64,6 +64,13 @@ option go_package =\"./$myFileLeftName\";
 exit
 fi
 
+if [ $myFileType == 'md' ]; then
+	echo "
+# $myFileLeftName
+口口口"
+exit
+fi
+
 echo $myFileDir
 echo $myFileType
 echo $myFileName
