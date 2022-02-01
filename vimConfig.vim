@@ -725,7 +725,8 @@ Plug 'vim-scripts/argtextobj.vim', {'for':'go'}
 "Plug 'preservim/nerdcommenter', {'for':['go','vim']}
 "Plug 'honza/vim-snippets', {'for':'go'}
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
-Plug 'godlygeek/tabular', {'for': 'markdown'}
+Plug 'godlygeek/tabular', {'for':['markdown','vim']}
+Plug 'dhruvasagar/vim-table-mode', {'for':'markdown'}
 "Plug 'preservim/vim-markdown', {'for':'markdown'}
 "Plug 'junegunn/vim-easy-align'
 "Plug 'scrooloose/nerdtree' , {'on': 'NERDTreeToggle'}
