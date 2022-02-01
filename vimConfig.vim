@@ -706,6 +706,7 @@ Plug 'keysquivered/vim-go-markdown-colors'
 " neoranger rnvimr
 Plug 'francoiscabrol/ranger.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-surround'
 " need install nodejs npm yarn
 Plug 'neoclide/coc.nvim', {'for':['go','vim','sh'], 'branch':'release'}
 Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto']}
@@ -716,7 +717,6 @@ Plug 'SirVer/ultisnips', {'for':'go'}
 Plug 'buoto/gotests-vim', {'for':'go'}
 " need cd directory and go build
 Plug 'tenfyzhong/gengotag', {'for': 'go'}
-Plug 'tpope/vim-surround', {'for':'go'}
 "Plug 'junegunn/fzf.vim'
 "Plug 'junegunn/fzf'
 "Plug 'ianva/vim-youdao-translater'
