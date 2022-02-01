@@ -717,6 +717,7 @@ Plug 'SirVer/ultisnips', {'for':'go'}
 Plug 'buoto/gotests-vim', {'for':'go'}
 " need cd directory and go build
 Plug 'tenfyzhong/gengotag', {'for': 'go'}
+Plug 'vim-scripts/argtextobj.vim', {'for':'go'}
 "Plug 'junegunn/fzf.vim'
 "Plug 'junegunn/fzf'
 "Plug 'ianva/vim-youdao-translater'
