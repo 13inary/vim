@@ -620,11 +620,11 @@ autocmd Filetype go,sh,proto,vim nmap <silent> <c-h> :call DoAnnotation()<CR>
 fun DoAnnotation()
 	if &filetype == 'proto' || &filetype == 'go'
 		let l:myCurrentText = getline(".")
-		let l:myText = matchstr(myCurrentText, '//.*')
+		let l:myText = matchstr(myCurrentText, '^\t* *//.*')
 		"call append(line(".")+1, myText)
 		if myText == ""
 			" not have annotation
-			:execute "normal ^F i//\<Esc>j"
+			:execute "normal ^i//\<Esc>j"
 		else
 			" have annotation
 			:normal ^xxj
@@ -632,11 +632,11 @@ fun DoAnnotation()
 	endif
 	if &filetype == 'sh'
 		let l:myCurrentText = getline(".")
-		let l:myText = matchstr(myCurrentText, '^#.*')
+		let l:myText = matchstr(myCurrentText, '^\t* *#.*')
 		"call append(line(".")+1, myText)
 		if myText == ""
 			" not have annotation
-			:execute "normal 0i#\<Esc>j"
+			:execute "normal ^i#\<Esc>j"
 		else
 			" have annotation
 			:normal ^xj
@@ -644,11 +644,11 @@ fun DoAnnotation()
 	endif
 	if &filetype == 'vim'
 		let l:myCurrentText = getline(".")
-		let l:myText = matchstr(myCurrentText, '^".*')
+		let l:myText = matchstr(myCurrentText, '^\t* *".*')
 		"call append(line(".")+1, myText)
 		if myText == ""
 			" not have annotation
-			:execute "normal 0i\"\<Esc>j"
+			:execute "normal ^i\"\<Esc>j"
 		else
 			" have annotation
 			:normal ^xj
