@@ -246,7 +246,7 @@ autocmd Filetype markdown set autoindent
 autocmd Filetype markdown set smartindent
 
 " spelling check
-autocmd Filetype markdown set spell
+"autocmd Filetype markdown set spell
 
 " jump
 autocmd Filetype markdown inoremap ,f <Esc>/口口口<CR>:nohlsearch<CR>c3l
