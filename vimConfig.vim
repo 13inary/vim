@@ -257,11 +257,11 @@ autocmd Filetype markdown inoremap ,f <Esc>/口口口<CR>:nohlsearch<CR>c3l
 " H1 ; other use: ===
 autocmd Filetype markdown inoremap ,1 #<Space>
 " H2 ; other use: ---
-autocmd Filetype markdown inoremap ,2 ##<Space>2<Space>
-autocmd Filetype markdown inoremap ,3 ###<Space>3<Space><Space>
-autocmd Filetype markdown inoremap ,4 ####<Space>4<Space><Space><Space>
-autocmd Filetype markdown inoremap ,5 #####<Space>5<Space><Space><Space><Space>
-autocmd Filetype markdown inoremap ,6 ######<Space>6<Space><Space><Space><Space><Space>
+autocmd Filetype markdown inoremap ,2 ##<Space><Space>
+autocmd Filetype markdown inoremap ,3 ###<Space><Space><Space>
+autocmd Filetype markdown inoremap ,4 ####<Space><Space><Space><Space>
+autocmd Filetype markdown inoremap ,5 #####<Space><Space><Space><Space><Space>
+autocmd Filetype markdown inoremap ,6 ######<Space><Space><Space><Space><Space><Space>
 
 " enters
 autocmd Filetype markdown inoremap ,n <Enter><Enter><Enter>
@@ -724,7 +724,7 @@ Plug 'vim-scripts/argtextobj.vim', {'for':'go'}
 "Plug 'tenfyzhong/gengotag', {'do': 'go build'}
 "Plug 'preservim/nerdcommenter', {'for':['go','vim']}
 "Plug 'honza/vim-snippets', {'for':'go'}
-Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
+"Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
 Plug 'godlygeek/tabular', {'for':['markdown','vim']}
 Plug 'dhruvasagar/vim-table-mode', {'for':'markdown'}
 "Plug 'preservim/vim-markdown', {'for':'markdown'}
