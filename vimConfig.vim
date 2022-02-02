@@ -309,6 +309,8 @@ autocmd Filetype markdown inoremap ,cg ```go<Enter><Enter>```<Enter><Enter>口�
 " yyy | yyy | yyy
 " we can write : to side of '-' to right-aligned or centered
 " -: right	:- left		:-:	center
+autocmd Filetype markdown inoremap ,t <c-o>:TableModeEnable<cr>\|-\|-\|<Enter>\|<Enter>\|-\|-\|<Enter>口口口<Enter>\|-\|-\|<Enter>口口口<Esc>4kA
+autocmd Filetype markdown inoremap ,q <c-o>:TableModeDisable<cr>
 "autocmd Filetype markdown inoremap ,4224 口口口<Space>|<Space>口口口<Space>|<Space>口口口<Enter>---<Space>|<Space>---<Space>|<Space>---<Enter>口口口<Space>|<Space>口口口<Space>|<Space>口口口
 
 " blockquotes
@@ -794,6 +796,26 @@ function! GitStatusR()
   let [a,m,r] = GitGutterGetHunkSummary()
   return printf('%d', r)
 endfunction
+
+
+
+
+
+" ================================
+" ===vim-table-mode
+" ================================
+"function! s:isAtStartOfLine(mapping)
+"  let text_before_cursor = getline('.')[0 : col('.')-1]
+"  let mapping_pattern = '\V' . escape(a:mapping, '\')
+"  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+"  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+"endfunction
+"inoreabbrev <expr> <bar><bar>
+"          \ <SID>isAtStartOfLine('\|\|') ?
+"          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+"inoreabbrev <expr> __
+"          \ <SID>isAtStartOfLine('__') ?
+"          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 
 
 
