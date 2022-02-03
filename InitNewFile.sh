@@ -64,7 +64,7 @@ option go_package =\"./$myFileLeftName\";
 exit
 fi
 
-myMdHead=`echo $myFileLeftName | sed 's/_/ and /g' | sed 's/-/, /g'`
+myMdHead=`echo $myFileLeftName | sed 's/_/ and /g' | sed 's/-/ /g'`
 if [ $myFileType == 'md' ]; then
 	echo "
 ##  $myMdHead
