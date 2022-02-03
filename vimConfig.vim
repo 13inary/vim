@@ -264,7 +264,7 @@ autocmd Filetype markdown inoremap ,5 #####<Space><Space><Space><Space><Space>
 autocmd Filetype markdown inoremap ,6 ######<Space><Space><Space><Space><Space><Space>
 
 " enters
-autocmd Filetype markdown inoremap ,n <Enter><Enter><Enter>
+"autocmd Filetype markdown inoremap ,n <Enter><Enter><Enter>
 
 " B ; other use: ____
 autocmd Filetype markdown inoremap ,b ****<Space>口口口<Esc>F*hi
@@ -310,6 +310,7 @@ autocmd Filetype markdown inoremap ,cg ```go<Enter><Enter>```<Enter><Enter>口�
 " we can write : to side of '-' to right-aligned or centered
 " -: right	:- left		:-:	center
 autocmd Filetype markdown inoremap ,t <c-o>:TableModeEnable<cr>\|-\|-\|<Enter>\|<Enter>\|-\|-\|<Enter>口口口<Enter>\|-\|-\|<Enter>口口口<Esc>4kA
+autocmd Filetype markdown inoremap ,n \|-\|-\|<Enter>
 autocmd Filetype markdown inoremap ,q <c-o>:TableModeDisable<cr>
 "autocmd Filetype markdown inoremap ,4224 口口口<Space>|<Space>口口口<Space>|<Space>口口口<Enter>---<Space>|<Space>---<Space>|<Space>---<Enter>口口口<Space>|<Space>口口口<Space>|<Space>口口口
 
