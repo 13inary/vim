@@ -115,7 +115,7 @@ set statusline=
 set statusline+=%#LineNr#\ %1*%r\ %5*==\ %3*%l%4*-%3*%v\ %5*==
 set statusline+=\ %3*+%4*%{GitStatusA()}\ %6*~%4*%{GitStatusM()}\ %1*-%4*%{GitStatusR()}
 set statusline+=\ %=
-set statusline+=\ %4*%LL\ %7*%Y\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*%p%%
+set statusline+=\ %4*%L\ %7*%Y\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*%p%%
 "%4*%F
 
 " execute oder in current dir
