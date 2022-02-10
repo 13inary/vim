@@ -696,6 +696,34 @@ fun MyAutoSnippetI()
 "	:call coc#refresh()
 endfun
 
+augroup myOrderOrderNumber
+	autocmd!
+	autocmd TextChangedI *.md silent exec "call OrderOrderNumber()"
+augroup END
+
+fun OrderOrderNumber()
+	let l:currentLine = line(".")
+	let l:currentText = getline(".")
+	let l:lastText = getline(line(".")-1)
+	let l:nextText = getline(line(".")+1)
+	let l:lastOrder = matchstr(lastText, '^[0-9]\+\. ')
+	let l:nextOrder = matchstr(nextText, '^[0-9]\+\. ')
+	"call append(line(".")+1, lastOrder)
+	if currentText == "" && lastOrder != ""
+		call setline(currentLine, lastOrder)
+		let l:forLine = currentLine + 1
+		while nextOrder != ""
+			:execute "normal j^\<c-a>"
+			"call setline(forLine, nextOrder)
+			let forLine = forLine + 1
+			let nextText = getline(forLine)
+			let nextOrder = matchstr(nextText, '^[0-9]\+\. ')
+		endwhile
+		call cursor(currentLine, 1)
+		:execute "normal ^\<c-a>$a "
+	endif
+endfun
+
 
 
 
