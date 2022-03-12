@@ -1,12 +1,10 @@
 # aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 snippet a; "append(slice, value) \n"
 append(${1:<slice>}, ${2:<value>})
-${0}
 endsnippet
 
 snippet av "a = append(a, value) \n"
 ${1:<slice>} = append($1, ${2:<value>})
-${0}
 endsnippet
 
 
@@ -31,18 +29,15 @@ endsnippet
 snippet c: "case ...: \n"
 case ${1:<value>}:
 	${2:<content>}
-${0}
 endsnippet
 
 snippet c; "const XXX Type = ... \n"
 const ${1:<name>} ${2:<type>} = ${3:<value>}
-${0}
 endsnippet
 
 snippet cs "const ( ... \n )"
 const (
 	${1:<name>} ${2:<type>} = ${3:<value>}
-	${0}
 )
 endsnippet
 
@@ -103,12 +98,10 @@ endsnippet
 
 snippet ep "errors.Wrap( ... , ... ) \n"
 errors.Wrap(${1:<err>}, "${2:<message>}")
-${0}
 endsnippet
 
 snippet ef "errors.Wrapf( ... , ... , ... ) \n"
 errors.Wrapf(${1:<err>}, "${2:<message %v>}", ${3:<args...>})
-${0}
 endsnippet
 
 
@@ -142,14 +135,13 @@ endsnippet
 #}
 #endsnippet
 snippet fc "func Function(...) [error] { ... }"
-func ${1:<name>}(${2}) ${3} {
+func ${1:<name>}(${2}) (${3}) {
 	${0:${VISUAL}}
 }
 endsnippet
 
 snippet ft "fmt.Print(...) \n"
 fmt.Print("${1:${VISUAL}}")
-${0}
 endsnippet
 
 #fmt.Printf("$1 = %+v\n", ${1:${VISUAL}})
@@ -165,12 +157,10 @@ endsnippet
 
 snippet fe "fmt.Errorf(...) \n"
 fmt.Errorf("${1:${VISUAL}}")
-${0}
 endsnippet
 
 snippet fw "fmt.Errorf(%w, err) \n"
 fmt.Errorf("${1:message}: %w", ${2:${VISUAL:err}})
-${0}
 endsnippet
 
 snippet fs "fmt.Sprintf(...)"
@@ -183,14 +173,12 @@ endsnippet
 # gggggggggggggggggggggggggggggggg
 snippet go "go someFunc(...) \n"
 go ${1:<name>}(${2})
-${0}
 endsnippet
 
 snippet gd "go func() { ... }() \n"
 go func() {
 	${1:${VISUAL}}
 }()
-${0}
 endsnippet
 
 
@@ -207,14 +195,12 @@ endsnippet
 snippet ie "if err != nil { ... \n }"
 if err != nil {
 	${1:<do err>}
-	${0}
 } 
 endsnippet
 
 snippet io "if !ok { ... \n }"
 if !ok {
 	${1:<do err>}
-	${0}
 } 
 endsnippet
 
@@ -227,12 +213,10 @@ endsnippet
 # llllllllllllllllllllllllllllllll
 snippet lf "log.Printf(...) \n"
 log.Printf("${1:${VISUAL}} = %+v\n", $1)
-${0}
 endsnippet
 
 snippet ln "log.Println(...) \n"
 log.Println("${1:${VISUAL}}")
-${0}
 endsnippet
 
 
@@ -240,12 +224,10 @@ endsnippet
 # mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
 snippet mp "map[Type]Type \n"
 map[${1:string}]${2:string}
-${0}
 endsnippet
 
 snippet mv "v := make(Type, size) \n"
 ${1:<name>} := make(${2:<type>}, ${3:<extra>})
-${0}
 endsnippet
 
 snippet mi "func main() { ... }"
@@ -334,13 +316,11 @@ endsnippet
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 snippet v; "var x Type [= ...] \n"
 var ${1:<name>} ${2:<type>} = ${3:<value>}
-${0}
 endsnippet
 
 snippet vs "var ( ... ) \n"
 var (
 	${1:<name>} ${2:<type>}${3: = ${4:<value>}}
-	${0}
 )
 endsnippet
 
@@ -350,7 +330,6 @@ endsnippet
 
 snippet vv "v = value \n"
 ${1:<variable>} = ${2:<value>}
-${0}
 endsnippet
 
 # wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
