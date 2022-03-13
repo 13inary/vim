@@ -522,18 +522,10 @@ autocmd Filetype go imap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>o
 "autocmd Filetype go nmap <silent> <c-k> <Esc>0?^\t*}\\|^\t*)<CR>f}f)
 "autocmd Filetype go imap <silent> <c-k> <Esc>0?^\t*}\\|^\t*)<CR>f}f)
 autocmd Filetype go nmap <silent> <c-k> o
-autocmd Filetype go imap <silent> <c-k> <esc>:call MyNextLine()<CR><esc>o
-"autocmd Filetype go,sh imap <silent> <esc> <esc>:call UltiSnips#JumpForwards()<cr><esc>
-fun MyNextLine()
-	let l:currentLine = line(".")
-	let l:currentCol = col(".")
-	let l:forNum = 0
-	while forNum <= 2
-		let forNum = forNum +1
-		call UltiSnips#JumpForwards()
-	endwhile
-	call cursor(currentLine, currentCol+1)
-endfun
+autocmd Filetype go imap <silent> <c-k> <esc>vl<esc>o
+autocmd Filetype go vmap <silent> <c-k> <esc>o
+"autocmd Filetype go imap <silent> <c-k> <esc>:call MyNextLine()<cr><esc>
+"autocmd Filetype go,sh imap <silent> <esc> <esc>:call UltiSnips#JumpForwards()<cr><esc><c-[>
 
 
 
