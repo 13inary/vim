@@ -204,7 +204,7 @@ nnoremap <C-g> 1<c-g>
 "nnoremap <C-o> <c-g>zz
 " return to new place and view in middle
 "nnoremap <C-i> <c-g>zz
-imap <c-l> <del>
+"imap <c-l> <del>
 
 
 
@@ -521,8 +521,8 @@ autocmd Filetype go nmap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>o
 autocmd Filetype go imap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>o
 "autocmd Filetype go nmap <silent> <c-k> <Esc>0?^\t*}\\|^\t*)<CR>f}f)
 "autocmd Filetype go imap <silent> <c-k> <Esc>0?^\t*}\\|^\t*)<CR>f}f)
-autocmd Filetype go nmap <silent> <c-k> <Esc>o
-autocmd Filetype go imap <silent> <c-k> <Esc>o
+autocmd Filetype go nmap <silent> <c-k> <esc>o
+autocmd Filetype go imap <silent> <c-k> <esc>o
 
 
 
@@ -934,7 +934,8 @@ let g:mkdp_preview_options = {
 " - https://github.com/nvim-lua/completion-nvim
 let g:UltiSnipsExpandTrigger=",e"
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpForwardTrigger=",f"
+"let g:UltiSnipsJumpForwardTrigger=",f"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsJumpBackwardTrigger=",F"
 "let g:UltiSnipsSnippetDirectories =['','']

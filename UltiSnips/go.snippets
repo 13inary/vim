@@ -118,14 +118,12 @@ for ${1} {
 endsnippet
 
 snippet fi "for 0..N-1 { ... }"
-for ${1:i} := 0; $1 < ${2:N}; $1++ {
-	${0:${VISUAL}}
+for ${2:i} := 0; $2 < ${1:N}; $2++ {
 }
 endsnippet
 
 snippet fr "for k, v := range items { ... }"
 for ${2:k, v} := range ${1:<gather>} {
-	${0:${VISUAL}}
 }
 endsnippet
 
@@ -135,8 +133,9 @@ endsnippet
 #}
 #endsnippet
 snippet fc "func Function(...) [error] { ... }"
+
+// $1 
 func ${1:<name>}(${2}) (${3}) {
-	${0:${VISUAL}}
 }
 endsnippet
 
@@ -188,7 +187,6 @@ endsnippet
 # iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
 snippet if "if ... { ... }"
 if ${1:<condition>} {
-	${0:${VISUAL}}
 }
 endsnippet
 
@@ -207,6 +205,19 @@ endsnippet
 
 
 # jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+snippet jm "json.Marshal()"
+$1Json, err := json.Marshal(${1:<Struct>})
+if err != nil {
+	return ${2:err}
+}
+endsnippet
+
+snippet ju "json.Unmarshal()"
+err = json.Unmarshal($1Json, &${1:<Struct>})
+if err != nil {
+	return ${2:err}
+}
+endsnippet
 
 # kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
 
@@ -243,7 +254,6 @@ endsnippet
 #endsnippet
 snippet mt "func (self Type) Method(...) [error] { ... }"
 func (${1:<receiver>} ${2:<type>}) ${3:<name>}(${4})${5/(.+)/ /}`!p opening_par(snip, 5)`$5`!p closing_par(snip, 5)` {
-	${0:${VISUAL}}
 }
 endsnippet
 
@@ -296,14 +306,12 @@ endsnippet
 
 # tttttttttttttttttttttttttttttttt
 snippet tf "type I interface { ... \n }"
-type ${1:<interface>} interface {
-	${0:<methods>}
+type ${0:<interface>} interface {
 }
 endsnippet
 
 snippet ts "type T struct { ... \n }"
-type ${1:<type>} struct {
-	${0:<field>}
+type ${0:<type>} struct {
 }
 endsnippet
 
