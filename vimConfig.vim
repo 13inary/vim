@@ -250,7 +250,8 @@ autocmd Filetype markdown set smartindent
 "autocmd Filetype markdown set spell
 
 " jump
-autocmd Filetype markdown inoremap ,f <Esc>/口口口<CR>:nohlsearch<CR>c3l
+"autocmd Filetype markdown inoremap ,f <Esc>/口口口<CR>:nohlsearch<CR>c3l
+autocmd Filetype markdown inoremap <c-l> <Esc>/口口口<CR>:nohlsearch<CR>c3l
 "autocmd Filetype markdown inoremap <s-CR> <Esc>A<CR>
 "autocmd Filetype markdown inoremap <CR> <Esc>/口口口<Enter>c3l
 
