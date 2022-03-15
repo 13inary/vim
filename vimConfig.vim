@@ -524,10 +524,39 @@ autocmd Filetype go vmap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>o
 "autocmd Filetype go nmap <silent> <c-k> <Esc>0?^\t*}\\|^\t*)<CR>f}f)
 "autocmd Filetype go imap <silent> <c-k> <Esc>0?^\t*}\\|^\t*)<CR>f}f)
 autocmd Filetype go nmap <silent> <c-k> o
-autocmd Filetype go imap <silent> <c-k> <esc>vl<esc>o
+"autocmd Filetype go imap <silent> <c-k> <esc>vl<esc>o
+autocmd Filetype go imap <silent> <c-k> a<esc>xo
 autocmd Filetype go vmap <silent> <c-k> <esc>o
 "autocmd Filetype go imap <silent> <c-k> <esc>:call MyNextLine()<cr><esc>
 "autocmd Filetype go,sh imap <silent> <esc> <esc>:call UltiSnips#JumpForwards()<cr><esc><c-[>
+
+
+
+augroup myAutoFillErrGroup
+	autocmd!
+	autocmd TextChangedI *.go silent exec "call AutoFillErr()"
+augroup END
+
+fun AutoFillErr()
+	if &filetype == 'go'
+		let l:currentText = getline(".")
+		let l:currentIfErr = matchstr(currentText, '\t\+.*err *:\?= *\w\+(.*)$')
+
+		if currentIfErr != ""
+			let l:nextText = getline(line(".")+1)
+			let l:lastIfCan = matchstr(nextText, 'if err != nil {')
+			if lastIfCan == ""
+				let l:currentLine = line(".")
+				let l:lineTab = matchstr(getline("."), '\t\+')
+				call append(line("."), lineTab."}")
+				"call append(line("."), "")
+				call append(line("."), lineTab."\treturn ")
+				call append(line("."), lineTab."if err != nil {")
+			endif
+		endif
+
+	endif
+endfun
 
 
 
@@ -536,7 +565,6 @@ augroup myAutoFillMapGroup
 	autocmd TextChangedI *.go silent exec "call AutoFillMap()"
 augroup END
 
-"autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
 fun AutoFillMap()
 	if &filetype == 'go'
 		let l:lastText = getline(line(".")-1)
@@ -552,7 +580,7 @@ fun AutoFillMap()
 				if currentIfMap != ""
 					let l:currentLine = line(".")
 					let l:lineTab = matchstr(getline("."), '\t\+')
-					call setline(currentLine, lineTab.'"key": "",')
+					call setline(currentLine, lineTab.'"key": "v",')
 					:stopinsert
 					norm 0fk3s
 					let l:myCol = col(".")+1
@@ -571,7 +599,7 @@ fun AutoFillMap()
 				if currentIfMap != ""
 					let l:currentLine = line(".")
 					let l:lineTab = matchstr(getline("."), '\t\+')
-					call setline(currentLine, lineTab.'"key": "",')
+					call setline(currentLine, lineTab.'"key": "v",')
 					:stopinsert
 					norm 0fk3s
 					let l:myCol = col(".")+1
