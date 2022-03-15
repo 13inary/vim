@@ -530,6 +530,59 @@ autocmd Filetype go vmap <silent> <c-k> <esc>o
 
 
 
+augroup myAutoFillMapGroup
+	autocmd!
+	autocmd TextChangedI *.go silent exec "call AutoFillMap()"
+augroup END
+
+"autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
+fun AutoFillMap()
+	if &filetype == 'go'
+		let l:lastText = getline(line(".")-1)
+		let l:lastIfMapHead = matchstr(lastText, '\w\+ *:= *map\[\w\+\]\w\+{$')
+		let l:lastIfMap = matchstr(lastText, '\"\w\+\": *.\+,$')
+
+		if lastIfMapHead != ""
+			let l:nextText = getline(line(".")+1)
+			let l:nextIfMapHead = matchstr(nextText, '\t\+}$')
+			if nextIfMapHead != ""
+				let l:currentText = getline(".")
+				let l:currentIfMap = matchstr(currentText, '\t\+$')
+				if currentIfMap != ""
+					let l:currentLine = line(".")
+					let l:lineTab = matchstr(getline("."), '\t\+')
+					call setline(currentLine, lineTab.'"key": "",')
+					:stopinsert
+					norm 0fk3s
+					let l:myCol = col(".")+1
+					call cursor(currentLine, myCol)
+				endif
+			endif
+		endif
+
+		if lastIfMap != ""
+			let l:nextText = getline(line(".")+1)
+			let l:nextIfMapA = matchstr(nextText, '\t\+}$')
+			let l:nextIfMapB = matchstr(nextText, '\t"\w\+": *.\+,$')
+			if nextIfMapA != "" || nextIfMapB != ""
+				let l:currentText = getline(".")
+				let l:currentIfMap = matchstr(currentText, '\t\+$')
+				if currentIfMap != ""
+					let l:currentLine = line(".")
+					let l:lineTab = matchstr(getline("."), '\t\+')
+					call setline(currentLine, lineTab.'"key": "",')
+					:stopinsert
+					norm 0fk3s
+					let l:myCol = col(".")+1
+					call cursor(currentLine, myCol)
+				endif
+			endif
+		endif
+	endif
+endfun
+
+
+
 augroup myAutoFillStructGroup
 	autocmd!
 	autocmd TextChangedI *.go silent exec "call AutoFillStruct()"
@@ -575,8 +628,10 @@ endfun
 
 
 
-autocmd Filetype go imap <silent> ,F <Esc>:call JumpPreVal()<CR>
-autocmd Filetype go imap <silent> ,f <Esc>:call JumpNextVal()<CR>
+autocmd Filetype go imap <silent> <c-l> <Esc>:call JumpPreVal()<CR>
+autocmd Filetype go imap <silent> <c-l> <Esc>:call JumpNextVal()<CR>
+autocmd Filetype go vmap <silent> <c-l> <Esc>:call JumpPreVal()<CR>
+autocmd Filetype go vmap <silent> <c-l> <Esc>:call JumpNextVal()<CR>
 fun JumpPreVal()
 	call search(".*:.*,","b")
 	let l:currentLine = line(".")
