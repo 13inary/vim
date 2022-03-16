@@ -657,33 +657,62 @@ endfun
 
 
 
-autocmd Filetype go imap <silent> <c-l> <Esc>:call JumpPreVal()<CR>
+"autocmd Filetype go imap <silent> <c-l> <Esc>:call JumpPreVal()<CR>
 autocmd Filetype go imap <silent> <c-l> <Esc>:call JumpNextVal()<CR>
-autocmd Filetype go vmap <silent> <c-l> <Esc>:call JumpPreVal()<CR>
+"autocmd Filetype go vmap <silent> <c-l> <Esc>:call JumpPreVal()<CR>
 autocmd Filetype go vmap <silent> <c-l> <Esc>:call JumpNextVal()<CR>
-fun JumpPreVal()
-	call search(".*:.*,","b")
-	let l:currentLine = line(".")
-	norm $
-	let l:wordEnd = col(".")
-	" end of follow have <space>
-	norm F 
-	let l:wordStart = col(".")
-	call cursor(currentLine, wordEnd-1)
-	norm gh
-	call cursor(currentLine, wordStart+1)
-endfun
+"fun JumpPreVal()
+	"call search(".*:.*,","b")
+	"let l:currentLine = line(".")
+	"norm $
+	"let l:wordEnd = col(".")
+	" "end of follow have <space>
+	"norm F 
+	"let l:wordStart = col(".")
+	"call cursor(currentLine, wordEnd-1)
+	"norm gh
+	"call cursor(currentLine, wordStart+1)
+"endfun
 fun JumpNextVal()
-	call search(".*:.*,")
-	let l:currentLine = line(".")
-	norm $
-	let l:wordEnd = col(".")
-	" end of follow have <space>
-	norm F 
-	let l:wordStart = col(".")
-	call cursor(currentLine, wordEnd-1)
-	norm gh
-	call cursor(currentLine, wordStart+1)
+	let l:oldPosiLine = line(".")
+	let l:oldPosiCol = col(".")
+	let l:preFunHead = search("\t*.*{$","bnWc")
+	"call cursor(oldPosiLine, oldPosiCol)
+	let l:preFunEnd = search("\t*}$","bnWc")
+	"call cursor(oldPosiLine, oldPosiCol)
+	"call setline(oldPosiLine, preFunHead.".".preFunEnd.".".oldPosiLine)
+
+	" judge under function head
+	if preFunHead > preFunEnd && preFunHead != oldPosiLine
+		let l:nextFunEnd = search("\t*}$","nW")
+		let l:nextFunHead = search("\t*.*{$","nW")
+		"call setline(oldPosiLine, nextFunEnd."-".nextFunHead)
+
+		" judeg over function end
+		if nextFunEnd < nextFunHead || nextFunHead == 0
+			"call setline(oldPosiLine, currentLineA)
+			let l:newPosi = search(".*:.*,","n")
+			" make circle
+			if oldPosiLine+1 == nextFunEnd
+				"call setline(oldPosiLine, nextFunEnd)
+				let newPosi = preFunHead+1
+				call cursor(preFunHead, oldPosiCol)
+			endif
+			" judge object in function
+			if newPosi > preFunHead && newPosi < nextFunEnd
+				call search(".*:.*,")
+				let l:currentLine = line(".")
+				norm $
+				let l:wordEnd = col(".")
+				" end of follow have <space>
+				norm F 
+				let l:wordStart = col(".")
+				call cursor(currentLine, wordEnd-1)
+				norm gh
+				call cursor(currentLine, wordStart+1)
+			endif
+		endif
+	endif
 endfun
 
 
