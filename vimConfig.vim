@@ -755,7 +755,12 @@ fun JumpNextVal()
 	else
 		"let l:objectPosi = search("<???>","n")
 		"if objectPosi != 0
-			call search("<???>")
+		call search("<???>")
+		let l:curLine = line(".")
+		let l:wordStart = col(".")
+		norm f>
+		norm gh
+		call cursor(curLine, wordStart)
 		"endif
 	endif
 endfun
