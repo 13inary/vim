@@ -580,7 +580,7 @@ fun AutoFillMap()
 				if currentIfMap != ""
 					let l:currentLine = line(".")
 					let l:myCol = col(".")
-					let l:lineTab = matchstr(getline("."), '\t\+')
+					"let l:lineTab = matchstr(getline("."), '\t\+')
 					let l:newMapKey = matchstr(lastIfMapHead, ".*\]")
 					let newMapKey = matchstr(newMapKey, "map\[.*")
 					let l:newMapVal = matchstr(lastIfMapHead, "\].*{")
@@ -598,10 +598,10 @@ fun AutoFillMap()
 					endif
 					"call setline(currentLine, lineTab.setMapVal."END")
 					if newMapKey == "map[string]"
-						call setline(currentLine, lineTab.'"k": '.setMapVal.',')
+						call setline(currentLine, currentIfMap.'"k": '.setMapVal.',')
 						let myCol = myCol + 1
 					else
-						call setline(currentLine, lineTab.'k: '.setMapVal.',')
+						call setline(currentLine, currentIfMap.'k: '.setMapVal.',')
 					endif
 					:stopinsert
 					norm 0fks
@@ -622,15 +622,15 @@ fun AutoFillMap()
 				if currentIfMap != ""
 					let l:currentLine = line(".")
 					let l:myCol = col(".")
-					let l:lineTab = matchstr(getline("."), '\t\+')
+					"let l:lineTab = matchstr(getline("."), '\t\+')
 					let l:newMapType = matchstr(lastIfMap, '\".*\":')
 					let l:newMapValu = matchstr(lastIfMap, ': *.*,')
 					"call setline(currentLine, newMapValu)
 					if newMapType != ""
-						call setline(currentLine, lineTab.'"k"'.newMapValu)
+						call setline(currentLine, currentIfMap.'"k"'.newMapValu)
 						let myCol = myCol + 1
 					else
-						call setline(currentLine, lineTab.'k'.newMapValu)
+						call setline(currentLine, currentIfMap.'k'.newMapValu)
 					endif
 					:stopinsert
 					norm 0fks
