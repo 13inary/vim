@@ -722,16 +722,22 @@ fun JumpNextVal()
 		" judeg over function end
 		if nextFunEnd < nextFunHead || nextFunHead == 0
 			"call setline(oldPosiLine, currentLineA)
-			let l:newPosi = search(".*:.*,","n")
+			let l:newPosi = search(": *.*,","n")
 			" make circle
-			if oldPosiLine+1 == nextFunEnd
+			let l:ifInFun = "0"
+				"call setline(oldPosiLine, newPosi)
+			if oldPosiLine+1 == nextFunEnd && newPosi+1 != nextFunEnd
 				"call setline(oldPosiLine, nextFunEnd)
+				let ifInFun = "1"
 				let newPosi = preFunHead+1
 				call cursor(preFunHead, oldPosiCol)
 			endif
 			" judge object in function
-			if newPosi > preFunHead && newPosi < nextFunEnd
-				call search(".*:.*,")
+			let l:haveField = search(": *.*,","n")
+			if newPosi > preFunHead && newPosi < nextFunEnd && haveField > preFunHead && haveField < nextFunEnd
+				let ifInFun = "0"
+				" make can jump to current line
+				call search(": *.*,")
 				let l:currentLine = line(".")
 				norm $
 				let l:wordEnd = col(".")
@@ -742,7 +748,15 @@ fun JumpNextVal()
 				norm gh
 				call cursor(currentLine, wordStart+1)
 			endif
+			if ifInFun == "1"
+				call cursor(oldPosiLine, oldPosiCol)
+			endif
 		endif
+	else
+		"let l:objectPosi = search("<???>","n")
+		"if objectPosi != 0
+			call search("<???>")
+		"endif
 	endif
 endfun
 
