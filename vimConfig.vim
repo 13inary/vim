@@ -569,8 +569,8 @@ fun AutoFillMap()
 	if &filetype == 'go'
 		let l:lastText = getline(line(".")-1)
 		let l:lastIfMapHead = matchstr(lastText, '\w\+ *:= *map\[\w\+\]\w\+{$')
-		let l:lastIfMap = matchstr(lastText, '\"\w\+\": *.\+,$')
 
+		" new map
 		if lastIfMapHead != ""
 			let l:nextText = getline(line(".")+1)
 			let l:nextIfMapHead = matchstr(nextText, '\t\+}$')
@@ -579,30 +579,61 @@ fun AutoFillMap()
 				let l:currentIfMap = matchstr(currentText, '\t\+$')
 				if currentIfMap != ""
 					let l:currentLine = line(".")
+					let l:myCol = col(".")
 					let l:lineTab = matchstr(getline("."), '\t\+')
-					call setline(currentLine, lineTab.'"key": "v",')
+					let l:newMapKey = matchstr(lastIfMapHead, ".*\]")
+					let newMapKey = matchstr(newMapKey, "map\[.*")
+					let l:newMapVal = matchstr(lastIfMapHead, "\].*{")
+					let l:setMapVal = '<value>'
+					if newMapVal == "]string{"
+						let setMapVal = '"s"'
+					elseif newMapVal == "]bool{"
+						let setMapVal = 'true'
+					elseif newMapVal == "]int{"
+						let setMapVal = '1'
+					elseif newMapVal == "]int64{"
+						let setMapVal = '1'
+					elseif newMapVal == "]float64{"
+						let setMapVal = '1.0'
+					endif
+					"call setline(currentLine, lineTab.setMapVal."END")
+					if newMapKey == "map[string]"
+						call setline(currentLine, lineTab.'"k": '.setMapVal.',')
+						let myCol = myCol + 1
+					else
+						call setline(currentLine, lineTab.'k: '.setMapVal.',')
+					endif
 					:stopinsert
-					norm 0fk3s
-					let l:myCol = col(".")+1
+					norm 0fks
 					call cursor(currentLine, myCol)
 				endif
 			endif
 		endif
 
+		" insert map
+		let l:lastIfMap = matchstr(lastText, '\t\+.\+: *.\+,$')
 		if lastIfMap != ""
 			let l:nextText = getline(line(".")+1)
 			let l:nextIfMapA = matchstr(nextText, '\t\+}$')
-			let l:nextIfMapB = matchstr(nextText, '\t"\w\+": *.\+,$')
+			let l:nextIfMapB = matchstr(nextText, '\t\+.\+: *.\+,$')
 			if nextIfMapA != "" || nextIfMapB != ""
 				let l:currentText = getline(".")
 				let l:currentIfMap = matchstr(currentText, '\t\+$')
 				if currentIfMap != ""
 					let l:currentLine = line(".")
+					let l:myCol = col(".")
 					let l:lineTab = matchstr(getline("."), '\t\+')
-					call setline(currentLine, lineTab.'"key": "v",')
+					let l:newMapType = matchstr(lastIfMap, '\".*\":')
+					let l:newMapValu = matchstr(lastIfMap, ': *.*,')
+					"call setline(currentLine, newMapValu)
+					if newMapType != ""
+						call setline(currentLine, lineTab.'"k"'.newMapValu)
+						let myCol = myCol + 1
+					else
+						call setline(currentLine, lineTab.'k'.newMapValu)
+					endif
 					:stopinsert
-					norm 0fk3s
-					let l:myCol = col(".")+1
+					norm 0fks
 					call cursor(currentLine, myCol)
 				endif
 			endif
