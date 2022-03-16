@@ -525,7 +525,7 @@ autocmd Filetype go vmap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>o
 "autocmd Filetype go imap <silent> <c-k> <Esc>0?^\t*}\\|^\t*)<CR>f}f)
 autocmd Filetype go nmap <silent> <c-k> o
 "autocmd Filetype go imap <silent> <c-k> <esc>vl<esc>o
-autocmd Filetype go imap <silent> <c-k> a<esc>xo
+autocmd Filetype go imap <silent> <c-k> a<esc>xvl<esc>o
 autocmd Filetype go vmap <silent> <c-k> <esc>o
 "autocmd Filetype go imap <silent> <c-k> <esc>:call MyNextLine()<cr><esc>
 "autocmd Filetype go,sh imap <silent> <esc> <esc>:call UltiSnips#JumpForwards()<cr><esc><c-[>
