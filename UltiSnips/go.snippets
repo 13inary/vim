@@ -11,6 +11,10 @@ snippet ar "a = append(a, value) \n"
 ${1:<slice>} = append($1[:${2:<index>}], $1[$2+1:]...)
 endsnippet
 
+snippet aa "a[k] = value \n"
+${1:<array>}[ ${2:<index>} ] = ${3:<value>}
+endsnippet
+
 
 
 
@@ -255,9 +259,9 @@ endsnippet
 
 
 # mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
-snippet mp "map[Type]Type \n"
-map[${1:string}]${2:string}
-endsnippet
+#snippet mp "map[Type]Type \n"
+#map[${1:string}]${2:string}
+#endsnippet
 
 snippet mv "v := make(Type, size) \n"
 ${1:<name>} := make(${2:<type>},  ${3:0})
@@ -343,6 +347,13 @@ snippet ts "type T struct { ... \n }"
 
 // $1
 type ${1:<type>} struct {
+}
+endsnippet
+
+snippet ta "type assertion"
+${1:<variate>}, ok := ${2:<interface>}.( ${3:<type>} )
+if !ok {
+	${4:<handle>}
 }
 endsnippet
 
