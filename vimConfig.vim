@@ -550,7 +550,7 @@ fun AutoFillErr()
 				let l:lineTab = matchstr(getline("."), '\t\+')
 				call append(line("."), lineTab."}")
 				"call append(line("."), "")
-				call append(line("."), lineTab."\treturn ")
+				call append(line("."), lineTab."\treturn <???>")
 				call append(line("."), lineTab."if err != nil {")
 			endif
 		endif
