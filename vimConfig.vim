@@ -652,7 +652,7 @@ augroup END
 fun AutoFillStruct()
 	if &filetype == 'go'
 		let l:lastText = getline(line(".")-1)
-		let l:lastIfStruct = matchstr(lastText, '\w\+ *:= *\w\+{$')
+		let l:lastIfStruct = matchstr(lastText, '\w\+ *:= *&\?\w\+{$')
 
 		if lastIfStruct != "" 
 			let l:nextText = getline(line(".")+1)
