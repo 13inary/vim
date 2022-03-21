@@ -540,7 +540,7 @@ augroup END
 fun AutoFillErr()
 	if &filetype == 'go'
 		let l:currentText = getline(".")
-		let l:currentIfErr = matchstr(currentText, '\t\+.*err *:\?= *\w\+(.*)$')
+		let l:currentIfErr = matchstr(currentText, '\t\+.*err *:\?= *\w*\.\?\w\+(.*)$')
 
 		if currentIfErr != ""
 			let l:nextText = getline(line(".")+1)
@@ -707,7 +707,7 @@ autocmd Filetype go vmap <silent> <c-l> <Esc>:call JumpNextVal()<CR>
 fun JumpNextVal()
 	let l:oldPosiLine = line(".")
 	let l:oldPosiCol = col(".")
-	let l:preFunHead = search("\t*.*{$","bnWc")
+	let l:preFunHead = search("\t\t*.*\w*{$","bnWc")
 	"call cursor(oldPosiLine, oldPosiCol)
 	let l:preFunEnd = search("\t*}$","bnWc")
 	"call cursor(oldPosiLine, oldPosiCol)
