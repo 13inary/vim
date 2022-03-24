@@ -71,12 +71,10 @@ endsnippet
 
 snippet d; "defer someFunction() \n"
 defer ${1:<do>}
-${0}
 endsnippet
 
 snippet df "defer someFunction() \n"
 defer ${1:func}(${2})
-${0}
 endsnippet
 
 snippet dd "defer func() { ... }"
@@ -294,7 +292,6 @@ endsnippet
 #snippet pk "package ..."
 #// Package $1 provides ${2:...}
 #package ${1:main}
-#${0}
 #endsnippet
 
 snippet pn "panic()"
