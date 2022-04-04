@@ -299,11 +299,11 @@ autocmd Filetype markdown inoremap ,d `` 口口口<Esc>F`i
 "		...
 "	   ```
 "autocmd Filetype markdown inoremap ,c ```<Enter>```<Enter><Enter>口口口<Esc>3kA
-autocmd Filetype markdown inoremap ,ce ```<Enter>```<Enter><Enter>口口口<Esc>3kA
-autocmd Filetype markdown inoremap ,cs ```shell<Enter><Enter>```<Enter><Enter>口口口<Esc>3kA
-autocmd Filetype markdown inoremap ,cj ```javascript<Enter><Enter>```<Enter><Enter>口口口<Esc>3kA
-autocmd Filetype markdown inoremap ,cc ```c<Enter><Enter>```<Enter><Enter>口口口<Esc>3kA
-autocmd Filetype markdown inoremap ,cg ```go<Enter><Enter>```<Enter><Enter>口口口<Esc>3kA
+autocmd Filetype markdown inoremap ,ce ```<Enter>```<Enter><Esc>3kA
+autocmd Filetype markdown inoremap ,cs ```shell<Enter><Enter>```<Enter><Esc>3kA
+autocmd Filetype markdown inoremap ,cj ```javascript<Enter><Enter>```<Enter><Esc>3kA
+autocmd Filetype markdown inoremap ,cc ```c<Enter><Enter>```<Enter><Esc>3kA
+autocmd Filetype markdown inoremap ,cg ```go<Enter><Enter>```<Enter><Esc>3kA
 
 " tables use:
 " xxx | xxx | xxx
