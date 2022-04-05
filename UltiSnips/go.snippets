@@ -140,6 +140,17 @@ for ; ${2:i} < ${1:N}; $2++ {
 }
 endsnippet
 
+snippet fj "for 0..N-1 { ... }"
+for ${2:j} := ${3:0}; $2 < ${1:N}; $2++ {
+}
+endsnippet
+
+snippet fJ "for 0..N-1 { ... }"
+$2 := ${3:0}
+for ; ${2:j} < ${1:N}; $2++ {
+}
+endsnippet
+
 snippet fr "for k, v := range items { ... }"
 for ${0:_, v} := range ${1:<gather>} {
 }
