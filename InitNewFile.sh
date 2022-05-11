@@ -1,15 +1,18 @@
 #!/bin/bash
 
-myFileDir=`echo $1 | sed 's/.*\///g'`
-myFileName=`echo $2`
-myFileType=`echo $myFileName | sed 's/.*\.//g'`
-myFileLeftName=`echo $myFileName | sed 's/\..*//g'`
+# 文件所在目录、文件名和后缀、文件名、文件后缀
+fileDir=`echo $1 | sed 's/.*\///g'`
+fileNameType=`echo $2`
+fileType=`echo $fileNameType | sed 's/.*\.//g'`
+fileName=`echo $fileNameType | sed 's/\..*//g'`
 
-if [ $myFileType == $myFileName ]; then
+# 没有类型后缀：退出
+if [ $fileType == $fileNameType ]; then
 	exit 
 fi
 
-if [ $myFileName == 'main.go' ]; then
+# main.go
+if [ $fileNameType == 'main.go' ]; then
 	echo "
 package main
  
@@ -22,32 +25,34 @@ func main() {
 exit
 fi
 
-if [ $myFileType == 'go' ]; then
+# 在不是 main.go 后，后缀是 go
+if [ $fileType == 'go' ]; then
 	echo "
-package $myFileDir
+package $fileDir
  
-// package $myFileDir 
+// package $fileDir 
  
 口口口"
 exit
 fi
 
-if [ $myFileType == 'sh' ]; then
+# shell 脚本
+if [ $fileType == 'sh' ]; then
 	echo "
 #!/bin/bash
-# 
  
 口口口"
 exit
 fi
 
-if [ $myFileType == 'proto' ]; then
+# proto 
+if [ $fileType == 'proto' ]; then
 	echo "
 syntax = \"proto3\";
  
 //import \"口口口\";
  
-option go_package =\"./$myFileLeftName\";
+option go_package =\"./$fileName\";
  
 //service Hello {
 //	rpc Hello(Req) returens (Rsp);
@@ -64,14 +69,17 @@ option go_package =\"./$myFileLeftName\";
 exit
 fi
 
-myMdHead=`echo $myFileLeftName | sed 's/_/ and /g' | sed 's/-/ /g'`
-if [ $myFileType == 'md' ]; then
+# markdown
+if [ $fileType == 'md' ]; then
+	#myMdHead=`echo $fileName | sed 's/_/ and /g' | sed 's/-/ /g'`
+	myMdHead=`echo $fileName | sed 's/^[0-9]\+_//g' `
 	echo "
 ##  $myMdHead
 口口口"
 exit
 fi
 
-echo $myFileDir
-echo $myFileType
-echo $myFileName
+# 测试用
+echo $fileDir
+echo $fileType
+echo $fileNameType
