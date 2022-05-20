@@ -308,8 +308,21 @@ autocmd Filetype markdown inoremap ,cg ```go<Enter><Enter>```<Enter><Esc>2kA
 " yyy | yyy | yyy
 " we can write : to side of '-' to right-aligned or centered
 " -: right	:- left		:-:	center
-autocmd Filetype markdown inoremap ,t <c-o>:TableModeEnable<cr>\|-\|-\|<Enter>\|<Enter>\|-\|-\|<Enter><Esc>2kA
-autocmd Filetype markdown inoremap ,q <esc>:TableModeRealign<cr>:TableModeDisable<cr>a
+" \|-\|-\|<Enter>\|\|<Enter>\|-\|-\|<Enter><Esc>2ka
+autocmd Filetype markdown inoremap ,t <c-o>:TableModeEnable<cr>\|-\|<Enter>\|  \|<Enter>\|-\|<Enter><enter><Esc>3kla
+autocmd Filetype markdown inoremap <silent> ,l <esc>:call tablemode#spreadsheet#InsertColumn(1)<CR>
+autocmd Filetype markdown inoremap <silent> ,q <esc>:call MdExitTable()<cr>a
+fun MdExitTable()
+	:execute "normal :TableModeRealign\<CR>"
+	:execute "normal :TableModeDisable\<CR>"
+	let l:tableEnd = search("^$","nW")
+	if tableEnd != 0
+		let l:tabEndEnd = getline(tableEnd+1)
+		if tabEndEnd == ""
+			call cursor(tableEnd+1, 1)
+		endif
+	endif
+endfun
 
 " blockquotes
 " I
@@ -328,7 +341,7 @@ autocmd Filetype markdown inoremap ,q <esc>:TableModeRealign<cr>:TableModeDisabl
 " use: ---
 " other use: ***
 " other use: ___
-autocmd Filetype markdown inoremap ,l <Enter><Enter><Enter><Enter>--------------------------------<Enter><Enter><Enter><Enter><Enter>
+"autocmd Filetype markdown inoremap ,l <Enter><Enter><Enter><Enter>--------------------------------<Enter><Enter><Enter><Enter><Enter>
 
 " some else function: YouTube video	math
 
@@ -337,11 +350,11 @@ autocmd Filetype markdown inoremap ,l <Enter><Enter><Enter><Enter>--------------
 
 " view
 "nmap <F4> :call PreviewMarkdown()<CR>
-func! PreviewMarkdown()
-	if &filetype == 'markdown' || $filetype == 'md'
-		exec "!typora %"
-	endif
-endfunc
+"func! PreviewMarkdown()
+	"if &filetype == 'markdown' || $filetype == 'md'
+		"exec "!typora %"
+	"endif
+"endfunc
 
 endif
 
