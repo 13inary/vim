@@ -233,7 +233,7 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 
 
 " ================================
-" ===markdown
+" === markdown ===================
 " ================================
 " massage document: github:Markdown-here
 
@@ -264,9 +264,6 @@ autocmd Filetype markdown inoremap ,3 ###<Space><Space><Space>
 autocmd Filetype markdown inoremap ,4 ####<Space><Space><Space><Space>
 autocmd Filetype markdown inoremap ,5 #####<Space><Space><Space><Space><Space>
 autocmd Filetype markdown inoremap ,6 ######<Space><Space><Space><Space><Space><Space>
-
-" enters
-"autocmd Filetype markdown inoremap ,n <Enter><Enter><Enter>
 
 " B ; other use: ____
 autocmd Filetype markdown inoremap ,b ****<Space>口口口<Esc>F*hi
@@ -311,10 +308,8 @@ autocmd Filetype markdown inoremap ,cg ```go<Enter><Enter>```<Enter><Esc>2kA
 " yyy | yyy | yyy
 " we can write : to side of '-' to right-aligned or centered
 " -: right	:- left		:-:	center
-autocmd Filetype markdown inoremap ,t <c-o>:TableModeEnable<cr>\|-\|-\|<Enter>\|<Enter>\|-\|-\|<Enter>口口口<Enter>\|-\|-\|<Enter>口口口<Esc>4kA
-autocmd Filetype markdown inoremap ,n \|-\|-\|<Enter>
-autocmd Filetype markdown inoremap ,q <c-o>:TableModeDisable<cr>
-"autocmd Filetype markdown inoremap ,4224 口口口<Space>|<Space>口口口<Space>|<Space>口口口<Enter>---<Space>|<Space>---<Space>|<Space>---<Enter>口口口<Space>|<Space>口口口<Space>|<Space>口口口
+autocmd Filetype markdown inoremap ,t <c-o>:TableModeEnable<cr>\|-\|-\|<Enter>\|<Enter>\|-\|-\|<Enter><Esc>2kA
+autocmd Filetype markdown inoremap ,q <esc>:TableModeRealign<cr>:TableModeDisable<cr>a
 
 " blockquotes
 " I
@@ -348,8 +343,77 @@ func! PreviewMarkdown()
 	endif
 endfunc
 
-
 endif
+
+autocmd Filetype markdown imap <silent> <c-k> <esc>o
+"autocmd Filetype markdown imap <silent> <c-j> <esc>/|\(-\+|\)\+<cr>o
+autocmd Filetype markdown imap <silent> <c-j> <esc>/^\|\(-\+\|\)\+<cr>o
+
+augroup myOrderOrderNumber
+	autocmd!
+	autocmd TextChangedI *.md silent exec "call OrderOrderNumber()"
+augroup END
+fun OrderOrderNumber()
+	let l:currentLine = line(".")
+	let l:currentText = getline(".")
+	let l:lastText = getline(line(".")-1)
+	let l:nextText = getline(line(".")+1)
+	let l:lastOrder = matchstr(lastText, '^[0-9]\+\. ')
+	let l:nextOrder = matchstr(nextText, '^[0-9]\+\. ')
+	"call append(line(".")+1, lastOrder)
+	if currentText == "" && lastOrder != ""
+		call setline(currentLine, lastOrder)
+		let l:forLine = currentLine + 1
+		while nextOrder != ""
+			:execute "normal j^\<c-a>"
+			"call setline(forLine, nextOrder)
+			let forLine = forLine + 1
+			let nextText = getline(forLine)
+			let nextOrder = matchstr(nextText, '^[0-9]\+\. ')
+		endwhile
+		call cursor(currentLine, 1)
+		:execute "normal ^\<c-a>$a "
+	endif
+endfun
+
+augroup myFillTable
+	autocmd!
+	autocmd TextChangedI *.md silent exec "call FillTable()"
+augroup END
+fun FillTable()
+	let l:currentText = getline(".")
+	if currentText == ""
+		let l:lastText = getline(line(".")-1)
+		let l:lastEnd = matchstr(lastText, '^|\(-\+|\)\+$')
+		" add new line after table
+		if lastEnd != ""
+			let l:newLine = substitute(lastEnd, "\-\\+", "  ", "")
+			let l:newLine = substitute(newLine, "\-\\+", " 口口口 ", "g")
+			call setline(line("."), newLine)
+			call append(line("."), lastEnd)
+			call cursor(line("."), 3)
+			:execute "normal :TableModeEnable\<CR>"
+			return
+		endif
+		let l:lastInside = matchstr(lastText, '^|\(.\+|\)\+$')
+		" add new line in table. default : lastEnd == ""
+		if lastInside != ""
+			let l:newLine = substitute(lastInside, "[^|]\\+", " 口口口 ", "g")
+			let l:newLine = substitute(newLine, "[^|]\\+", "  ", "")
+			call setline(line("."), newLine)
+			call cursor(line("."), 3)
+			:execute "normal :TableModeEnable\<CR>"
+		endif
+	endif
+endfun
+
+" may use more time
+"augroup myFixTable
+	"autocmd!
+	"autocmd TextChanged *.md silent exec ":TableModeRealign"
+	"autocmd TextChangedP *.md silent exec ":TableModeRealign"
+"augroup END
+
 
 
 
@@ -865,34 +929,6 @@ fun MyAutoSnippetI()
 	endif
 
 "	:call coc#refresh()
-endfun
-
-augroup myOrderOrderNumber
-	autocmd!
-	autocmd TextChangedI *.md silent exec "call OrderOrderNumber()"
-augroup END
-
-fun OrderOrderNumber()
-	let l:currentLine = line(".")
-	let l:currentText = getline(".")
-	let l:lastText = getline(line(".")-1)
-	let l:nextText = getline(line(".")+1)
-	let l:lastOrder = matchstr(lastText, '^[0-9]\+\. ')
-	let l:nextOrder = matchstr(nextText, '^[0-9]\+\. ')
-	"call append(line(".")+1, lastOrder)
-	if currentText == "" && lastOrder != ""
-		call setline(currentLine, lastOrder)
-		let l:forLine = currentLine + 1
-		while nextOrder != ""
-			:execute "normal j^\<c-a>"
-			"call setline(forLine, nextOrder)
-			let forLine = forLine + 1
-			let nextText = getline(forLine)
-			let nextOrder = matchstr(nextText, '^[0-9]\+\. ')
-		endwhile
-		call cursor(currentLine, 1)
-		:execute "normal ^\<c-a>$a "
-	endif
 endfun
 
 
