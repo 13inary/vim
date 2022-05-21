@@ -314,6 +314,7 @@ autocmd Filetype markdown inoremap <silent> ,l <esc>:call tablemode#spreadsheet#
 autocmd Filetype markdown inoremap <silent> ,q <esc>:call MdExitTable()<cr>a
 fun MdExitTable()
 	:execute "normal :TableModeRealign\<CR>"
+	:execute "normal :TableModeEnable\<CR>"
 	:execute "normal :TableModeDisable\<CR>"
 	let l:tableEnd = search("^$","nW")
 	if tableEnd != 0
