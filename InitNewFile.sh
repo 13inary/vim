@@ -55,17 +55,19 @@ syntax = \"proto3\";
  
 option go_package =\"../pb\";
  
-//service Hello {
-//	rpc Hello(Req) returns (Rsp);
-//}
- 
-//message Req {
-//	string name = 1;
-//}
- 
-//message Rsp {
-//	string info = 1;
-//}
+service myHello {
+	rpc Hello(myHelloReq) returns (myHelloRsp);
+}
+
+message myHelloReq {
+	string name = 1;
+}
+
+message myHelloRsp {
+	string info = 1;
+}
+
+// protoc -I . *.proto --go_out=plugins=grpc:.
 "
 exit
 fi
