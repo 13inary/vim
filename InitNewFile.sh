@@ -53,7 +53,7 @@ syntax = \"proto3\";
  
 //import \"口口口\";
  
-option go_package =\"./pb\";
+option go_package =\"../pb\";
  
 //service Hello {
 //	rpc Hello(Req) returns (Rsp);
