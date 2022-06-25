@@ -46,16 +46,17 @@ exit
 fi
 
 # proto 
+# option go_package =\"./$fileName\";
 if [ $fileType == 'proto' ]; then
 	echo "
 syntax = \"proto3\";
  
 //import \"口口口\";
  
-option go_package =\"./$fileName\";
+option go_package =\"./pb\";
  
 //service Hello {
-//	rpc Hello(Req) returens (Rsp);
+//	rpc Hello(Req) returns (Rsp);
 //}
  
 //message Req {
