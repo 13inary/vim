@@ -1172,6 +1172,9 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 " ===vim-go===
 " ================================
 "autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+autocmd Filetype go nmap <space>gM <esc>?\w\+(<cr>
+autocmd Filetype go nmap <space>gm <esc>/\w\+(<cr>
+
 autocmd Filetype go nmap <space>gc :GoRename<space>
 
 autocmd Filetype go nmap <space>gC :GoChannelPeers<space>
