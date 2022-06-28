@@ -958,7 +958,7 @@ filetype plugin indent on
 call plug#begin('~/.vim/plugged')
 "Plug 'fatih/molokai'
 "Plug 'dense-analysis/ale'
-Plug 'keysquivered/vim-go-markdown-colors'
+Plug 'gvls/vim-go-markdown-colors'
 " neoranger rnvimr
 Plug 'francoiscabrol/ranger.vim'
 Plug 'airblade/vim-gitgutter'
@@ -966,8 +966,8 @@ Plug 'tpope/vim-surround'
 " need install nodejs npm yarn
 Plug 'neoclide/coc.nvim', {'for':['go','vim','sh'], 'branch':'release'}
 Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto']}
-Plug 'fatih/vim-go', {'for':'go'}
-Plug 'ctrlpvim/ctrlp.vim', {'for':'go'}
+Plug 'fatih/vim-go', {'for':'go', 'do':':GoInstallBinaries'}
+Plug 'ctrlpvim/ctrlp.vim', {'for':'go', 'do':':GoUpdateBinaries'}
 "Plug 'scrooloose/nerdtree', {'for':'go'}
 Plug 'SirVer/ultisnips', {'for':'go'}
 Plug 'buoto/gotests-vim', {'for':'go'}
@@ -1179,10 +1179,17 @@ autocmd Filetype go nmap <silent> <space>ga :GoAlternate<CR>
 " go to definition use guru but it may slow
 "let g:go_def_mode = 'godef'
 autocmd Filetype go nmap <silent> <space>gd :GoDef<CR>
+autocmd Filetype go nmap <silent> <space>gD :GoDefType<CR>
 autocmd Filetype go nmap <silent> <space>gb :GoDefPop<CR>
 "nmap <silent> <space>gs :GoDefStack<CR>
-"
-autocmd Filetype go nmap <space>gi :GoImpl<space>
+
+" cnext cprevious cclose lnext lprevious lclose
+"let g:go_list_type = "quickfix"
+autocmd Filetype go nmap <space>gk :lprevious<cr>
+autocmd Filetype go nmap <space>gj :lnext<cr>
+autocmd Filetype go nmap <space>g[ :lclose<cr>
+autocmd Filetype go nmap <space>gi :GoImplements<cr>
+autocmd Filetype go nmap <space>gI :GoImpl<space>
 
 "let g:go_fillstruct_mode = 'fillstruct'
 let g:go_fillstruct_mode = 'gopls'
@@ -1197,6 +1204,8 @@ autocmd Filetype go nmap <silent> <space>gF :GoDeclsDir<CR>
 
 " Possible options are: `snakecase`(_), `camelcase`(aBc), `lispcase`, `pascalcase`, `keep`
 autocmd Filetype go nmap <space>gt :GoAddTags<space>
+autocmd Filetype go nmap <space>gT :GoRemoveTags<space>
+" `snakecase`, `camelcase`, `lispcase`, `pascalcase`, `keep`
 let g:go_addtags_transform = 'camelcase'
 
 "dif, daf...
