@@ -1174,6 +1174,8 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 "autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 autocmd Filetype go nmap <space>gc :GoRename<space>
 
+autocmd Filetype go nmap <space>gC :GoChannelPeers<space>
+
 autocmd Filetype go nmap <silent> <space>ga :GoAlternate<CR>
 
 " go to definition use guru but it may slow
