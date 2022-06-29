@@ -967,8 +967,7 @@ Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'for':['go','vim','sh'], 'branch':'release'}
 Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto']}
 Plug 'fatih/vim-go', {'for':'go', 'do':':GoInstallBinaries'}
-Plug 'ctrlpvim/ctrlp.vim', {'for':'go', 'do':':GoUpdateBinaries'}
-"Plug 'scrooloose/nerdtree', {'for':'go'}
+Plug 'ctrlpvim/ctrlp.vim', {'for':'go'}
 Plug 'SirVer/ultisnips', {'for':'go'}
 Plug 'buoto/gotests-vim', {'for':'go'}
 " need cd directory and go build
@@ -977,17 +976,13 @@ Plug 'vim-scripts/argtextobj.vim', {'for':'go'}
 "Plug 'junegunn/fzf.vim'
 "Plug 'junegunn/fzf'
 "Plug 'ianva/vim-youdao-translater'
-"Plug 'tenfyzhong/gengotag', {'do': 'go build'}
 "Plug 'preservim/nerdcommenter', {'for':['go','vim']}
 "Plug 'honza/vim-snippets', {'for':'go'}
-"Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown' }
 Plug 'godlygeek/tabular', {'for':['markdown','vim']}
 Plug 'dhruvasagar/vim-table-mode', {'for':'markdown'}
 "Plug 'preservim/vim-markdown', {'for':'markdown'}
 "Plug 'junegunn/vim-easy-align'
-"Plug 'scrooloose/nerdtree' , {'on': 'NERDTreeToggle'}
 ":call mkdp#util#install()
-"Plug 'vim-table-mode'
 "Plug 'vim-signiture'
 call plug#end()
 " PlugInstall
@@ -1070,76 +1065,6 @@ endfunction
 "inoreabbrev <expr> __
 "          \ <SID>isAtStartOfLine('__') ?
 "          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
-
-
-
-
-
-" ================================
-" ===markdown-preview
-" ================================
-autocmd Filetype markdown nmap <silent> <space>mp :MarkdownPreviewToggle<CR>
-
-" set to 1, nvim will open the preview window after entering the markdown buffer
-" default: 0
-let g:mkdp_auto_start = 0
-
-" set to 1, the MarkdownPreview command can be use for all files,
-" by default it can be use in markdown file
-" default: 0
-"
-"let g:mkdp_command_for_global = 0
-" specify browser to open preview page
-" default: ''
-let g:mkdp_browser = 'google-chrome-stable'
-
-" a custom vim function name to open preview page
-" this function will receive url as param
-" default is empty
-"let g:mkdp_browserfunc = ''
-
-" options for markdown render
-" mkit: markdown-it options for render
-" katex: katex options for math
-" uml: markdown-it-plantuml options
-" maid: mermaid options
-" disable_sync_scroll: if disable sync scroll, default 0
-" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
-"   middle: mean the cursor position alway show at the middle of the preview page
-"   top: mean the vim top viewport alway show at the top of the preview page
-"   relative: mean the cursor position alway show at the relative positon of the preview page
-" hide_yaml_meta: if hide yaml metadata, default is 1
-" sequence_diagrams: js-sequence-diagrams options
-" content_editable: if enable content editable for preview page, default: v:false
-" disable_filename: if disable filename header for preview page, default: 0
-let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {},
-    \ 'content_editable': v:false,
-    \ 'disable_filename': 0
-    \ }
-
-" use a custom markdown style must be absolute path
-" like '/Users/username/markdown.css' or expand('~/markdown.css')
-"let g:mkdp_markdown_css = ''
-
-" use a custom highlight style must absolute path
-" like '/Users/username/highlight.css' or expand('~/highlight.css')
-"let g:mkdp_highlight_css = ''
-
-" use a custom port to start server or random for empty
-"let g:mkdp_port = ''
-
-" preview page title
-" ${name} will be replace with the file name
-"let g:mkdp_page_title = '「${name}」'
 
 
 
