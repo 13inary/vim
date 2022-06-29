@@ -964,7 +964,7 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 " need install nodejs npm yarn
-Plug 'neoclide/coc.nvim', {'for':['go','vim','sh'], 'branch':'release'}
+Plug 'neoclide/coc.nvim', {'branch':'release'}
 Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto']}
 Plug 'fatih/vim-go', {'for':'go', 'do':':GoInstallBinaries'}
 Plug 'ctrlpvim/ctrlp.vim', {'for':'go'}
