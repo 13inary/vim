@@ -45,8 +45,8 @@ function! StatuslineGit()
 endfunction
 set statusline=
 set statusline+=%#LineNr#\ %1*%r\ %5*==\ %3*%l%4*-%3*%v\ %5*==
-set statusline+=\ %4*%{StatuslineGit()}
-set statusline+=-%8*%{GitStatusA()}%4*-%6*%{GitStatusM()}%4*-%1*%{GitStatusR()}%4*-
+"set statusline+=\ %4*%{StatuslineGit()}
+set statusline+=\ %4*-%8*%{GitStatusA()}%4*-%6*%{GitStatusM()}%4*-%1*%{GitStatusR()}%4*-
 set statusline+=\ %=
 set statusline+=\ %4*%L\ %7*%Y\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*%p%%
 " execute oder in current dir
