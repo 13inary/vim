@@ -2,55 +2,19 @@
 " === configuration of vim
 " === suit for go and markdown
 " === author : gvls
+" === use : sudo echo 'source ~/.vim/vimConfig.vim' >> /usr/share/vim/vimrc
 " ================================
 
-"source xx/xx/vimrc
-"let g:load_change_color_scheme = 1
-"if exists("g:load_change_color_scheme")
-"    finish
-"endif
-
-" son version can use this configuration
-" fix bug for vi
-set nocompatible
-" check file type automaticly
-filetype on
-filetype indent on
-" such as ( ... )
-set showmatch
-" show tab line
-set showtabline=2
-
-" cursor status in riht corner
-"set ruler
-
-" display by 2character
-"set ambiwidth=double
-
-" can use mouse in vim
-"set mouse=a
-
-" bottom status
-" 0 : not display; 1 : display When one window; 2 : always display
-" show status : ctrl + g | :f
-set laststatus=2
-" status line
-"%<	如果状态行过长，在何处换行。缺省是在开头。
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-function! StatuslineGit()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?' '.l:branchname.'':' '
-endfunction
-set statusline=
-set statusline+=%#LineNr#\ %1*%r\ %5*==\ %3*%l%4*-%3*%v\ %5*==
-"set statusline+=\ %4*%{StatuslineGit()}
-set statusline+=\ %4*-%8*%{GitStatusA()}%4*-%6*%{GitStatusM()}%4*-%1*%{GitStatusR()}%4*-
-set statusline+=\ %=
-set statusline+=\ %4*%L\ %7*%Y\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*%p%%
-" execute oder in current dir
-set autochdir
+" ================================
+" === basic setting
+" ================================
+set nocompatible " not suit 'vi' and get more fuction
+filetype plugin indent on " 为特定文件使用插件 为特定文件类型使用缩进 开启检测文件类型。获取文件类型：&filetype == 'vim'
+set showmatch " such as ( ... )
+set showtabline=2 " show tab line
+set noruler " cursor status in riht corner
+"set ambiwidth=double " display by 2character
+set autochdir " execute oder in current dir
 " encoding of display
 " in addition, :e ++enc=cp936 || :e ++enc=euc-cn
 set encoding=utf-8
@@ -59,178 +23,154 @@ set encoding=utf-8
 " encoding list which display according to
 "set fileencodings=utf8,ucs-bom,default,latin1,gbk,cp936,gb2312,gb18030
 "set fileformat=unix
-
 " when open file go to pre position
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-" line number on left
-set number
-" line relative number on left
-set relativenumber
-" no set independent vim clipboard
-" press ctrl+shirt and use mouse to select, then use ctrl+shirt+c to copy
-set clipboard=unnamed
-" cursor position up from bottom
-set scrolloff=5
-" in : get tip by table key
-set wildmenu
-" hight light search result
-set nohlsearch
-" hight light when search
-set noincsearch
-" ignore case when search
-set noignorecase
-" smart case when search
-set nosmartcase
-" show line of current line
-set nocursorline
-" display automaticly 
-set wrap
-" <CR> automaticly
-set textwidth=999
-" show cmd
-set showcmd
-" when split, make cursor on right
-set nosplitright
-" when split, make cursor on below
-set splitbelow
-" table
-set tabstop=4
-" lenght of -> for all level
-set shiftwidth=4
-" set count of "yy"
-set viminfo='1000,<100
+"au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+set signcolumn=yes " Vim 7.4.2201
+"set number " line number on left
+"set relativenumber " line relative number on left
+"set clipboard=unnamed " press ctrl+shirt and use mouse to select, then use ctrl+shirt+c to copy
+set scrolloff=5 " 光标距离顶部和底部的最短距离
+set wildmenu " in : get tip by table key
+set nohlsearch " 不高亮查找结果
+set noincsearch " hight light when search
+set ignorecase " 查找忽略大小写
+set nosmartcase " smart case when search
+"set nocursorline " 显示光标所在的行
+set wrap " display automaticly 
+set textwidth=999 " 'Enter' automaticly
+set showcmd " show cmd
+set nosplitright " 分屏时光标在左边
+set splitbelow " 分屏时光标在下面
+set tabstop=4 " Tab键缩进的长度
+set shiftwidth=4 " lenght of -> for all level
+set viminfo='1000,<100 " 'yy'的最大行数
 
 
 
 
 
 " ================================
-" ===basic map
+" === bottom setting
+" ================================
+" === 状态行 ===
+"%<	如果状态行过长，在何处换行。缺省是在开头。
+set statusline=
+set statusline+=%#LineNr#\ %1*%r\ %5*==\ %3*%l%4*-%3*%v\ %5*==
+"set statusline+=\ %4*%{StatuslineGit()}
+set statusline+=\ %4*-%8*%{GitStatusA()}%4*-%6*%{GitStatusM()}%4*-%1*%{GitStatusR()}%4*-
+set statusline+=\ %=
+set statusline+=\ %4*%L\ %7*%Y\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*%p%%
+"fun! GitBranch()
+	"return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+"endfun
+"fun! StatuslineGit()
+	"let l:branchname = GitBranch()
+	"return strlen(l:branchname) > 0?' '.l:branchname.'':' '
+"endfun
+" === 状态信息 ===
+" 0 : not display; 1 : display When one window; 2 : always display
+" show status : ctrl + g | :f
+set laststatus=2
+
+
+
+
+
+" ================================
+" === key map
 " ================================
 "let mapleader = "\"
-" enter in normal model
 nnoremap <CR> o<Esc>
 "inoremap <S-CR> i<CR><Esc>
-":autocmd CmdwinEnter * nnoremap <CR> <CR>
-":autocmd BufReadPost quickfix nnoremap <CR> <CR>
 "inoremap <s-tab> <c-x><c-f>
-" space in normal model
-"nnoremap <space> i <Esc>
-" bottom information
+" 在底部信息栏显示文件路径
 nnoremap <C-g> 1<c-g>
-" return to last place and view in middle
-"nnoremap <C-o> <c-g>zz
-" return to new place and view in middle
-"nnoremap <C-i> <c-g>zz
-"imap <c-l> <del>
 
 
 
 
 
 " ================================
-" ===appearance for cursor
+" ===appearance of cursor
 " ================================
-" cursor size Settings
-let &t_SI.="\e[5 q" "SI = INSERT mode
-let &t_SR.="\e[4 q" "SR = REPLACE mode
-let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
-" Cursor settings:
-"  1 -> blinking block
-"  2 -> solid block
-"  3 -> blinking underscore
-"  4 -> solid underscore
-"  5 -> blinking vertical bar
-"  6 -> solid vertical bar
 "let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 "let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 "let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+let &t_SI.="\e[5 q" "SI = INSERT mode
+let &t_SR.="\e[3 q" "SR = REPLACE mode
+let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
+" 1 -> blinking block
+" 2 -> solid block
+" 3 -> blinking underscore
+" 4 -> solid underscore
+" 5 -> blinking vertical bar
+" 6 -> solid vertical bar
 
 
 
 
 
 " ================================
-" === markdown ===================
+" === markdown
 " ================================
 " massage document: github:Markdown-here
-
-" tips: markdown,*.txt
-" inoremap insert mode
-" noremap normal mode and no recursion(j=5j)
-if has ("autocmd")
-
-" <Enter> by oderly
+" Enter 后自动缩进
 autocmd Filetype markdown set autoindent
 autocmd Filetype markdown set smartindent
 
-" spelling check
-"autocmd Filetype markdown set spell
-
-" jump
-"autocmd Filetype markdown inoremap ,f <Esc>/口口口<CR>:nohlsearch<CR>c3l
+" === 跳转 ===
 autocmd Filetype markdown inoremap <c-l> <Esc>/口口口<CR>:nohlsearch<CR>c3l
 "autocmd Filetype markdown inoremap <s-CR> <Esc>A<CR>
-"autocmd Filetype markdown inoremap <CR> <Esc>/口口口<Enter>c3l
 
-" title
-" H1 ; other use: ===
+" === 标题 ===
+" 其他格式: ===
 autocmd Filetype markdown inoremap ,1 #<Space>
-" H2 ; other use: ---
+" 其他格式: ---
 autocmd Filetype markdown inoremap ,2 ##<Space><Space>
 autocmd Filetype markdown inoremap ,3 ###<Space><Space><Space>
 autocmd Filetype markdown inoremap ,4 ####<Space><Space><Space><Space>
 autocmd Filetype markdown inoremap ,5 #####<Space><Space><Space><Space><Space>
 autocmd Filetype markdown inoremap ,6 ######<Space><Space><Space><Space><Space><Space>
 
-" B ; other use: ____
+" === 粗体 ===
+" 其他格式: ____
 autocmd Filetype markdown inoremap ,b ****<Space>口口口<Esc>F*hi
-" ---
 autocmd Filetype markdown inoremap ,s ~~~~<Space>口口口<Esc>F~hi
-" / ; other use:  __
+
+" === 斜体 ===
+" 其他格式:  __
 autocmd Filetype markdown inoremap ,i __<Space>口口口<Esc>F_i
 
-" list
-" other use: <number>.<Space>
-" other use: -<Space>
-" other use: +<Space>
-"autocmd Filetype markdown inoremap ,100 *<Space>口口口
-
-" links use: [xxx](link)
-" other use: [xxx][case-insensitice symbol]	[case-insensitice symbol]: here write link
-" other use: [ABC]	[ABC]: here write link
-" other use: http://...
-" other use: <...>
+" === 链接 ===
+" 其他格式: [xxx][case-insensitice symbol]	[case-insensitice symbol]: here write link
+" 其他格式: [ABC]	[ABC]: here write link
+" 其他格式: http://...
+" 其他格式: <...>
 autocmd Filetype markdown inoremap ,a [](口口口) 口口口<Esc>F[a
 
-" image use: ![alt text](link "display")
-" other use: ![alt text][symbol]		[symbol]: link "display"
+" === 图片 ===
+" ![alt text](link "display")
+" 其他格式: ![alt text][symbol]		[symbol]: link "display"
 "autocmd Filetype markdown inoremap ,p ![](口口口<Space>"口口口") 口口口<Esc>F[a
 
-" hightlight
+" === 小代码块 ===
 autocmd Filetype markdown inoremap ,d `` 口口口<Esc>F`i
 
-" code use: ```language
-"		...
-"	   ```
-"autocmd Filetype markdown inoremap ,c ```<Enter>```<Enter><Enter>口口口<Esc>3kA
+" === 大代码块 ===
 autocmd Filetype markdown inoremap ,ce ```<Enter>```<Enter><Esc>2kA
 autocmd Filetype markdown inoremap ,cs ```shell<Enter><Enter>```<Enter><Esc>2kA
 autocmd Filetype markdown inoremap ,cj ```javascript<Enter><Enter>```<Enter><Esc>2kA
 autocmd Filetype markdown inoremap ,cc ```c<Enter><Enter>```<Enter><Esc>2kA
 autocmd Filetype markdown inoremap ,cg ```go<Enter><Enter>```<Enter><Esc>2kA
 
-" tables use:
-" xxx | xxx | xxx
-" --- | --- | ---
-" yyy | yyy | yyy
+" === 表格 ===
 " we can write : to side of '-' to right-aligned or centered
 " -: right	:- left		:-:	center
 " \|-\|-\|<Enter>\|\|<Enter>\|-\|-\|<Enter><Esc>2ka
 autocmd Filetype markdown inoremap ,t <c-o>:TableModeEnable<cr>\|-\|<Enter>\|  \|<Enter>\|-\|<Enter><enter><Esc>3kla
 autocmd Filetype markdown inoremap <silent> ,l <esc>:call tablemode#spreadsheet#InsertColumn(1)<CR>
-autocmd Filetype markdown inoremap <silent> ,q <esc>:call MdExitTable()<cr>a
-fun MdExitTable()
+autocmd Filetype markdown inoremap <silent> ,q <esc>:call MyMdExitTableMy()<cr>a
+fun! MyMdExitTableMy()
 	:execute "normal :TableModeRealign\<CR>"
 	:execute "normal :TableModeEnable\<CR>"
 	:execute "normal :TableModeDisable\<CR>"
@@ -242,77 +182,11 @@ fun MdExitTable()
 		endif
 	endif
 endfun
-
-" blockquotes
-" I
-" I
-" I
-" higher use: >><Space>
-"autocmd Filetype markdown inoremap ,12313 ><Space> 口口口
-
-" we can use HTML grammer
-" <dl>
-"   <dt>Definition list</dt>
-"   <dd>Is something people use sometimes.</dd>
-" </dl>
-
-" ---------------------
-" use: ---
-" other use: ***
-" other use: ___
-"autocmd Filetype markdown inoremap ,l <Enter><Enter><Enter><Enter>--------------------------------<Enter><Enter><Enter><Enter><Enter>
-
-" some else function: YouTube video	math
-
-" need use '\' to desplay
-" ` _ {} [] () # + - * . !
-
-" view
-"nmap <F4> :call PreviewMarkdown()<CR>
-"func! PreviewMarkdown()
-	"if &filetype == 'markdown' || $filetype == 'md'
-		"exec "!typora %"
-	"endif
-"endfunc
-
-endif
-
-autocmd Filetype markdown imap <silent> <c-k> <esc>o
-"autocmd Filetype markdown imap <silent> <c-j> <esc>/|\(-\+|\)\+<cr>o
-autocmd Filetype markdown imap <silent> <c-j> <esc>/^\|\(-\+\|\)\+<cr>o
-
-augroup myOrderOrderNumber
+augroup myFillTableGroupMy
 	autocmd!
-	autocmd TextChangedI *.md silent exec "call OrderOrderNumber()"
+	autocmd TextChangedI *.md silent exec "call MyFillTableMy()"
 augroup END
-fun OrderOrderNumber()
-	let l:currentLine = line(".")
-	let l:currentText = getline(".")
-	let l:lastText = getline(line(".")-1)
-	let l:nextText = getline(line(".")+1)
-	let l:lastOrder = matchstr(lastText, '^[0-9]\+\. ')
-	let l:nextOrder = matchstr(nextText, '^[0-9]\+\. ')
-	"call append(line(".")+1, lastOrder)
-	if currentText == "" && lastOrder != ""
-		call setline(currentLine, lastOrder)
-		let l:forLine = currentLine + 1
-		while nextOrder != ""
-			:execute "normal j^\<c-a>"
-			"call setline(forLine, nextOrder)
-			let forLine = forLine + 1
-			let nextText = getline(forLine)
-			let nextOrder = matchstr(nextText, '^[0-9]\+\. ')
-		endwhile
-		call cursor(currentLine, 1)
-		:execute "normal ^\<c-a>$a "
-	endif
-endfun
-
-augroup myFillTable
-	autocmd!
-	autocmd TextChangedI *.md silent exec "call FillTable()"
-augroup END
-fun FillTable()
+fun! MyFillTableMy()
 	let l:currentText = getline(".")
 	if currentText == ""
 		let l:lastText = getline(line(".")-1)
@@ -338,7 +212,6 @@ fun FillTable()
 		endif
 	endif
 endfun
-
 " may use more time
 "augroup myFixTable
 	"autocmd!
@@ -346,36 +219,59 @@ endfun
 	"autocmd TextChangedP *.md silent exec ":TableModeRealign"
 "augroup END
 
+" === 块 ===
+" higher use: >><Space>
+"autocmd Filetype markdown inoremap ,12313 ><Space> 口口口
+
+" === 大横线 ===
+" 其他格式: *** ___
+"autocmd Filetype markdown inoremap ,l <Enter><Enter><Enter><Enter>--------------------------------<Enter><Enter><Enter><Enter><Enter>
+autocmd Filetype markdown imap <silent> <c-k> <esc>o
+autocmd Filetype markdown imap <silent> <c-j> <esc>/^\|\(-\+\|\)\+<cr>o
+
+" === 列表 ===
+" 其他格式: <number>.<Space> -<Space> +<Space>
+"autocmd Filetype markdown inoremap ,100 *<Space>口口口
+augroup myOrderOrderNumberGroupMy
+	autocmd!
+	autocmd TextChangedI *.md silent exec "call MyOrderOrderNumberMy()"
+augroup END
+fun! MyOrderOrderNumberMy()
+	let l:currentLine = line(".")
+	let l:currentText = getline(".")
+	let l:lastText = getline(line(".")-1)
+	let l:nextText = getline(line(".")+1)
+	let l:lastOrder = matchstr(lastText, '^[0-9]\+\. ')
+	let l:nextOrder = matchstr(nextText, '^[0-9]\+\. ')
+	"call append(line(".")+1, lastOrder)
+	if currentText == "" && lastOrder != ""
+		call setline(currentLine, lastOrder)
+		let l:forLine = currentLine + 1
+		while nextOrder != ""
+			:execute "normal j^\<c-a>"
+			"call setline(forLine, nextOrder)
+			let forLine = forLine + 1
+			let nextText = getline(forLine)
+			let nextOrder = matchstr(nextText, '^[0-9]\+\. ')
+		endwhile
+		call cursor(currentLine, 1)
+		:execute "normal ^\<c-a>$a "
+	endif
+endfun
 
 
 
 
 
 " ================================
-" ===ranger
+" === exe file
 " ================================
-" let g:ranger_map_keys = 0
-
-
-
-
-
-" ================================
-" ===function
-" ================================
-" Compile function
-autocmd Filetype go,sh nnoremap <silent> go :call CompileRunGcc()<CR><c-w>h
-"autocmd Filetype go nnoremap gO <c-w>l:close<CR>
-"autocmd Filetype go nnoremap gn :cnext<CR>
-"autocmd Filetype go nnoremap gN :cprevious<CR>
-"autocmd Filetype go nnoremap gc :cclose<CR>
-"autocmd Filetype go nnoremap gb :GoBuild<CR>
-"autocmd Filetype go nnoremap gt :GoTest<CR>
-"autocmd Filetype go nnoremap gt :GoRename<CR>
-func! CompileRunGcc()
+autocmd Filetype go,sh nnoremap <silent> go :call MyCompileRunGccMy()<CR><c-w>h
+func! MyCompileRunGccMy()
 	exec "w"
+	" 关闭执行终端
 	"exec "2close"
-"	exec "only"
+	"exec "only"
 	let l:currentBufName = bufname("%")
 	let l:goTermWinName = "!go run ".currentBufName
 	let l:ifGoTerm = bufexists(goTermWinName)
@@ -392,48 +288,40 @@ func! CompileRunGcc()
 		return
 	endif
 
+	" 执行当前文件
 	if &filetype == 'go'
-		" run current file
 "		:GoRun %
 		:rightbelow vert term ++cols=40 go run %
 		":term go run .
 	elseif &filetype == 'sh'
-		":!time bash %
+		":!bash %
 		:rightbelow vert term ++cols=50 bash %
-	elseif &filetype == 'html'
-		"silent! exec "!".g:mkdp_browser." % &"
-	elseif &filetype == 'markdown'
-		"exec "InstantMarkdownPreview"
-	elseif &filetype == 'javascript'
-		"set splitbelow
-		":sp
-		":term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
 	endif
 endfunc
-"autocmd bufenter * if (winnr("$") == 2 && exists("b:NERDTree") && b:NERDTreeType == "primary") | qa | endif
 
-"nmap <space>m :call TestMyCode()<CR>
-"fun TestMyCode()
-"	let l:currentBufName = bufname("%")
-"	let l:ifSh = matchstr(currentBufName, "bash .*\.sh")
-"	echom ifSh
-"endfun
 
-augroup myAutoExitGroup
+
+
+
+
+" ================================
+" === close all when exit
+" ================================
+augroup myAutoExitGroupMy
 	autocmd!
-	autocmd bufenter * silent call AutoExitWin()
+	autocmd bufenter * silent call MyAutoExitWinMy()
 augroup END
-func AutoExitWin()
+func! MyAutoExitWinMy()
 	let l:currentBufName = bufname("%")
 	let l:currentWinN = winnr()
 	let l:ifGoTerm = matchstr(currentBufName, "^!go run .*\.go")
 	let l:ifSh = matchstr(currentBufName, "^!bash .*\.sh")
 	let l:firstWinBuf = winbufnr(1)
-"	echom ifSh
+	"echom ifSh
 	if ifGoTerm != "" && currentWinN == 1
 		exe "q"
 	endif
-"	if currentBufName == "" && currentWinN == 1 && firstWinBuf > 1
+	"if currentBufName == "" && currentWinN == 1 && firstWinBuf > 1
 	" parameter 2 : avoid open other window appear exit
 	if currentBufName == "" && currentWinN == 1
 		exe "q"
@@ -445,31 +333,40 @@ endfun
 
 
 
+
+
+" ================================
+" === init file when create new file
+" ================================
 " au[tocmd] [group] {event} {pat} [nested] {cmd}
 " BufEnter : may tell you file is changed
-augroup myInitNewFileGroup
+augroup myInitNewFileGroupMy
 	" clear old command of myInitNewFile
 	autocmd!
 	" do what you want
-	autocmd BufNewFile *.go,*.sh,*.proto,*.md silent call MyInitNewFileFuc()
+	autocmd BufNewFile *.go,*.sh,*.proto,*.md silent call MyInitNewFileFucMy()
 	"autocmd BufNewFile *.go,*.sh 0r ~/vim/skeleton.go
 augroup END
-
-fun MyInitNewFileFuc()
+fun! MyInitNewFileFucMy()
 	" system("InitNewFile.sh", getcwd() bufname("%"))
-	:r! ~/.vim/InitNewFile.sh `pwd` %
+	:r! ~/.vim/InitNewFile `pwd` %
 	:%s/^\n//
+	:%s/缓缓缓//
 	:%s/口口口//
 endfun
 
 
 
-augroup myExitFileAddXGroup
-	autocmd!
-	autocmd BufWritePost *.sh silent call MyExitFileAddX()
-augroup END
 
-fun MyExitFileAddX()
+
+" ================================
+" === add exe for *.sh
+" ================================
+augroup myExitFileAddXGroupMy
+	autocmd!
+	autocmd BufWritePost *.sh silent call MyExitFileAddXMy()
+augroup END
+fun! MyExitFileAddXMy()
 	if &filetype == "sh"
 		let l:fileName = bufname("%")
 		let l:myPerm = getfperm(fileName)
@@ -484,103 +381,146 @@ endfun
 
 
 
-nnoremap <silent> yy yy:call SystemCopy()<CR>
-xnoremap <silent> y y:call SystemCopy()<CR>
-fun SystemCopy()
+
+
+" ================================
+" === copy to system
+" ================================
+nnoremap <silent> yy yy:call MySystemCopyMy()<CR>
+xnoremap <silent> y y:call MySystemCopyMy()<CR>
+fun! MySystemCopyMy()
 	let l:currentYY = getreg()
 	let l:actualYY = strpart(currentYY, 0, strlen(currentYY)-1)
-	let l:escape1 = substitute(actualYY, '\', '\\\','g')
-	let l:escape2 = substitute(escape1, '`', '\\`','g')
-	let l:escape3 = substitute(escape2, "#", "\\\\#",'g')
-	let l:escape4 = substitute(escape3, "%", "\\\\%",'g')
-	let l:escape5 = substitute(escape4, "?", "\\\\?",'g')
-	let l:escape6 = substitute(escape5, "}", "\\\\}",'g')
-	let l:escape7 = substitute(escape6, "[", "\\\\[",'g')
-	let l:escape8 = substitute(escape7, "]", "\\\\]",'g')
-	let l:escape = substitute(escape5, "{", "\\\\{",'g')
-	call system("echo ".shellescape(expand(escape))." | xsel -b")
+	"let l:escape1 = substitute(actualYY, '\', '\\\','g')
+	"let l:escape2 = substitute(escape1, '`', '\\`','g')
+	"let l:escape3 = substitute(escape2, "#", "\\\\#",'g')
+	"let l:escape4 = substitute(escape3, "%", "\\\\%",'g')
+	"let l:escape5 = substitute(escape4, "?", "\\\\?",'g')
+	"let l:escape6 = substitute(escape5, "}", "\\\\}",'g')
+	"let l:escape7 = substitute(escape6, "[", "\\\\[",'g')
+	"let l:escape8 = substitute(escape7, "]", "\\\\]",'g')
+	"let l:escape = substitute(escape5, "{", "\\\\{",'g')
+	"call system("echo ".shellescape(expand(escape))." | xsel -b")
+	call system("echo ".shellescape(actualYY)." | xsel -b")
 endfun
 
 
 
-" match string int bool \t}
-"autocmd Filetype go nmap <silent> <c-j> <Esc>/".*"\\|[+-]\?\d\+\(\.\d*\)\?\\|false\\|\t}<CR>
-"autocmd Filetype go nmap <silent> <c-k> <Esc>?".*"\\|[+-]\?\d\+\(\.\d*\)\?\\|false\\|\t}<CR>
-"autocmd Filetype go imap <silent> <c-j> <Esc>/".*"\\|[+-]\?\d\+\(\.\d*\)\?\\|false\\|\t}<CR>
-"autocmd Filetype go imap <silent> <c-k> <Esc>?".*"\\|[+-]\?\d\+\(\.\d*\)\?\\|false\\|\t}<CR>
-" match : := =
-"autocmd Filetype go nmap <silent> <c-j> <Esc>/: \\|:= \\|= \\|\t}\\|\t)<CR>w
-"autocmd Filetype go nmap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}\\|\t)<CR>nw
-"autocmd Filetype go imap <silent> <c-j> <Esc>/: \\|:= \\|= \\|\t}\\|\t)<CR>w
-"autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}\\|\t)<CR>nw
-"autocmd Filetype go imap <silent> <c-n> <Esc>/\t}\\|\t)<CR>w
-autocmd Filetype go nmap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>o
-autocmd Filetype go imap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>o
-autocmd Filetype go vmap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>o
-"autocmd Filetype go nmap <silent> <c-k> <Esc>0?^\t*}\\|^\t*)<CR>f}f)
-"autocmd Filetype go imap <silent> <c-k> <Esc>0?^\t*}\\|^\t*)<CR>f}f)
-autocmd Filetype go nmap <silent> <c-k> o
-"autocmd Filetype go imap <silent> <c-k> <esc>vl<esc>o
-autocmd Filetype go imap <silent> <c-k> a<esc>xvl<esc>o
-autocmd Filetype go vmap <silent> <c-k> <esc>o
-"autocmd Filetype go imap <silent> <c-k> <esc>:call MyNextLine()<cr><esc>
+
+
+" ================================
+" === golang
+" ================================
+" === <c-j> <c-k> ===
+"autocmd Filetype go nmap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>o
+autocmd Filetype go nmap <silent> <c-j> <Esc>:call UltiSnips#LeavingBuffer()<cr>/^\t*}\\|^\t*)<CR>o
+"autocmd Filetype go imap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>o
+autocmd Filetype go imap <silent> <c-j> <Esc>:call UltiSnips#LeavingBuffer()<cr>/^\t*}\\|^\t*)<CR>o
+"autocmd Filetype go vmap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>o
+autocmd Filetype go vmap <silent> <c-j> <Esc>:call UltiSnips#LeavingBuffer()<cr>/^\t*}\\|^\t*)<CR>o
+"autocmd Filetype go nmap <silent> <c-k> o
+autocmd Filetype go nmap <silent> <c-k> <esc>:call UltiSnips#LeavingBuffer()<cr>o
+"autocmd Filetype go imap <silent> <c-k> a<esc>xvl<esc>o
+autocmd Filetype go imap <silent> <c-k> <esc>:call UltiSnips#LeavingBuffer()<cr>o
+"autocmd Filetype go vmap <silent> <c-k> <esc>o
+autocmd Filetype go vmap <silent> <c-k> <esc>:call UltiSnips#LeavingBuffer()<cr>o
 "autocmd Filetype go,sh imap <silent> <esc> <esc>:call UltiSnips#JumpForwards()<cr><esc><c-[>
 
-
-
-augroup myAutoFillErrGroup
+" === auto add : if err != nil { ===
+augroup myAutoFillErrGroupMy
 	autocmd!
-	autocmd TextChangedI *.go silent exec "call AutoFillErr()"
+	autocmd TextChangedI *.go silent exec "call MyAutoFillErrMy()"
 augroup END
-
-fun AutoFillErr()
+fun! MyAutoFillErrMy()
 	if &filetype == 'go'
 		let l:currentText = getline(".")
-		let l:currentIfErr = matchstr(currentText, '\t\+.*err *:\?= *\w*\.\?\w\+(.*)$')
-
+		" 只返回err
+		let l:currentIfErr = matchstr(currentText, '\t\+err *:\?= *\(\w\+\.\)*\w\+(.*)$')
 		if currentIfErr != ""
+			let l:currentLine = line(".")
+			let l:lineTab = matchstr(currentText, '\t\+')
+			"let l:newCurrentText = substitute(currentText, "\t", "",'g')
+			call setline(currentLine, lineTab."if ".currentText."; err != nil {")
+			call append(currentLine, lineTab."}")
+			call append(currentLine, lineTab."\treturn  \t ")
+			call cursor(currentLine, col(".")+4)
+			" 终止下面的判断
+			return
+		endif
+		" 多个返回结果，但无外部要使用的变量
+		let l:currentIfMErr = matchstr(currentText, '\t\+\(_ *, *\)\+err *:\?= *\(\w\+\.\)*\w\+(.*)$')
+		if currentIfMErr != ""
+			let l:currentLine = line(".")
+			let l:lineTab = matchstr(currentText, '\t\+')
+			call setline(currentLine, lineTab."if ".currentText."; err != nil {")
+			call append(currentLine, lineTab."}")
+			call append(currentLine, lineTab."\treturn  \t ")
+			call cursor(currentLine, col(".")+3)
+			" 终止下面的判断
+			return
+		endif
+		" 返回值有变量接受，同一使用独立的if err != nil {
+		let l:currentIfGErr = matchstr(currentText, '\t\+\(\w\+ *, *\)\+err *:\?= *\(\w\+\.\)*\w\+(.*)$')
+		if currentIfGErr != ""
 			let l:nextText = getline(line(".")+1)
 			let l:lastIfCan = matchstr(nextText, 'if err != nil {')
 			if lastIfCan == ""
 				let l:currentLine = line(".")
-				let l:lineTab = matchstr(getline("."), '\t\+')
+				let l:lineTab = matchstr(currentText, '\t\+')
 				call append(line("."), lineTab."}")
 				"call append(line("."), "")
-				call append(line("."), lineTab."\treturn <???>")
+				call append(line("."), lineTab."\treturn  \t ")
 				call append(line("."), lineTab."if err != nil {")
 			endif
+			" 终止下面的判断
+			return
 		endif
 
 	endif
 endfun
 
-
-
-augroup myAutoFillMapGroup
+" === auto fill map,feild of map,feild of struct ===
+" 触发格式：
+" ....map[..]..{
+" 	光标位置
+" }...
+" 触发格式：
+" ..xx : xx,
+" 	光标位置
+" }...
+augroup myAutoFillMapGroupMy
 	autocmd!
-	autocmd TextChangedI *.go silent exec "call AutoFillMap()"
+	autocmd TextChangedI *.go silent exec "call MyAutoFillMapMy()"
 augroup END
-
-fun AutoFillMap()
+fun! MyAutoFillMapMy()
 	if &filetype == 'go'
 		let l:lastText = getline(line(".")-1)
-		let l:lastIfMapHead = matchstr(lastText, '\w\+ *:= *map\[\w\+\]\w\+{$')
-
-		" new map
+		let l:lastIfMapHead = matchstr(lastText, 'map\[\w\+\]\w\+{$')
+		" 创建map
+		" 匹配头部
 		if lastIfMapHead != ""
 			let l:nextText = getline(line(".")+1)
-			let l:nextIfMapHead = matchstr(nextText, '\t\+}$')
+			let l:nextIfMapHead = matchstr(nextText, '\t\+}')
+			" 匹配下面
 			if nextIfMapHead != ""
 				let l:currentText = getline(".")
 				let l:currentIfMap = matchstr(currentText, '\t\+$')
+				" 匹配中间
 				if currentIfMap != ""
 					let l:currentLine = line(".")
 					let l:myCol = col(".")
-					"let l:lineTab = matchstr(getline("."), '\t\+')
+					" 获取key
 					let l:newMapKey = matchstr(lastIfMapHead, ".*\]")
 					let newMapKey = matchstr(newMapKey, "map\[.*")
+					let l:setMapKey = ''
+					if newMapKey == "map[string]"
+						let setMapKey = '"k": '
+					else
+						let setMapKey = ' k : '
+					endif
+					" 获取value
 					let l:newMapVal = matchstr(lastIfMapHead, "\].*{")
-					let l:setMapVal = '<value>'
+					let l:setMapVal = ''
 					if newMapVal == "]string{"
 						let setMapVal = '"s"'
 					elseif newMapVal == "]bool{"
@@ -591,180 +531,172 @@ fun AutoFillMap()
 						let setMapVal = '1'
 					elseif newMapVal == "]float64{"
 						let setMapVal = '1.0'
-					endif
-					"call setline(currentLine, lineTab.setMapVal."END")
-					if newMapKey == "map[string]"
-						call setline(currentLine, currentIfMap.'"k": '.setMapVal.',')
-						let myCol = myCol + 1
 					else
-						call setline(currentLine, currentIfMap.'k: '.setMapVal.',')
+						let setMapVal = '1'
 					endif
+					call setline(currentLine, currentIfMap.setMapKey.setMapVal.',')
 					:stopinsert
 					norm 0fks
-					call cursor(currentLine, myCol)
+					call cursor(currentLine, myCol+1)
 				endif
 			endif
+			return
 		endif
-
-		" insert map
+		
+		" 创建map字段 || 结构体字段
+		" 匹配上面
 		let l:lastIfMap = matchstr(lastText, '\t\+.\+: *.\+,$')
 		if lastIfMap != ""
 			let l:nextText = getline(line(".")+1)
-			let l:nextIfMapA = matchstr(nextText, '\t\+}$')
+			let l:nextIfMapA = matchstr(nextText, '\t\+}')
 			let l:nextIfMapB = matchstr(nextText, '\t\+.\+: *.\+,$')
+			" 匹配下面
 			if nextIfMapA != "" || nextIfMapB != ""
 				let l:currentText = getline(".")
 				let l:currentIfMap = matchstr(currentText, '\t\+$')
+				" 匹配中间
 				if currentIfMap != ""
 					let l:currentLine = line(".")
 					let l:myCol = col(".")
-					"let l:lineTab = matchstr(getline("."), '\t\+')
 					let l:newMapType = matchstr(lastIfMap, '\".*\":')
-					let l:newMapValu = matchstr(lastIfMap, ': *.*,')
-					"call setline(currentLine, newMapValu)
+					let l:newMapValu = matchstr(lastIfMap, ': *.\+,')
 					if newMapType != ""
 						call setline(currentLine, currentIfMap.'"k"'.newMapValu)
-						let myCol = myCol + 1
 					else
-						call setline(currentLine, currentIfMap.'k'.newMapValu)
+						call setline(currentLine, currentIfMap.' k '.newMapValu)
 					endif
 					:stopinsert
 					norm 0fks
-					call cursor(currentLine, myCol)
+					call cursor(currentLine, myCol+1)
 				endif
 			endif
+			return
 		endif
 	endif
 endfun
 
-
-
-augroup myAutoFillStructGroup
+" === auto fill struct ===
+" 触发格式：
+" ....xxx{
+" 	光标位置
+" }
+augroup myAutoFillStructGroupMy
 	autocmd!
-	autocmd TextChangedI *.go silent exec "call AutoFillStruct()"
+	autocmd TextChangedI *.go silent exec "call MyAutoFillStructMy()"
 augroup END
-
 "autocmd Filetype go imap <silent> <c-k> <Esc>?: \\|:= \\|= \\|\t}<CR>nw
-fun AutoFillStruct()
+fun! MyAutoFillStructMy()
 	if &filetype == 'go'
 		let l:lastText = getline(line(".")-1)
-		let l:lastIfStruct = matchstr(lastText, '\w\+ *:= *&\?\w\+{$')
-
+		let l:lastIfStruct = matchstr(lastText, '&\?[^\[\] ]\+{$')
+		" 匹配头部
 		if lastIfStruct != "" 
 			let l:nextText = getline(line(".")+1)
-			let l:nextIfStruct = matchstr(nextText, '\t\+}$')
+			let l:nextIfStruct = matchstr(nextText, '\t\+}')
+			" 匹配下面
 			if nextIfStruct != ""
 				let l:currentText = getline(".")
 				let l:currentIfStruct = matchstr(currentText, '\t\+$')
+				" 匹配中间
 				if currentIfStruct != ""
 					let l:currentLine = line(".")
-					"let l:lastLineTab = matchstr(getline(currentLine-1), '\t\+')
-					"let l:structVar = tolower(matchstr(ifStruct, '[a-z,A-Z,0-9]\+{  }'))
-					"let l:myCol = col(".")+3
-					"call setline(currentLine, lastLineTab.structVar." := ".ifStruct)
-					"call cursor(currentLine, myCol)
-					":GoFillStruct<CR>[m/:<CR>w
 					:GoFillStruct
 					:stopinsert
 					call cursor(currentLine, 1)
 					norm $
 					let l:wordEnd = col(".")
-					" end of follow have <space>
+					" 下面的F后面的 空格 是必须的
 					norm F 
 					let l:wordStart = col(".")
 					call cursor(currentLine, wordEnd-1)
 					norm gh
 					call cursor(currentLine, wordStart+1)
-	"				norm $vF \<c-g>
+					"norm $vF \<c-g>
 				endif
 			endif
+			return
 		endif
 	endif
 endfun
 
-
-
+" === location next place ===
+" 要保证 \\w\\+{$ 是结构体的开头，也就是函数的 { 前面要保留至少一个空格
 "autocmd Filetype go imap <silent> <c-l> <Esc>:call JumpPreVal()<CR>
-autocmd Filetype go imap <silent> <c-l> <Esc>:call JumpNextVal()<CR>
+autocmd Filetype go imap <silent> <c-l> <Esc>:call MyJumpNextValMy()<CR>
 "autocmd Filetype go vmap <silent> <c-l> <Esc>:call JumpPreVal()<CR>
-autocmd Filetype go vmap <silent> <c-l> <Esc>:call JumpNextVal()<CR>
-"fun JumpPreVal()
-	"call search(".*:.*,","b")
-	"let l:currentLine = line(".")
-	"norm $
-	"let l:wordEnd = col(".")
-	" "end of follow have <space>
-	"norm F 
-	"let l:wordStart = col(".")
-	"call cursor(currentLine, wordEnd-1)
-	"norm gh
-	"call cursor(currentLine, wordStart+1)
-"endfun
-fun JumpNextVal()
+autocmd Filetype go vmap <silent> <c-l> <Esc>:call MyJumpNextValMy()<CR>
+fun! MyJumpNextValMy()
 	let l:oldPosiLine = line(".")
 	let l:oldPosiCol = col(".")
-	let l:preFunHead = search("\t\t*.*\w*{$","bnWc")
-	"call cursor(oldPosiLine, oldPosiCol)
-	let l:preFunEnd = search("\t*}$","bnWc")
-	"call cursor(oldPosiLine, oldPosiCol)
-	"call setline(oldPosiLine, preFunHead.".".preFunEnd.".".oldPosiLine)
+	let l:preFunHead = search("\\w\\+{$","bnWc")
+	let l:preFunEnd = search("\t\\+}","bnWc")
 
-	" judge under function head
+	" 确定现在在 结构体{ 下面
 	if preFunHead > preFunEnd && preFunHead != oldPosiLine
-		let l:nextFunEnd = search("\t*}$","nW")
-		let l:nextFunHead = search("\t*.*{$","nW")
-		"call setline(oldPosiLine, nextFunEnd."-".nextFunHead)
-
-		" judeg over function end
+		let l:nextFunEnd = search("\t\\+}","nW")
+		let l:nextFunHead = search("\\w\\+{$","nW")
+		" 确定现在在 } 上面
 		if nextFunEnd < nextFunHead || nextFunHead == 0
-			"call setline(oldPosiLine, currentLineA)
-			let l:newPosi = search(": *.*,","n")
-			" make circle
-			let l:ifInFun = "0"
-				"call setline(oldPosiLine, newPosi)
-			if oldPosiLine+1 == nextFunEnd && newPosi+1 != nextFunEnd
-				"call setline(oldPosiLine, nextFunEnd)
-				let ifInFun = "1"
-				let newPosi = preFunHead+1
+			" 目前是最后一个字段的值的位置的话：回到第一个字段上面（没有字段的结构体不需要换行{}）
+			let l:nextPosi = search(": *.*,", "n")
+			if oldPosiLine+1 == nextFunEnd && nextPosi+1 != nextFunEnd
 				call cursor(preFunHead, oldPosiCol)
 			endif
-			" judge object in function
-			let l:haveField = search(": *.*,","n")
-			if newPosi > preFunHead && newPosi < nextFunEnd && haveField > preFunHead && haveField < nextFunEnd
-				let ifInFun = "0"
-				" make can jump to current line
+			" 查找下一个字段
+			let l:newPosi = search(": *.*,","n")
+			if newPosi > preFunHead && newPosi < nextFunEnd
+				" 现在 已经找到并确定位置，开始准备移动
 				call search(": *.*,")
 				let l:currentLine = line(".")
 				norm $
 				let l:wordEnd = col(".")
-				" end of follow have <space>
+				" F后面的 空格 是必须的
 				norm F 
 				let l:wordStart = col(".")
 				call cursor(currentLine, wordEnd-1)
 				norm gh
 				call cursor(currentLine, wordStart+1)
 			endif
-			if ifInFun == "1"
-				call cursor(oldPosiLine, oldPosiCol)
-			endif
 		endif
 	else
-		"let l:objectPosi = search("<???>","n")
-		"if objectPosi != 0
-		let canFind = search("<???>")
-		if canFind != 0
+		" 不是结构体内的情况：查找定位点
+		let l:canFindA = search("<???>","n")
+		if canFindA != 0
+			call search("<???>")
 			let l:curLine = line(".")
 			let l:wordStart = col(".")
-			norm f>
 			norm gh
-			call cursor(curLine, wordStart)
+			"call cursor(curLine, wordStart)
+			return
 		endif
-		"endif
+
+		let l:oldLine = line(".")
+		let l:canFindB = search("))","n")
+		if canFindB != 0 && canFindB == oldLine
+			call search("))")
+			let l:curLine = line(".")
+			let l:wordStart = col(".")
+			norm li, 
+			:stopinsert
+			norm l
+			:startinsert
+			"call cursor(curLine, wordStart)
+			return
+		endif
+
+		let l:canFindC = search(" \t ","n")
+		if canFindC != 0
+			call search(" \t ")
+			let l:curLine = line(".")
+			let l:wordStart = col(".")
+			norm gh
+			"call cursor(curLine, wordStart)
+			return
+		endif
 	endif
 endfun
 
-
-
+" === auto do annotation ===
 "augroup myAutoAnnotationGroup
 "	autocmd!
 "	autocmd TextChangedI *.go silent exec "call AutoAnnotation()"
@@ -786,81 +718,75 @@ endfun
 "
 "endfun
 
+" === auto snippets by two char ===
+"inoremap <expr> <cr> coc#_select_confirm()
+augroup mySnippetGroupMy
+	autocmd!
+	autocmd TextChangedP *.go silent call MyAutoSnippetMy()
+	autocmd TextChangedI *.go silent call MyAutoSnippetMy()
+augroup END
+fun! MyAutoSnippetMy()
+	"let l:ifExpand = pumvisible()
+	"let l:curCol = col(".")
+	"exe "norm <c-y>"
+	let l:currentText = getline(".")
+	let l:funcText = matchstr(currentText, '^\t*..$')
+	if funcText != ""
+		call UltiSnips#ExpandSnippet()
+	endif
+	"call coc#refresh()
+endfun
 
 
-autocmd Filetype go,sh,proto,vim nmap <silent> <c-h> :call DoAnnotation()<CR>
-fun DoAnnotation()
+
+
+
+" ================================
+" === make annotation
+" ================================
+autocmd Filetype go,sh,proto,vim nmap <silent> <c-h> :call MyDoAnnotationMy()<CR>
+fun! MyDoAnnotationMy()
+	" //类型
 	if &filetype == 'proto' || &filetype == 'go'
 		let l:myCurrentText = getline(".")
 		let l:myText = matchstr(myCurrentText, '^\t* *//.*')
-		"call append(line(".")+1, myText)
 		if myText == ""
-			" not have annotation
 			:execute "normal ^i//\<Esc>j"
 		else
-			" have annotation
-			:normal ^xxj
+			let l:newCurrentText = substitute(myCurrentText, "// *", "","")
+			call setline(line("."), newCurrentText)
+			:normal j
 		endif
+		return
 	endif
+
+	" #类型
 	if &filetype == 'sh'
 		let l:myCurrentText = getline(".")
 		let l:myText = matchstr(myCurrentText, '^\t* *#.*')
-		"call append(line(".")+1, myText)
 		if myText == ""
-			" not have annotation
 			:execute "normal ^i#\<Esc>j"
 		else
-			" have annotation
-			:normal ^xj
+			let l:newCurrentText = substitute(myCurrentText, "# *", "","")
+			call setline(line("."), newCurrentText)
+			:normal j
 		endif
+		return
 	endif
+
+	" "类型
 	if &filetype == 'vim'
 		let l:myCurrentText = getline(".")
 		let l:myText = matchstr(myCurrentText, '^\t* *".*')
-		"call append(line(".")+1, myText)
 		if myText == ""
-			" not have annotation
 			:execute "normal ^i\"\<Esc>j"
 		else
-			" have annotation
-			:normal ^xj
+			let l:newCurrentText = substitute(myCurrentText, '" *', "","")
+			call setline(line("."), newCurrentText)
+			:normal j
 		endif
+		return
 	endif
-endfun
-
-
-
-"autocmd Filetype * nnoremap <silent> <expr><S-CR> dd<CR>
-"inoremap <expr> <cr> coc#_select_confirm()
-augroup mySnippetGroup
-	autocmd!
-	autocmd TextChangedP *.go silent call MyAutoSnippetP()
-	autocmd TextChangedI *.go silent call MyAutoSnippetI()
-augroup END
-fun MyAutoSnippetP()
-"	let l:ifExpand = pumvisible()
-"	let l:curCol = col(".")
-"	exe "norm <c-y>"
-"	call cursor(".", curCol+1)
-
-	let l:currentText = getline(".")
-	let l:funcText = matchstr(currentText, '^\t*..$')
-"	call system("echo ".shellescape(expand(currentText))." | xsel -b")
-	if funcText != ""
-		call UltiSnips#ExpandSnippet()
-	endif
-
-"	let l:kkk = coc#refresh()
-endfun
-fun MyAutoSnippetI()
-	let l:currentText = getline(".")
-	let l:funcText = matchstr(currentText, '^\t*..$')
-"	call system("echo ".shellescape(expand(currentText))." | xsel -b")
-	if funcText != ""
-		call UltiSnips#ExpandSnippet()
-	endif
-
-"	:call coc#refresh()
 endfun
 
 
@@ -868,61 +794,52 @@ endfun
 
 
 " ================================
-" ===plug manager
+" === plug manager
 " ================================
 " more plug search : vimawesome.com
-filetype plugin on
-filetype plugin indent on
 call plug#begin('~/.vim/plugged')
-"Plug 'fatih/molokai'
-"Plug 'dense-analysis/ale'
-Plug 'gvls/vim-go-markdown-colors'
-" neoranger rnvimr
-Plug 'francoiscabrol/ranger.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-surround'
-" need install nodejs npm yarn
-Plug 'neoclide/coc.nvim', {'branch':'release'}
-Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto']}
-Plug 'fatih/vim-go', {'for':'go', 'do':':GoInstallBinaries'}
-Plug 'ctrlpvim/ctrlp.vim', {'for':'go'}
-Plug 'SirVer/ultisnips', {'for':'go'}
-Plug 'buoto/gotests-vim', {'for':'go'}
-" need cd directory and go build
-Plug 'tenfyzhong/gengotag', {'for': 'go'}
-Plug 'vim-scripts/argtextobj.vim', {'for':'go'}
+"Plug 'dense-analysis/ale' " check grammar
+Plug 'gvls/vim-nature-color' " vim color
+Plug 'francoiscabrol/ranger.vim' " neoranger rnvimr
+Plug 'airblade/vim-gitgutter' " git : show add, change, remove
+Plug 'tpope/vim-surround' " CUID surround of text
+Plug 'neoclide/coc.nvim', {'branch':'release'} " need install nodejs npm yarn
+Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto']} " {} [] () ...
+Plug 'fatih/vim-go', {'for':'go', 'do':':GoInstallBinaries'} " IDE for golang
+Plug 'ctrlpvim/ctrlp.vim', {'for':'go'} " help search text
 "Plug 'junegunn/fzf.vim'
 "Plug 'junegunn/fzf'
+Plug 'SirVer/ultisnips', {'for':'go'} " snippets
+"Plug 'honza/vim-snippets', {'for':'go'}
+Plug 'buoto/gotests-vim', {'for':'go'}
+Plug 'tenfyzhong/gengotag', {'for': 'go'} " use configuration file generate struct. need cd directory and go build
+Plug 'vim-scripts/argtextobj.vim', {'for':'go'}
+Plug 'godlygeek/tabular', {'for':['markdown','vim']}
+Plug 'dhruvasagar/vim-table-mode', {'for':'markdown'} " make table
 "Plug 'ianva/vim-youdao-translater'
 "Plug 'preservim/nerdcommenter', {'for':['go','vim']}
-"Plug 'honza/vim-snippets', {'for':'go'}
-Plug 'godlygeek/tabular', {'for':['markdown','vim']}
-Plug 'dhruvasagar/vim-table-mode', {'for':'markdown'}
-"Plug 'preservim/vim-markdown', {'for':'markdown'}
 "Plug 'junegunn/vim-easy-align'
 ":call mkdp#util#install()
 "Plug 'vim-signiture'
 call plug#end()
-" PlugInstall
-function! UpdateMyAllPlugins()
+
+" === PlugInstall ===
+fun! UpdateMyAllPlugins()
 	exec "PlugUpgrade"
 	exec "PlugUpdate"
 	exec "GoUpdateBinaries"
-endfunction
+endfun
 
 
 
 
 
 " ================================
-" ===colors
+" === colors
 " ================================
-"code hight light
-syntax enable
-syntax on
-" :so $VIMRUNTIME/syntax/hitest.vim
-color vim-go-markdown-colors
-" molokai
+syntax enable " :source $VIMRUNTIME/syntax/syntax.vim
+syntax on " vim 使用缺省值覆盖自己的
+color vim-nature-color
 "let g:rehash256 = 1
 "let g:molokai_original = 1
 "colorscheme molokai
@@ -932,7 +849,7 @@ color vim-go-markdown-colors
 
 
 " ================================
-" ===ranger
+" === ranger
 " ================================
 let g:ranger_map_keys = 0
 nmap <silent> <space>ra :RangerCurrentFileExistingOrNewTab<CR>
@@ -942,35 +859,79 @@ nmap <silent> <space>ra :RangerCurrentFileExistingOrNewTab<CR>
 
 
 " ================================
-" ===gitgutter
+" === gitgutter
 " ================================
+" '[c' ']c' jump to change
+"let g:gitgutter_diff_relative_to = 'working_tree'
+"let g:gitgutter_git_args = '--git-dir-""'
+"let g:gitgutter_diff_args = '-w'
+"let g:gitgutter_use_location_list = 1
+"let g:gitgutter_sign_allow_clobber = 0
+"g:gitgutter_show_msg_on_hunk_jumping
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '~'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_removed_first_line = '^^'
 let g:gitgutter_sign_removed_above_and_below = '{'
-let g:gitgutter_sign_modified_removed = '~-'
-function! GitStatusA()
-  let [a,m,r] = GitGutterGetHunkSummary()
-  return a > 0?''.a.'':' '
-"  return printf('+%d ~%d -%d', a, m, r)
-endfunction
-function! GitStatusM()
-  let [a,m,r] = GitGutterGetHunkSummary()
-  return m > 0?''.m.'':' '
-endfunction
-function! GitStatusR()
-  let [a,m,r] = GitGutterGetHunkSummary()
-  return r > 0?''.r.'':' '
-endfunction
+let g:gitgutter_sign_modified_removed = '_~'
+fun! GitStatusA()
+	if exists("*GitGutterGetHunkSummary")
+		let [a,m,r] = GitGutterGetHunkSummary()
+		return a > 0?''.a.'':' '
+	else
+		return ' '
+	endif
+  	"return printf('+%d ~%d -%d', a, m, r)
+endfun
+fun! GitStatusM()
+	if exists("*GitGutterGetHunkSummary")
+		let [a,m,r] = GitGutterGetHunkSummary()
+		return m > 0?''.m.'':' '
+	else
+		return ' '
+	endif
+endfun
+fun! GitStatusR()
+	if exists("*GitGutterGetHunkSummary")
+		let [a,m,r] = GitGutterGetHunkSummary()
+		return r > 0?''.r.'':' '
+	else
+		return ' '
+	endif
+endfun
+let g:gitgutter_map_keys = 0 " disable all map by plugin
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
+nmap <space>hs <Plug>(GitGutterStageHunk)
+nmap <space>hu <Plug>(GitGutterUndoHunk)
+nmap <silent> <space>hp :call MyGitHunkFloatMy()<cr>
+fun! MyGitHunkFloatMy()
+	let g:gitgutter_preview_win_floating = 1
+	exe "GitGutterPreviewHunk"
+endfun
+let g:gitgutter_close_preview_on_escape = 1
+nmap <space>hP :call MyGitHunkWinMy()<cr>
+fun! MyGitHunkWinMy()
+	let g:gitgutter_preview_win_floating = 0
+	exe "GitGutterPreviewHunk"
+endfun
+" use 'zr' to show part
+" set foldtext=gitgutter#fold#foldtext()
+nmap <space>hf :GitGutterFold<cr>
+"omap <space>ih <Plug>(GitGutterTextObjectInnerPending)
+"omap <space>ah <Plug>(GitGutterTextObjectOuterPending)
+"xmap <space>ih <Plug>(GitGutterTextObjectInnerVisual)
+"xmap <space>ah <Plug>(GitGutterTextObjectOuterVisual)
+command! Gqf GitGutterQuickFix | copen
 
 
 
 
 
 " ================================
-" ===vim-table-mode
+" === vim-table-mode
 " ================================
+" use key(\tm) to enable
 "function! s:isAtStartOfLine(mapping)
 "  let text_before_cursor = getline('.')[0 : col('.')-1]
 "  let mapping_pattern = '\V' . escape(a:mapping, '\')
@@ -989,82 +950,69 @@ endfunction
 
 
 " ================================
-" ===ultisnips
+" === ultisnips
 " ================================
-" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
-" - https://github.com/Valloric/YouCompleteMe
-" - https://github.com/nvim-lua/completion-nvim
-let g:UltiSnipsExpandTrigger=",e"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpForwardTrigger=",f"
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsJumpBackwardTrigger=",F"
-"let g:UltiSnipsSnippetDirectories =['','']
-
-" If you want :UltiSnipsEdit to split your window.
+" :smap to get map list
+let g:UltiSnipsExpandTrigger="<c-c>" " ,e <tab>
+let g:UltiSnipsJumpForwardTrigger="<c-l>" " ,f <c-b>
+let g:UltiSnipsJumpBackwardTrigger="" " <c-b> <c-z> ,F
+let g:UltiSnipsListSnippets="<c-b>"
 "let g:UltiSnipsEditSplit="vertical"
-
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips'] 
+"let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/myUltiSnips'] 
+let b:UltiSnipsSnippetDirectories=[$HOME.'/.vim/myUltiSnips']
 
 
 
 
 
 " ================================
-" ===vim-go===
+" === vim-go
 " ================================
 "autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 autocmd Filetype go nmap <space>gM <esc>?\w\+(<cr>
 autocmd Filetype go nmap <space>gm <esc>/\w\+(<cr>
-
 autocmd Filetype go nmap <space>gc :GoRename<space>
-
+augroup myGoProjectDirGroupMy
+	autocmd!
+	autocmd BufRead *.go silent call MyGoProjectDirMy()
+augroup END
+"let g:MyGoPathDirMy = getenv("GOPATH")
+let g:MyGoMainDirMy = ""
+fun! MyGoProjectDirMy()
+	let l:path = getcwd()
+	let l:gopath = substitute(path, "src/.*$", "src", "")
+	let g:MyGoMainDirMy = path
+	while !filereadable(g:MyGoMainDirMy."/main.go") && g:MyGoMainDirMy != "" && g:MyGoMainDirMy != gopath
+		let g:MyGoMainDirMy = substitute(g:MyGoMainDirMy, "/[^/]*$", "", "")
+	endwhile
+	"call setline(line("."), g:MyGoMainDirMy)
+	exe "GoGuruScope ".g:MyGoMainDirMy
+endfun
 autocmd Filetype go nmap <space>gC :GoChannelPeers<space>
-
 autocmd Filetype go nmap <silent> <space>ga :GoAlternate<CR>
-
-" go to definition use guru but it may slow
-"let g:go_def_mode = 'godef'
+"let g:go_def_mode = 'godef' " go to definition use guru but it may slow
 autocmd Filetype go nmap <silent> <space>gd :GoDef<CR>
 autocmd Filetype go nmap <silent> <space>gD :GoDefType<CR>
 autocmd Filetype go nmap <silent> <space>gb :GoDefPop<CR>
 "nmap <silent> <space>gs :GoDefStack<CR>
-
-" cnext cprevious cclose lnext lprevious lclose
-"let g:go_list_type = "quickfix"
+"let g:go_list_type = "quickfix" " cnext cprevious cclose lnext lprevious lclose
+autocmd Filetype go nmap <space>g1 :lfirst<cr>
 autocmd Filetype go nmap <space>gk :lprevious<cr>
 autocmd Filetype go nmap <space>gj :lnext<cr>
 autocmd Filetype go nmap <space>g[ :lclose<cr>
-autocmd Filetype go nmap <space>gi :GoImplements<cr>
+autocmd Filetype go nmap <space>gi :GoImplements<cr>:lfirst<cr>
 autocmd Filetype go nmap <space>gI :GoImpl<space>
-
-"let g:go_fillstruct_mode = 'fillstruct'
-let g:go_fillstruct_mode = 'gopls'
+let g:go_fillstruct_mode = 'gopls' " 'fillstruct'
 autocmd Filetype go nmap <silent> <space>gs :GoFillStruct<CR>[m/:<CR>w
-
 autocmd Filetype go nmap <silent> <space>gv :GoSameIdsAutoToggle<CR>
-
-" show funciton struct
 "let g:go_decls_includes = "func,type"
 autocmd Filetype go nmap <silent> <space>gf :GoDecls<CR>
 autocmd Filetype go nmap <silent> <space>gF :GoDeclsDir<CR>
-
-" Possible options are: `snakecase`(_), `camelcase`(aBc), `lispcase`, `pascalcase`, `keep`
 autocmd Filetype go nmap <space>gt :GoAddTags<space>
 autocmd Filetype go nmap <space>gT :GoRemoveTags<space>
-" `snakecase`, `camelcase`, `lispcase`, `pascalcase`, `keep`
-let g:go_addtags_transform = 'camelcase'
+let g:go_addtags_transform = 'camelcase' " Possible options are: `snakecase`(a_b_c), `camelcase`(aBc), `lispcase(a-b-c)`, `pascalcase(AbCd)`, `keep`
 
-"dif, daf...
-" jump to error
-":cnext
-":cprevious
-":cclose
-
-"let g:go_list_type = "quickfix"
-
-" debug window
+" === debug window ===
 let g:go_debug_windows = {
 		\ 'vars':       'leftabove 40vnew',
 		\ 'stack':      'botright 3new',
@@ -1085,59 +1033,47 @@ let g:go_debug_mappings = {
 	     \ '(go-debug-stop)':       {'key': '<F12>'},
 	  \ }
 
-"show type of function , variate
-let g:go_auto_type_info = 1
-
-" update time
-let g:go_updatetime = 100
-
-" hilight for same variate
-"let g:go_auto_sameids = 0
-"
-" inside terminal
-let g:go_term_enabled = 1
+" === basic settings ===
+let g:go_auto_type_info = 1 "show type of function , variate
+let g:go_updatetime = 100 " update time
+"let g:go_auto_sameids = 0 " hilight for same variate
+let g:go_term_enabled = 1 " inside terminal
 let g:go_term_width = 40
 "let g:go_term_height = 5
 let g:go_term_mode = "rightbelow vsplit"
-
-" do after save 
-"let g:go_fmt_autosave = 1
+"let g:go_fmt_autosave = 1 " do after save 
 "let g:go_imports_autosave = 1
 "let g:go_mod_fmt_autosave = 1
 "let g:go_asmfmt_autosave = 0
 "let g:go_template_autocreate = 1
 "let g:go_fmt_command = "goimports"
-
 let g:go_metalinter_autosave = 1
 "let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_command = "gopls"
 "let g:go_metalinter_deadline = "5s"
 
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let	g:go_highlight_function_calls = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_variable_declarations = 1
-" build flag on head of file
+" === hightlight ===
+let g:go_highlight_operators = 1 " := + - * /
+let g:go_highlight_variable_declarations = 1 " variate of :=
+"let g:go_highlight_trailing_whitespace_error = 0 " space in tail of line
+"let g:go_highlight_space_tab_error = 0 " tab after space
+"let g:go_highlight_chan_whitespace_error = 0 " space beside <- ->
+"let g:go_highlight_array_whitespace_error = 0 " space beside []
+let	g:go_highlight_function_calls = 1 " call function
+"let g:go_highlight_functions = 0 " function methon declaration
+"let g:go_highlight_function_parameters = 0 " parameter of function
+let g:go_highlight_types = 1 " struct and interface name
+"let g:go_highlight_fields = 0 " struct field name
+"let g:go_highlight_string_spellcheck = 1 " when 'spell' is enable
+"let g:go_highlight_format_strings = 1 " %s %v %d
+"let g:go_highlight_variable_assignments = 0 " variate of =
+"let g:go_highlight_diagnostic_errors = 1
+"let g:go_highlight_diagnostic_warnings = 1
+"let g:go_highlight_generate_tags = 0 " hightlight generate text
+"let g:go_highlight_build_constraints = 0 " build flag on head of file
 "let g:go_highlight_build_constraints = 1
-" hightlight generate text
-"let g:go_highlight_generate_tags = 1
-
-"let g:go_highlight_structs = 1
-"let g:go_highlight_extra_types = 1
-
-
-"let g:go_highlight_array_whitespace_error = 1
-"let g:go_highlight_chan_whitespace_error = 1
-"let g:go_highlight_format_strings = 0
-"let g:go_highlight_functions = 1
-"let g:go_highlight_methods = 0
-"let g:go_highlight_space_tab_error = 1
-"let g:go_highlight_string_spellcheck = 1
-"let g:go_highlight_trailing_whitespace_error = 1
-"let g:go_highlight_variable_assignments = 1
-"let g:go_doc_keywordprg_enabled = 
+let g:go_highlight_extra_types = 1 " lib type (io.Reader) unsafe.Pointer context.Context
+"let g:go_fold_enable = "block"
 
 
 
@@ -1154,22 +1090,18 @@ let g:go_highlight_variable_declarations = 1
 "let g:coc_global_extensions = ['coc-snippets']
 "imap ,e <Plug>(coc-snippets-expand)
 
-" TextEdit might fail if hidden is not set.
-"set hidden
+"set hidden " TextEdit might fail if hidden is not set.
 
 " Some servers have issues with backup files, see #649.
 "set nobackup
 "set nowritebackup
 
-" Give more space for displaying messages.
-"set cmdheight=1
+"set cmdheight=1 " Give more space for displaying messages.
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=100
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
+set shortmess+=c " Don't pass messages to |ins-completion-menu|.
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
@@ -1344,7 +1276,7 @@ let g:coc_default_semantic_highlight_groups = 1
 
 
 " ================================
-" ===auto-pairs
+" === auto-pairs
 " ================================
 "let g:AutoPairsShortcutFastWrap = '<c-l>'
 let g:AutoPairsMapSpace = 0
@@ -1354,19 +1286,6 @@ let g:AutoPairsMapSpace = 0
 
 
 " ================================
-" ===nerdtree
-" ================================
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-" Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-let g:NERDTreeWinSize = 15
-
-
-
-
-
-" ================================
-" ===gotests
+" === gotests
 " ================================
 let g:gotests_bin = '/home/zombie/go/bin/gotests'

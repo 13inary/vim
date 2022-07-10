@@ -249,15 +249,14 @@ endsnippet
 
 # jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
 snippet jm "json.Marshal()"
-$1Json, err := json.Marshal(${1:<Struct>})
+$1Jsonb, err := json.Marshal(${1:<Struct>})
 if err != nil {
 	return ${0:err}
 }
 endsnippet
 
 snippet ju "json.Unmarshal()"
-err = json.Unmarshal($1Json, &${1:<Struct>})
-if err != nil {
+if err := json.Unmarshal(${2:$1Jsonb}, &${1:<Struct>}); err != nil {
 	return ${0:err}
 }
 endsnippet
