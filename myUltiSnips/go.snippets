@@ -228,6 +228,10 @@ endsnippet
 # hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 
 # iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+snippet is "[]int{}"
+[]int{${0}}
+endsnippet
+
 snippet if "if ... { ... }"
 if ${0:flag} {
 }
@@ -333,6 +337,10 @@ endsnippet
 
 
 # ssssssssssssssssssssssssssssssss
+snippet ss "[]string{}"
+[]string{${0}}
+endsnippet
+
 snippet sl "select { case a := <-chan: ... }"
 select {
 case ${1:v} := <-${2:<chan>}:
