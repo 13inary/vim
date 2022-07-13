@@ -228,10 +228,6 @@ endsnippet
 # hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 
 # iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-snippet is "[]int{}"
-[]int{${0}}
-endsnippet
-
 snippet if "if ... { ... }"
 if ${0:flag} {
 }
@@ -337,8 +333,12 @@ endsnippet
 
 
 # ssssssssssssssssssssssssssssssss
-snippet ss "[]string{}"
-[]string{${0}}
+snippet ss "string.Split()"
+${4:sp} := strings.Split(${1:<src>}, "${2:sep}")[${3:0}]
+endsnippet
+
+snippet sS "string.Split()"
+${3:splits} := strings.Split(${1:<src>}, "${2:sep}")
 endsnippet
 
 snippet sl "select { case a := <-chan: ... }"
