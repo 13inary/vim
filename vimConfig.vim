@@ -439,11 +439,12 @@ fun! MyAutoFillErrMy()
 		if currentIfErr != ""
 			let l:currentLine = line(".")
 			let l:lineTab = matchstr(currentText, '\t\+')
-			"let l:newCurrentText = substitute(currentText, "\t", "",'g')
-			call setline(currentLine, lineTab."if ".currentText."; err != nil {")
+			let l:newCurrentText = substitute(currentText, "\t", "",'g')
+			call setline(currentLine, lineTab."if ".newCurrentText."; err != nil {")
 			call append(currentLine, lineTab."}")
 			call append(currentLine, lineTab."\treturn  \t ")
-			call cursor(currentLine, col(".")+4)
+			call search("()","Wc")
+			call cursor(currentLine, col(".")+1)
 			" 终止下面的判断
 			return
 		endif
@@ -452,10 +453,12 @@ fun! MyAutoFillErrMy()
 		if currentIfMErr != ""
 			let l:currentLine = line(".")
 			let l:lineTab = matchstr(currentText, '\t\+')
-			call setline(currentLine, lineTab."if ".currentText."; err != nil {")
+			let l:newCurrentText = substitute(currentText, "\t", "",'g')
+			call setline(currentLine, lineTab."if ".newCurrentText."; err != nil {")
 			call append(currentLine, lineTab."}")
 			call append(currentLine, lineTab."\treturn  \t ")
-			call cursor(currentLine, col(".")+3)
+			call search("()","Wc")
+			call cursor(currentLine, col(".")+1)
 			" 终止下面的判断
 			return
 		endif
