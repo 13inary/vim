@@ -11,7 +11,7 @@
 set nocompatible " not suit 'vi' and get more fuction
 filetype plugin indent on " 为特定文件使用插件 为特定文件类型使用缩进 开启检测文件类型。获取文件类型：&filetype == 'vim'
 set showmatch " such as ( ... )
-set showtabline=2 " show tab line
+set showtabline=1 " show tab line
 set noruler " cursor status in riht corner
 "set ambiwidth=double " display by 2character
 set autochdir " execute oder in current dir
@@ -55,7 +55,7 @@ set viminfo='1000,<100 " 'yy'的最大行数
 " === 状态行 ===
 "%<	如果状态行过长，在何处换行。缺省是在开头。
 set statusline=
-set statusline+=%#LineNr#\ %1*%r\ %5*==\ %3*%l%4*-%3*%v\ %5*==
+set statusline+=%#LineNr#\ %1*%r%M\ %9*\ %l%5*-%9*%v
 "set statusline+=\ %4*%{StatuslineGit()}
 set statusline+=\ %4*-%8*%{GitStatusA()}%4*-%6*%{GitStatusM()}%4*-%1*%{GitStatusR()}%4*-
 set statusline+=\ %=
