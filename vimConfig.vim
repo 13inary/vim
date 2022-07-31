@@ -55,9 +55,9 @@ set viminfo='1000,<100 " 'yy'的最大行数
 " === 状态行 ===
 "%<	如果状态行过长，在何处换行。缺省是在开头。
 set statusline=
-set statusline+=%#LineNr#\ %1*%r%M\ %9*\ %l%5*-%9*%v
+set statusline+=%#LineNr#\ %1*%r%M\ %3*%l%4*-%3*%v
 "set statusline+=\ %4*%{StatuslineGit()}
-set statusline+=\ %4*\ -%8*%{GitStatusA()}%4*-%6*%{GitStatusM()}%4*-%1*%{GitStatusR()}%4*-
+set statusline+=\ %4*-%8*%{GitStatusA()}%4*-%6*%{GitStatusM()}%4*-%1*%{GitStatusR()}%4*-
 set statusline+=\ %=
 set statusline+=\ %4*%L\ %7*%Y\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*%p%%
 "fun! GitBranch()
