@@ -1,6 +1,7 @@
 {
 	//"suggest.autoTrigger": "trigger",
 	//"suggest.minTriggerInputLength": 1,
+	"suggest.noselect": true,
 	"suggest.completionItemKindLabels": {
 			//"keyword": "\u039a",k K
 			"keyword": "\u049a",

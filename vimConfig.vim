@@ -1121,26 +1121,48 @@ endif
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-	\ pumvisible() ? "\<C-n>" :
-	\ <SID>check_back_space() ? "\<TAB>" :
-	\ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+"inoremap <silent><expr> <TAB>
+"	\ pumvisible() ? "\<C-n>" :
+"	\ <SID>check_back_space() ? "\<TAB>" :
+"	\ coc#refresh()
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 "inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 "return !col || getline('.')[col - 1]  =~ '\s'
 
 " Use <c-space> to trigger completion.
 " call complement
-if has('nvim')
-	autocmd Filetype go,vim inoremap <silent><expr> <c-space> coc#refresh()
-else
-	autocmd Filetype go,vim inoremap <silent><expr> <c-@> coc#refresh()
-endif
+"if has('nvim')
+"	autocmd Filetype go,vim inoremap <silent><expr> <c-space> coc#refresh()
+"else
+"	autocmd Filetype go,vim inoremap <silent><expr> <c-@> coc#refresh()
+"endif
+"
+"Map <tab> for trigger completion, completion confirm, snippet expand and jump
+"like VSCode: >
+"  inoremap <silent><expr> <TAB>
+"    \ coc#pum#visible() ? coc#_select_confirm() :
+"    \ coc#expandableOrJumpable() ?
+"    \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"    \ CheckBackSpace() ? "\<TAB>" :
+"    \ coc#refresh()
+"  function! CheckBackSpace() abort
+"    let col = col('.') - 1
+"    return !col || getline('.')[col - 1]  =~# '\s'
+"  endfunction
+"  let g:coc_snippet_next = '<tab>'
+"<
+"Note: the `coc-snippets` extension is required for this to work.
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
