@@ -1083,7 +1083,7 @@ let g:go_highlight_extra_types = 1 " lib type (io.Reader) unsafe.Pointer context
 
 
 " ================================
-" ===coc
+" ===coc v0.0.82
 " ================================
 " :h coc-variable
 "let g:coc_node_path =
