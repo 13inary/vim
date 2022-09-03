@@ -241,11 +241,13 @@ fun! MyOrderOrderNumberMy()
 	let l:currentText = getline(".")
 	let l:lastText = getline(line(".")-1)
 	let l:nextText = getline(line(".")+1)
-	let l:lastOrder = matchstr(lastText, '^[0-9]\+\. ')
+	let l:lastOrder = matchstr(lastText, '^[0-9]\+\. \+[^ ]\+')
+	let l:lastOrderE = matchstr(lastText, '^[0-9]\+\. *$')
 	let l:nextOrder = matchstr(nextText, '^[0-9]\+\. ')
 	"call append(line(".")+1, lastOrder)
 	if currentText == "" && lastOrder != ""
-		call setline(currentLine, lastOrder)
+		let l:newText = matchstr(lastOrder, '^[0-9]\+\. \+')
+		call setline(currentLine, newText)
 		let l:forLine = currentLine + 1
 		while nextOrder != ""
 			:execute "normal j^\<c-a>"
@@ -256,6 +258,8 @@ fun! MyOrderOrderNumberMy()
 		endwhile
 		call cursor(currentLine, 1)
 		:execute "normal ^\<c-a>$a "
+	elseif currentText == "" && lastOrderE != ""
+		call setline(currentLine-1, "")
 	endif
 endfun
 
