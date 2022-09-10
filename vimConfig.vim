@@ -1130,28 +1130,12 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-"inoremap <silent><expr> <TAB>
-"	\ pumvisible() ? "\<C-n>" :
-"	\ <SID>check_back_space() ? "\<TAB>" :
-"	\ coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 "return !col || getline('.')[col - 1]  =~ '\s'
 
-" Use <c-space> to trigger completion.
-" call complement
-"if has('nvim')
-"	autocmd Filetype go,vim inoremap <silent><expr> <c-space> coc#refresh()
-"else
-"	autocmd Filetype go,vim inoremap <silent><expr> <c-@> coc#refresh()
-"endif
-"
 "Map <tab> for trigger completion, completion confirm, snippet expand and jump
 "like VSCode: >
 "  inoremap <silent><expr> <TAB>
@@ -1167,11 +1151,6 @@ endfunction
 "  let g:coc_snippet_next = '<tab>'
 "<
 "Note: the `coc-snippets` extension is required for this to work.
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-	"\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -1193,6 +1172,10 @@ autocmd Filetype go,vim nmap <silent> <space>gl <plug>(coc-openlink)
 
 " call help
 autocmd Filetype go,vim nnoremap <silent> <space>gh :call CocActionAsync('doHover')<cr>
+
+" scroll pum
+inoremap <silent><expr> <PageDown> coc#pum#visible() ? coc#pum#scroll(1) : "\<PageDown>"
+inoremap <silent><expr> <PageUp> coc#pum#visible() ? coc#pum#scroll(0) : "\<PageUp>"
 
 " Use K to show documentation in preview window.
 "nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -1299,6 +1282,11 @@ let g:coc_default_semantic_highlight_groups = 1
 "			\   "filetypes": ["c", "cpp", "objc", "objcpp"]
 "			\ }
 "			\})
+
+"Disable completion for buffer: |b:coc_suggest_disable|
+"Disable specific sources for buffer: |b:coc_disabled_sources|
+"Disable words for trigger completion: |b:coc_suggest_blacklist|
+"Add additional keyword characters: |b:coc_additional_keywords|
 
 
 
