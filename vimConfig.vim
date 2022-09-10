@@ -1154,11 +1154,11 @@ endfunction
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-" swtich next error
+" swtich next error. map key example: <space>gn <space>gN
 "nmap <silent> [g <Plug>(coc-diagnostic-prev)
 "nmap <silent> ]g <Plug>(coc-diagnostic-next)
-autocmd Filetype go,vim nmap <silent> <space>gN <Plug>(coc-diagnostic-prev)
-autocmd Filetype go,vim nmap <silent> <space>gn <Plug>(coc-diagnostic-next)
+autocmd Filetype go,vim nmap <silent> [e <Plug>(coc-diagnostic-prev)
+autocmd Filetype go,vim nmap <silent> ]e <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 " go to define and show path of file
