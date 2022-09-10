@@ -1152,11 +1152,8 @@ endfunction
 "<
 "Note: the `coc-snippets` extension is required for this to work.
 
-" Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-" swtich next error. map key example: <space>gn <space>gN
-"nmap <silent> [g <Plug>(coc-diagnostic-prev)
-"nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" swtich next diagnostics. map key example: <space>gn <space>gN [g ]g
 autocmd Filetype go,vim nmap <silent> [e <Plug>(coc-diagnostic-prev)
 autocmd Filetype go,vim nmap <silent> ]e <Plug>(coc-diagnostic-next)
 
