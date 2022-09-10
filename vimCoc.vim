@@ -196,3 +196,4 @@ let g:coc_default_semantic_highlight_groups = 1
 "Disable specific sources for buffer: |b:coc_disabled_sources|
 "Disable words for trigger completion: |b:coc_suggest_blacklist|
 "Add additional keyword characters: |b:coc_additional_keywords|
+let g:coc_config_home = '/usr/local/vim/cocConfig'

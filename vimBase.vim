@@ -195,7 +195,7 @@ augroup myInitNewFileGroupMy
 augroup END
 fun! MyInitNewFileFucMy()
 	" system("InitNewFile.sh", getcwd() bufname("%"))
-	:r! ~/.vim/InitNewFile `pwd` %
+	:r! /usr/local/vim/InitNewFile `pwd` %
 	:%s/^\n//
 	:%s/缓缓缓//
 	:%s/口口口//
@@ -310,7 +310,7 @@ endfun
 " === plug manager
 " ================================
 " more plug search : vimawesome.com
-call plug#begin('~/.vim/plugged')
+call plug#begin('/usr/local/vim/plugged')
 "Plug 'dense-analysis/ale' " check grammar
 Plug 'gvls/vim-nature-color' " vim color
 Plug 'francoiscabrol/ranger.vim' " neoranger rnvimr
