@@ -2,7 +2,11 @@
 " ===coc v0.0.82
 " ================================
 " :h coc-variable
+" Note: Use 'noremap' with <Plug> will make the key-mapping not work at all.
+"
 "let g:coc_node_path =
+"
+"set indentexpr = on
 
 " automaticly install extensions when open vim
 "let g:coc_global_extensions = ['coc-snippets', 'coc-translator']
@@ -33,6 +37,10 @@ else
 	set signcolumn=yes
 endif
 
+
+
+
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -48,43 +56,55 @@ function! CheckBackspace() abort
 endfunction
 "return !col || getline('.')[col - 1]  =~ '\s'
 
-"Map <tab> for trigger completion, completion confirm, snippet expand and jump
-"like VSCode: >
-"  inoremap <silent><expr> <TAB>
-"    \ coc#pum#visible() ? coc#_select_confirm() :
-"    \ coc#expandableOrJumpable() ?
-"    \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"    \ CheckBackSpace() ? "\<TAB>" :
-"    \ coc#refresh()
-"  function! CheckBackSpace() abort
-"    let col = col('.') - 1
-"    return !col || getline('.')[col - 1]  =~# '\s'
-"  endfunction
-"  let g:coc_snippet_next = '<tab>'
-"<
-"Note: the `coc-snippets` extension is required for this to work.
+" Map <tab> for trigger completion, completion confirm, snippet expand and jump
+" Note: the `coc-snippets` extension is required for this to work.
+"inoremap <silent><expr> <TAB>
+"  \ coc#pum#visible() ? coc#_select_confirm() :
+"  \ coc#expandableOrJumpable() ?
+"  \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"  \ CheckBackSpace() ? "\<TAB>" :
+"  \ coc#refresh()
+"let g:coc_snippet_next = '<tab>'
 
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 " swtich next diagnostics. map key example: <space>gn <space>gN [g ]g
-autocmd Filetype go,vim nmap <silent> [e <Plug>(coc-diagnostic-prev)
-autocmd Filetype go,vim nmap <silent> ]e <Plug>(coc-diagnostic-next)
+nmap <silent> [e <Plug>(coc-diagnostic-prev)
+nmap <silent> ]e <Plug>(coc-diagnostic-next)
 
-" GoTo code navigation.
-" go to define and show path of file
-"autocmd Filetype go,vim nmap <silent> <space>gd <Plug>(coc-definition)
-"nmap <silent> gy <Plug>(coc-type-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
-" go to place of use
-autocmd Filetype go,vim nmap <silent> <space>gu <Plug>(coc-references)
-autocmd Filetype go,vim nmap <silent> <space>gl <plug>(coc-openlink)
-"nmap <silent> <space>gc <plug>(coc-rename)
+nmap <silent> [v :CocCommand document.jumpToPrevSymbol<cr>
+nmap <silent> ]v :CocCommand document.jumpToNextSymbol<cr>
 
-" call help
-autocmd Filetype go,vim nnoremap <silent> <space>gh :call CocActionAsync('doHover')<cr>
+" not include go
+autocmd Filetype sh nmap <silent> <space>gd <Plug>(coc-definition)
+"autocmd Filetype sh nmap <silent> gy <Plug>(coc-type-definition)
+"autocmd Filetype go nmap <silent> <space>gD <Plug>(coc-declaration)
+nmap <silent> <space>gi <Plug>(coc-implementation)
+nmap <silent> cn <plug>(coc-rename)
+nmap <silent> <space>gu <Plug>(coc-references)
+"nmap <silent> <space>gU <Plug>(coc-references-used)
+nmap <silent> <space>gU <Plug>(coc-refactor)
 
-" scroll pum
+nmap <silent> <space>gl <plug>(coc-openlink)
+
+nmap <silent> <space>gh :call CocActionAsync('doHover')<cr>
+
 inoremap <silent><expr> <PageDown> coc#pum#visible() ? coc#pum#scroll(1) : "\<PageDown>"
 inoremap <silent><expr> <PageUp> coc#pum#visible() ? coc#pum#scroll(0) : "\<PageUp>"
+
+"nmap <silent> <space>go :call CocActionAsync('showOutline')<cr>
+"nmap <silent> <space>gO :call CocActionAsync('hideOutline')<cr>
+nnoremap <silent><nowait> <space>go :call ToggleOutline()<CR>
+
+nmap <silent> <space>gc :call CocActionAsync('showIncomingCalls')<cr>
+nmap <silent> <space>gC :call CocActionAsync('showOutgoingCalls')<cr>
+
+nmap <silent> <space>gz :call CocAction('fold')<cr>
+
+nmap <space>g/ :MySearchMy -L -S 
+
+"nmap <silent> <space>gg <plug>(coc-range-select)
+"nmap <silent> <space>gg :call CocActionAsync('highlight')<cr>
+"nmap <silent> <space>gg :call CocLocations('golang', '$golang/call',  {}, 'vsplit')
 
 " Use K to show documentation in preview window.
 "nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -183,7 +203,46 @@ inoremap <silent><expr> <PageUp> coc#pum#visible() ? coc#pum#scroll(0) : "\<Page
 "nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 "nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-let g:coc_default_semantic_highlight_groups = 1
+
+
+
+
+
+"let b:coc_enabled = 0
+
+"let b:coc_suggest_disable = 1
+
+" Disabled completion sources of current buffer.
+"let b:coc_disabled_sources = ['around', 'buffer', 'file']
+
+" List of input words for which completion should not be triggered.
+"autocmd FileType lua let b:coc_suggest_blacklist = ["end"]
+"
+" Addition keyword characters for generate keywords.
+"autocmd FileType go let b:coc_additional_keywords = ['Name', 'Config', 'Id']
+
+ "Global extension names to install when they aren't installed.
+"let g:coc_global_extensions = ['coc-json', 'coc-git']
+
+" copen cfirst
+"let g:coc_quickfix_open_command = 'copen'
+
+" if set it, a notification will appear when enter file
+let g:coc_config_home = '/usr/local/vim/cocConfig'
+
+" Configure the directory which will be used to for data files(extensions, MRU and so on)
+let g:coc_data_home = '/usr/local/vim/cocData'
+
+" Maximum width of tree view when adjusted by auto width.
+"let g:coc_max_treeview_width = 40
+
+" such as : coc-rename
+"let g:coc_prompt_win_width = 16
+
+"let g:coc_default_semantic_highlight_groups = 1
+
+" overwrite configurations from user config file and default values
+" Note: this function can work alongside the user configuration file, but it's not recommended to use both.
 "call coc#config('languageserver', {
 "			\ 'ccls': {
 "			\   "command": "ccls",
@@ -192,8 +251,57 @@ let g:coc_default_semantic_highlight_groups = 1
 "			\ }
 "			\})
 
-"Disable completion for buffer: |b:coc_suggest_disable|
-"Disable specific sources for buffer: |b:coc_disabled_sources|
-"Disable words for trigger completion: |b:coc_suggest_blacklist|
-"Add additional keyword characters: |b:coc_additional_keywords|
-let g:coc_config_home = '/usr/local/vim/cocConfig'
+" Buffer key-mappings are created on snippet activate, and removed on snippet deactivate.
+"let g:coc_snippet_next = "<c-j>"
+"let g:coc_snippet_prev = "<c-k>"
+
+" Window id of latest created float/popup window.
+":echo g:coc_last_float_win
+
+" Diagnostic information of current buffer, the format would look like:
+":echo b:coc_diagnostic_info
+
+
+
+
+
+" debug
+":CocOpenLog
+
+
+
+
+
+" Disable file with size > 1MB * 10
+autocmd BufAdd * if getfsize(expand('<afile>')) > 1024*1024*10 |
+			\ let b:coc_enabled=0 |
+			\ endif
+
+autocmd BufWritePre *.sh call CocAction('format')
+
+function! ToggleOutline() abort
+	let winid = coc#window#find('cocViewId', 'OUTLINE')
+	if winid == -1
+		call CocActionAsync('showOutline', 1)
+	else
+		call coc#window#close(winid)
+	endif
+endfunction
+
+autocmd BufEnter * call CheckOutline()
+function! CheckOutline() abort
+	if &filetype ==# 'coctree' && winnr('$') == 1
+		if tabpagenr('$') != 1
+			close
+		else
+			bdelete
+		endif
+	endif
+endfunction
+
+command! -nargs=? MySearchMy :call MyCocSearchMy(<f-args>)
+fun! MyCocSearchMy(para)
+	exec ":CocSearch ".a:para." ".g:MyGoMainDirMy
+endfun
+
+"autocmd User CocLocationsChange CocList --normal location

@@ -1,24 +1,8 @@
 "autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 autocmd Filetype go nmap <space>gM <esc>?\w\+(<cr>
 autocmd Filetype go nmap <space>gm <esc>/\w\+(<cr>
-autocmd Filetype go nmap <space>gc :GoRename<space>
-augroup myGoProjectDirGroupMy
-	autocmd!
-	autocmd BufRead *.go silent call MyGoProjectDirMy()
-augroup END
-"let g:MyGoPathDirMy = getenv("GOPATH")
-let g:MyGoMainDirMy = ""
-fun! MyGoProjectDirMy()
-	let l:path = getcwd()
-	let l:gopath = substitute(path, "src/.*$", "src", "")
-	let g:MyGoMainDirMy = path
-	while !filereadable(g:MyGoMainDirMy."/main.go") && g:MyGoMainDirMy != "" && g:MyGoMainDirMy != gopath
-		let g:MyGoMainDirMy = substitute(g:MyGoMainDirMy, "/[^/]*$", "", "")
-	endwhile
-	"call setline(line("."), g:MyGoMainDirMy)
-	exe "GoGuruScope ".g:MyGoMainDirMy
-endfun
-autocmd Filetype go nmap <space>gC :GoChannelPeers<space>
+"autocmd Filetype go nmap <space>gc :GoRename<space>
+autocmd Filetype go nmap <space>gp :GoChannelPeers<space>
 autocmd Filetype go nmap <silent> <space>ga :GoAlternate<CR>
 "let g:go_def_mode = 'godef' " go to definition use guru but it may slow
 autocmd Filetype go nmap <silent> <space>gd :GoDef<CR>
@@ -26,11 +10,11 @@ autocmd Filetype go nmap <silent> <space>gD :GoDefType<CR>
 autocmd Filetype go nmap <silent> <space>gb :GoDefPop<CR>
 "nmap <silent> <space>gs :GoDefStack<CR>
 "let g:go_list_type = "quickfix" " cnext cprevious cclose lnext lprevious lclose
-autocmd Filetype go nmap <space>g1 :lfirst<cr>
-autocmd Filetype go nmap <space>gk :lprevious<cr>
-autocmd Filetype go nmap <space>gj :lnext<cr>
-autocmd Filetype go nmap <space>g[ :lclose<cr>
-autocmd Filetype go nmap <space>gi :GoImplements<cr>:lfirst<cr>
+"autocmd Filetype go nmap <space>g1 :lfirst<cr>
+"autocmd Filetype go nmap <space>gk :lprevious<cr>
+"autocmd Filetype go nmap <space>gj :lnext<cr>
+"autocmd Filetype go nmap <space>g[ :lclose<cr>
+"autocmd Filetype go nmap <space>gi :GoImplements<cr>:lfirst<cr>
 autocmd Filetype go nmap <space>gI :GoImpl<space>
 let g:go_fillstruct_mode = 'gopls' " 'fillstruct'
 autocmd Filetype go nmap <silent> <space>gs :GoFillStruct<CR>[m/:<CR>w
@@ -40,6 +24,11 @@ autocmd Filetype go nmap <silent> <space>gf :GoDecls<CR>
 autocmd Filetype go nmap <silent> <space>gF :GoDeclsDir<CR>
 autocmd Filetype go nmap <space>gt :GoAddTags<space>
 autocmd Filetype go nmap <space>gT :GoRemoveTags<space>
+
+
+
+
+
 let g:go_addtags_transform = 'camelcase' " Possible options are: `snakecase`(a_b_c), `camelcase`(aBc), `lispcase(a-b-c)`, `pascalcase(AbCd)`, `keep`
 
 " === debug window ===
@@ -104,3 +93,24 @@ let g:go_highlight_types = 1 " struct and interface name
 "let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1 " lib type (io.Reader) unsafe.Pointer context.Context
 "let g:go_fold_enable = "block"
+
+
+
+
+
+augroup myGoProjectDirGroupMy
+	autocmd!
+	autocmd BufRead *.go silent call MyGoProjectDirMy()
+augroup END
+"let g:MyGoPathDirMy = getenv("GOPATH")
+let g:MyGoMainDirMy = ""
+fun! MyGoProjectDirMy()
+	let l:path = getcwd()
+	let l:gopath = substitute(path, "src/.*$", "src", "")
+	let g:MyGoMainDirMy = path
+	while !filereadable(g:MyGoMainDirMy."/main.go") && !filereadable(g:MyGoMainDirMy."/.git/config") && g:MyGoMainDirMy != "" && g:MyGoMainDirMy != gopath
+		let g:MyGoMainDirMy = substitute(g:MyGoMainDirMy, "/[^/]*$", "", "")
+	endwhile
+	"call setline(line("."), g:MyGoMainDirMy)
+	exe "GoGuruScope ".g:MyGoMainDirMy
+endfun

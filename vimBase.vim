@@ -58,6 +58,7 @@ set statusline=
 set statusline+=%#LineNr#\ %1*%r%M\ %7*[%4*%l%7*-%4*%v%7*]
 "set statusline+=\ %4*%{StatuslineGit()}
 set statusline+=\ %4*-%8*%{GitStatusA()}%4*-%6*%{GitStatusM()}%4*-%1*%{GitStatusR()}%4*-
+set statusline+=\ %1*%{coc#status()}
 set statusline+=\ %=
 set statusline+=\ %4*%L\ %7*%Y\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*%p%%
 "fun! GitBranch()
@@ -317,6 +318,7 @@ Plug 'francoiscabrol/ranger.vim' " neoranger rnvimr
 Plug 'airblade/vim-gitgutter' " git : show add, change, remove
 Plug 'tpope/vim-surround' " CUID surround of text
 Plug 'neoclide/coc.nvim', {'branch':'release'} " need install nodejs npm yarn
+"LunarWatcher / auto-pairs
 Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto']} " {} [] () ...
 Plug 'fatih/vim-go', {'for':'go', 'do':':GoInstallBinaries'} " IDE for golang
 Plug 'ctrlpvim/ctrlp.vim', {'for':'go'} " help search text
