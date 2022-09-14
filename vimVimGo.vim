@@ -104,12 +104,14 @@ augroup myGoProjectDirGroupMy
 augroup END
 "let g:MyGoPathDirMy = getenv("GOPATH")
 let g:MyGoMainDirMy = ""
+let g:MyGoMainRelaDirMy = ""
 fun! MyGoProjectDirMy()
 	let l:path = getcwd()
 	let l:gopath = substitute(path, "src/.*$", "src", "")
 	let g:MyGoMainDirMy = path
 	while !filereadable(g:MyGoMainDirMy."/main.go") && !filereadable(g:MyGoMainDirMy."/.git/config") && g:MyGoMainDirMy != "" && g:MyGoMainDirMy != gopath
 		let g:MyGoMainDirMy = substitute(g:MyGoMainDirMy, "/[^/]*$", "", "")
+		let g:MyGoMainRelaDirMy = g:MyGoMainRelaDirMy."../"
 	endwhile
 	"call setline(line("."), g:MyGoMainDirMy)
 	exe "GoGuruScope ".g:MyGoMainDirMy

@@ -301,7 +301,7 @@ endfunction
 
 command! -nargs=? MySearchMy :call MyCocSearchMy(<f-args>)
 fun! MyCocSearchMy(para)
-	exec ":CocSearch ".a:para." ".g:MyGoMainDirMy
+	exec ":CocSearch ".a:para." ".g:MyGoMainRelaDirMy
 endfun
 
 "autocmd User CocLocationsChange CocList --normal location
