@@ -41,6 +41,7 @@
 	"__refactor.beforeContext": 3,
 	"__refactor.afterContext": 3,
 	"__notification.minProgressWidth": 40,
+	"__notification.disabledProgressSources": ["*"],
 	"notification.marginRight": 0,
 	"__coc.preferences.formatOnType": true,
 	"__coc.preferences.formatOnSaveFiletypes": ["go"],

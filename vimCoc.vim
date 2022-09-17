@@ -261,6 +261,10 @@ let g:coc_data_home = '/usr/local/vim/cocData'
 " Diagnostic information of current buffer, the format would look like:
 ":echo b:coc_diagnostic_info
 
+" call coc#notify#create(['error'], {'borderhighlight': 'CocErrorSign', 'highlight': 'Normal','timeout': 50000, 'kind': 'error'})
+let g:coc_notify_error_icon = "E"
+let g:coc_notify_warning_icon = "W"
+let g:coc_notify_info_icon = "I"
 
 
 
