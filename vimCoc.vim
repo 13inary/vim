@@ -271,6 +271,7 @@ let g:coc_notify_info_icon = "I"
 
 " debug
 ":CocOpenLog
+":CocCommand workspace.showOutput
 
 
 
