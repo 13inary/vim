@@ -277,7 +277,7 @@ autocmd BufAdd * if getfsize(expand('<afile>')) > 1024*1024*10 |
 			\ let b:coc_enabled=0 |
 			\ endif
 
-autocmd BufWritePre *.sh call CocAction('format')
+"autocmd BufWritePre *.sh call CocAction('format')
 
 function! ToggleOutline() abort
 	let winid = coc#window#find('cocViewId', 'OUTLINE')

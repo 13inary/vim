@@ -1,80 +1,65 @@
 {
-	//"suggest.autoTrigger": "trigger",
-	//"suggest.minTriggerInputLength": 1,
+	"__suggest.autoTrigger": "trigger",
+	"__suggest.minTriggerInputLength": 1,
+	"__suggest.localityBonus": true,
 	"suggest.noselect": true,
 	"suggest.enablePreselect": false,
 	"suggest.completionItemKindLabels": {
-			//"keyword": "\u039a",k K
-			"keyword": "\u049a",
-			//"variable": "\ue79b",[] V
-			"variable": "\u13d9",
-			"value": "\uf89f",
-			//"operator": "\u03a8",  O
-			"operator": "\u014c",
-			"constructor": "\uf0ad",
-			//"function": "\u00a3", f F
-			"function": "\u0191",
-			"reference": "\ufa46",
-			//"constant": "\uf8fe",j
-			"constant": "\u0034",
-			//"method": "\u0192",f f
-			"method": "\u2a0d",
-			//"struct": "\ufb44", c 
-			//"struct": "\u01a7", S S
-			"struct": "\ua682",
-			//"class": "\uf0e8", []
-			//"class": "\ua50b", T T
-			"class": "\u03a4",
-			//"interface": "\u0406", I |
-			"interface": "\u23ae",
-			"text": "\ue612",
-			"enum": "\uf435",
-			"enumMember": "\uf02b",
-			//"module": "\u01f7", P P
-			"module": "\u01a4",
-			"color": "\ue22b",
-			"property": "\ue624",
-			//"field": "\u1d1f",3 -
-			//"field": "\u4dc0",
-			"field": "\u2630",
-			"unit": "\uf475",
-			"event": "\ufacd",
-			//"file": "\uf723",
-			"file": "\u103c",
-			"folder": "\uf114",
-			//"snippet": "\u2637",
-			"snippet": "\ua608",
-			"typeParameter": "\uf728",
-			//"default": "\uf29c"  ?
-			"default": "\u2754"
+			"keyword": "keyword",
+			"variable": "var",
+			"value": "1???",
+			"operator": "2???",
+			"constructor": "3???",
+			"function": "func",
+			"reference": "4???",
+			"constant": "const",
+			"method": "method",
+			"struct": "struct",
+			"class": "type",
+			"interface": "interface",
+			"text": "5???",
+			"enum": "6???",
+			"enumMember": "7???",
+			"module": "package",
+			"color": "8???",
+			"property": "9???",
+			"field": "field",
+			"unit": "10???",
+			"event": "11???",
+			"file": "12???",
+			"folder": "13???",
+			"snippet": "14???",
+			"typeParameter": "15???",
+			"default": "unknown"
 	},
-	//"diagnostic.refreshAfterSave": false,
-	//"diagnostic.signOffset": 1,
 	"diagnostic.checkCurrentLine": true,
 	"diagnostic.messageDelay": 100,
-	//"diagnostic.hintSign": "\uf864",
 	"diagnostic.hintSign": "❯❯",
-	//"diagnostic.infoSign": "\uf129",
 	"diagnostic.infoSign": "❯❯",
 	"diagnostic.errorSign": "❯❯",
 	"diagnostic.warningSign": "❯❯",
-	"coc.preferences.colorSupport": true,
-	//"coc.preferences.formatOnSaveFiletypes": [go],
-	//"coc.preferences.enableMarkdown": true,
+	"__refactor.beforeContext": 3,
+	"__refactor.afterContext": 3,
+	"__notification.minProgressWidth": 40,
+	"notification.marginRight": 0,
+	"__coc.preferences.formatOnType": true,
+	"__coc.preferences.formatOnSaveFiletypes": ["go"],
+	"__coc.preferences.enableMarkdown": true,
 	"coc.preferences.renameFillCurrent": true,
+	"__semanticTokens.filetypes": ["*"],
 	"languageserver": {
 		"golang": {
 			"command": "gopls",
-			//"args": ["serve", "-debug", "0.0.0.0:8484", "-rpc.trace"],
+			"__args": ["serve", "-debug", "0.0.0.0:8484", "-rpc.trace"],
 			"rootPatterns": ["go.mod"],
-			"trace.server": "verbose",
+			"__trace.server": "verbose",
 			"filetypes": ["go"]
 		},
 		"bash": {
 			"command": "bash-language-server",
 			"args": ["start"],
-			"filetypes": ["sh"]
-			//"ignoredRootPaths": ["~"]
+			"filetypes": ["sh"],
+			"__ignoredRootPaths": ["~"]
 		}
 	}
 }
