@@ -42,7 +42,14 @@ set showcmd " show cmd
 set nosplitright " 分屏时光标在左边
 set splitbelow " 分屏时光标在下面
 set tabstop=4 " Tab键缩进的长度
-set shiftwidth=4 " lenght of -> for all level
+if &filetype != "go"
+    set expandtab " 缩进使用空格，noexpandtab使用制表符
+    set softtabstop=4 " 编辑模式下backspace的长度
+    ":%retab 修改文件的制表符为空格
+endif
+"set autoindent " 自动缩进
+"set cindent " 自动缩进补充
+set shiftwidth=4 " lenght of -> for all level 自动缩进空白字符数
 set viminfo='1000,<100 " 'yy'的最大行数
 
 
@@ -336,6 +343,7 @@ Plug 'dhruvasagar/vim-table-mode', {'for':'markdown'} " make table
 "Plug 'junegunn/vim-easy-align'
 ":call mkdp#util#install()
 "Plug 'vim-signiture'
+"Plug 'guns/xterm-color-table'
 call plug#end()
 
 
