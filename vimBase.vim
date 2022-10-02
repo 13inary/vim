@@ -319,31 +319,31 @@ endfun
 " ================================
 " more plug search : vimawesome.com
 call plug#begin('/usr/local/vim/plugged')
-"Plug 'dense-analysis/ale' " check grammar
+"Plug 'guns/xterm-color-table'
 Plug 'gvls/vim-nature-color' " vim color
-Plug 'francoiscabrol/ranger.vim' " neoranger rnvimr
-Plug 'airblade/vim-gitgutter' " git : show add, change, remove
-Plug 'tpope/vim-surround' " CUID surround of text
+"Plug 'dense-analysis/ale' " check grammar
 Plug 'neoclide/coc.nvim', {'branch':'release'} " need install nodejs npm yarn
-"LunarWatcher / auto-pairs
-Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto']} " {} [] () ...
-Plug 'fatih/vim-go', {'for':'go', 'do':':GoInstallBinaries'} " IDE for golang
-Plug 'ctrlpvim/ctrlp.vim', {'for':'go'} " help search text
+Plug 'airblade/vim-gitgutter' " git : show add, change, remove
+Plug 'fatih/vim-go', {'for':'go'} " 'do':':GoInstallBinaries' IDE for golang
+"Plug 'honza/vim-snippets', {'for':'go'}
+Plug 'SirVer/ultisnips', {'for':'go'} " snippets
+"Plug 'LunarWatcher/auto-pairs'
+Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto','html']} " {} [] () ...
+Plug 'tpope/vim-surround' " CUID surround of text
 "Plug 'junegunn/fzf.vim'
 "Plug 'junegunn/fzf'
-Plug 'SirVer/ultisnips', {'for':'go'} " snippets
-"Plug 'honza/vim-snippets', {'for':'go'}
+Plug 'ctrlpvim/ctrlp.vim', {'for':'go'} " help search text
 Plug 'buoto/gotests-vim', {'for':'go'}
-Plug 'tenfyzhong/gengotag', {'for': 'go'} " use configuration file generate struct. need cd directory and go build
 Plug 'vim-scripts/argtextobj.vim', {'for':'go'}
-Plug 'godlygeek/tabular', {'for':['markdown','vim']}
 Plug 'dhruvasagar/vim-table-mode', {'for':'markdown'} " make table
+Plug 'tenfyzhong/gengotag', {'for': 'go'} " use configuration file generate struct. cd directory and go build
+"Plug 'francoiscabrol/ranger.vim' " neoranger rnvimr
+Plug 'godlygeek/tabular', {'for':['markdown','vim']}
 "Plug 'ianva/vim-youdao-translater'
 "Plug 'preservim/nerdcommenter', {'for':['go','vim']}
 "Plug 'junegunn/vim-easy-align'
 ":call mkdp#util#install()
 "Plug 'vim-signiture'
-"Plug 'guns/xterm-color-table'
 call plug#end()
 
 
