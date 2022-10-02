@@ -334,7 +334,7 @@ Plug 'tpope/vim-surround' " CUID surround of text
 "Plug 'junegunn/fzf'
 Plug 'ctrlpvim/ctrlp.vim', {'for':'go'} " help search text
 Plug 'buoto/gotests-vim', {'for':'go'}
-Plug 'vim-scripts/argtextobj.vim', {'for':'go'}
+Plug 'vim-scripts/argtextobj.vim', {'for':'go'} " cia dia yia  caa daa yaa
 Plug 'dhruvasagar/vim-table-mode', {'for':'markdown'} " make table
 Plug 'tenfyzhong/gengotag', {'for': 'go'} " use configuration file generate struct. cd directory and go build
 "Plug 'francoiscabrol/ranger.vim' " neoranger rnvimr
