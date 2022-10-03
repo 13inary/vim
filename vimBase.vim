@@ -88,7 +88,7 @@ set laststatus=2
 " === key map
 " ================================
 "let mapleader = "\"
-nnoremap <CR> o<Esc>
+"nnoremap <CR> o<Esc>
 "inoremap <S-CR> i<CR><Esc>
 "inoremap <s-tab> <c-x><c-f>
 " 在底部信息栏显示文件路径
@@ -332,6 +332,7 @@ Plug 'SirVer/ultisnips', {'for':['go','c']} " snippets engine
 Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto','html']} " {} [] () ...
 Plug 'tpope/vim-surround' " CUID surround of text
 Plug 'vim-scripts/argtextobj.vim', {'for':'go'} " cia dia yia  caa daa yaa
+"Plug 'gcmt/wildfire.vim' " auto select text in vitual mode
 "Plug 'junegunn/fzf.vim', {'for','go'}
 "Plug 'junegunn/fzf', {'for','go'}
 Plug 'ctrlpvim/ctrlp.vim', {'for':'go'} " help search text
