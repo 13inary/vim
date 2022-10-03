@@ -51,6 +51,9 @@ endif
 "set cindent " 自动缩进补充
 set shiftwidth=4 " lenght of -> for all level 自动缩进空白字符数
 set viminfo='1000,<100 " 'yy'的最大行数
+"set wildmode=longest,list
+"set wildmenu
+"set wildmode=full
 
 
 
