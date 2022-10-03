@@ -14,3 +14,9 @@
 "inoreabbrev <expr> __
 "          \ <SID>isAtStartOfLine('__') ?
 "          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+
+" format exist content to table
+let g:table_mode_delimiter = ' '
+"let g:table_mode_tableize_map = '<Leader>tt'
+"let g:table_mode_tableize_op_map = '<Leader>T'
+let g:table_mode_tableize_auto_border = 1

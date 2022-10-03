@@ -319,31 +319,31 @@ endfun
 " ================================
 " more plug search : vimawesome.com
 call plug#begin('/usr/local/vim/plugged')
-"Plug 'guns/xterm-color-table'
-Plug 'gvls/vim-nature-color' " vim color
+"Plug 'guns/xterm-color-table' " show 255 color
+Plug 'gvls/vim-nature-color' " color theme
 "Plug 'dense-analysis/ale' " check grammar
 Plug 'neoclide/coc.nvim', {'branch':'release'} " need install nodejs npm yarn
 Plug 'airblade/vim-gitgutter' " git : show add, change, remove
 Plug 'fatih/vim-go', {'for':'go'} " 'do':':GoInstallBinaries' IDE for golang
-"Plug 'honza/vim-snippets', {'for':'go'}
-Plug 'SirVer/ultisnips', {'for':'go'} " snippets
+" honza/vim-snippets: get snippets
+"Plug 'L3MON4D3/LuaSnip', {'for':'go'} " be use in nvim and lua
+Plug 'SirVer/ultisnips', {'for':['go','c']} " snippets engine
 "Plug 'LunarWatcher/auto-pairs'
 Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto','html']} " {} [] () ...
 Plug 'tpope/vim-surround' " CUID surround of text
-"Plug 'junegunn/fzf.vim'
-"Plug 'junegunn/fzf'
+Plug 'vim-scripts/argtextobj.vim', {'for':'go'} " cia dia yia  caa daa yaa
+"Plug 'junegunn/fzf.vim', {'for','go'}
+"Plug 'junegunn/fzf', {'for','go'}
 Plug 'ctrlpvim/ctrlp.vim', {'for':'go'} " help search text
 Plug 'buoto/gotests-vim', {'for':'go'}
-Plug 'vim-scripts/argtextobj.vim', {'for':'go'} " cia dia yia  caa daa yaa
-Plug 'dhruvasagar/vim-table-mode', {'for':'markdown'} " make table
 Plug 'tenfyzhong/gengotag', {'for': 'go'} " use configuration file generate struct. cd directory and go build
+Plug 'dhruvasagar/vim-table-mode', {'for':'markdown'} " make table
 "Plug 'francoiscabrol/ranger.vim' " neoranger rnvimr
-Plug 'godlygeek/tabular', {'for':['markdown','vim']}
+"Plug 'godlygeek/tabular', {'for':['markdown','vim']} " format by table
+"Plug 'junegunn/vim-easy-align' " align by char
 "Plug 'ianva/vim-youdao-translater'
 "Plug 'preservim/nerdcommenter', {'for':['go','vim']}
-"Plug 'junegunn/vim-easy-align'
-":call mkdp#util#install()
-"Plug 'vim-signiture'
+"Plug 'kshenoy/vim-signature' " book tag
 call plug#end()
 
 
