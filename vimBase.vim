@@ -341,8 +341,9 @@ Plug 'dhruvasagar/vim-table-mode', {'for':'markdown'} " make table
 "Plug 'francoiscabrol/ranger.vim' " neoranger rnvimr
 "Plug 'godlygeek/tabular', {'for':['markdown','vim']} " format by table
 "Plug 'junegunn/vim-easy-align' " align by char
-"Plug 'ianva/vim-youdao-translater'
-"Plug 'preservim/nerdcommenter', {'for':['go','vim']}
+"Plug 'ianva/vim-youdao-translater' " need python. haven't pop window
+"Plug 'preservim/nerdcommenter', {'for':['go','vim']} " comment
+"Plug 'tpope/vim-commentary' " comment
 "Plug 'kshenoy/vim-signature' " book tag
 call plug#end()
 
