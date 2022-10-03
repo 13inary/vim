@@ -3,13 +3,16 @@
 " ================================
 " === <c-j> <c-k> ===
 "autocmd Filetype go nmap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>o
-autocmd Filetype go nmap <silent> <c-j> <Esc>:call UltiSnips#LeavingBuffer()<cr>/^\t*}\\|^\t*)<CR>o
+"autocmd Filetype go nmap <silent> <c-j> <Esc>:call UltiSnips#LeavingBuffer()<cr>/^\t*}\\|^\t*)<CR>o
+autocmd Filetype go nmap <silent> <c-j> <esc>/\w\+(<cr>
 "autocmd Filetype go imap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>o
 autocmd Filetype go imap <silent> <c-j> <Esc>:call UltiSnips#LeavingBuffer()<cr>/^\t*}\\|^\t*)<CR>o
 "autocmd Filetype go vmap <silent> <c-j> <Esc>/^\t*}\\|^\t*)<CR>o
 autocmd Filetype go vmap <silent> <c-j> <Esc>:call UltiSnips#LeavingBuffer()<cr>/^\t*}\\|^\t*)<CR>o
+
 "autocmd Filetype go nmap <silent> <c-k> o
-autocmd Filetype go nmap <silent> <c-k> <esc>:call UltiSnips#LeavingBuffer()<cr>o
+"autocmd Filetype go nmap <silent> <c-k> <esc>:call UltiSnips#LeavingBuffer()<cr>o
+autocmd Filetype go nmap <silent> <c-k> <esc>?\w\+(<cr>
 "autocmd Filetype go imap <silent> <c-k> a<esc>xvl<esc>o
 autocmd Filetype go imap <silent> <c-k> <esc>:call UltiSnips#LeavingBuffer()<cr>o
 "autocmd Filetype go vmap <silent> <c-k> <esc>o
