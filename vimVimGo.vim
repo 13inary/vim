@@ -5,9 +5,11 @@ autocmd Filetype go nmap <space>gm <esc>/\w\+(<cr>
 autocmd Filetype go nmap <space>gp :GoChannelPeers<space>
 autocmd Filetype go nmap <silent> <space>ga :GoAlternate<CR>
 "let g:go_def_mode = 'godef' " go to definition use guru but it may slow
-autocmd Filetype go nmap <silent> <space>gd :GoDef<CR>
+"autocmd Filetype go nmap <silent> <space>gd :GoDef<CR>
+autocmd Filetype go nmap <silent> <c-l> :GoDef<CR>
 autocmd Filetype go nmap <silent> <space>gD :GoDefType<CR>
-autocmd Filetype go nmap <silent> <space>gb :GoDefPop<CR>
+"autocmd Filetype go nmap <silent> <space>gb :GoDefPop<CR>
+autocmd Filetype go nmap <silent> <c-h> :GoDefPop<CR>
 "nmap <silent> <space>gs :GoDefStack<CR>
 "let g:go_list_type = "quickfix" " cnext cprevious cclose lnext lprevious lclose
 "autocmd Filetype go nmap <space>g1 :lfirst<cr>
@@ -70,6 +72,7 @@ let g:go_metalinter_autosave = 1
 "let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_command = "gopls"
 "let g:go_metalinter_deadline = "5s"
+let g:go_def_mapping_enabled = 0
 
 " === hightlight ===
 "let g:go_highlight_diagnostic_errors = 1

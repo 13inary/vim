@@ -268,7 +268,7 @@ endfun
 " ================================
 " === make annotation
 " ================================
-autocmd Filetype go,sh,proto,vim nmap <silent> <c-h> :call MyDoAnnotationMy()<CR>
+autocmd Filetype go,sh,proto,vim nmap <silent> <c-n> :call MyDoAnnotationMy()<CR>
 fun! MyDoAnnotationMy()
 	" //类型
 	if &filetype == 'proto' || &filetype == 'go'
