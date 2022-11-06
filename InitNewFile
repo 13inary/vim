@@ -16,9 +16,6 @@ if [ $fileNameType == 'main.go' ]; then
 	echo "
 package main
 缓缓缓
-// package main 
-缓缓缓
-// main 
 func main() {
 	口口口
 }"
@@ -29,8 +26,6 @@ fi
 if [ $fileType == 'go' ]; then
 	echo "
 package $fileDir
-缓缓缓
-// package $fileDir 
 缓缓缓
 口口口"
 exit
