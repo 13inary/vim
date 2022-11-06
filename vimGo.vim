@@ -200,17 +200,21 @@ fun! MyAutoFillStructMy()
 				if currentIfStruct != ""
 					let l:currentLine = line(".")
 					:GoFillStruct
-					:stopinsert
-					call cursor(currentLine, 1)
-					norm $
-					let l:wordEnd = col(".")
-					" 下面的F后面的 空格 是必须的
-					norm F 
-					let l:wordStart = col(".")
-					call cursor(currentLine, wordEnd-1)
-					norm gh
-					call cursor(currentLine, wordStart+1)
-					"norm $vF \<c-g>
+                    let l:newCurrentText = getline(line("."))
+                    let l:newCurrentIfStruct = matchstr(newCurrentText, '\t\+$')
+                    if newCurrentIfStruct == ""
+                        :stopinsert
+                        call cursor(currentLine, 1)
+                        norm $
+                        let l:wordEnd = col(".")
+                        " 下面的F后面的 空格 是必须的
+                        norm F 
+                        let l:wordStart = col(".")
+                        call cursor(currentLine, wordEnd-1)
+                        norm gh
+                        call cursor(currentLine, wordStart+1)
+                        "norm $vF \<c-g>
+                    endif
 				endif
 			endif
 			return
