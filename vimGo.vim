@@ -94,7 +94,7 @@ augroup END
 fun! MyAutoFillMapMy()
 	if &filetype == 'go'
 		let l:lastText = getline(line(".")-1)
-		let l:lastIfMapHead = matchstr(lastText, 'map\[\w\+\]\w\+{$')
+		let l:lastIfMapHead = matchstr(lastText, 'map\[\w\+\]\w\+ *{$')
 		" 创建map
 		" 匹配头部
 		if lastIfMapHead != ""
