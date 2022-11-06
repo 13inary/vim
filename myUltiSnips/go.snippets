@@ -364,16 +364,26 @@ endsnippet
 
 
 # tttttttttttttttttttttttttttttttt
+#snippet tf "type I interface { ... \n }"
+#
+#// $1
+#type ${1:<interface>} interface {
+#}
+#endsnippet
 snippet tf "type I interface { ... \n }"
 
-// $1
 type ${1:<interface>} interface {
 }
 endsnippet
 
+#snippet ts "type T struct { ... \n }"
+#
+#// $1
+#type ${1:<type>} struct {
+#}
+#endsnippet
 snippet ts "type T struct { ... \n }"
 
-// $1
 type ${1:<type>} struct {
 }
 endsnippet
