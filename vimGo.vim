@@ -14,10 +14,69 @@ autocmd Filetype go vmap <silent> <c-j> <Esc>:call UltiSnips#LeavingBuffer()<cr>
 "autocmd Filetype go nmap <silent> <c-k> <esc>:call UltiSnips#LeavingBuffer()<cr>o
 autocmd Filetype go nmap <silent> <c-k> <esc>?\w\+(<cr>
 "autocmd Filetype go imap <silent> <c-k> a<esc>xvl<esc>o
-autocmd Filetype go imap <silent> <c-k> <esc>:call UltiSnips#LeavingBuffer()<cr>o
+autocmd Filetype go imap <silent> <c-k> <esc>:call UltiSnips#LeavingBuffer()<cr>:call MyFinishLineMy()<cr>o
 "autocmd Filetype go vmap <silent> <c-k> <esc>o
 autocmd Filetype go vmap <silent> <c-k> <esc>:call UltiSnips#LeavingBuffer()<cr>o
 "autocmd Filetype go,sh imap <silent> <esc> <esc>:call UltiSnips#JumpForwards()<cr><esc><c-[>
+
+
+fun! MyFinishLineMy()
+    let l:currentLine = line(".")
+    let l:currentText = getline(".")
+    " var xxx s
+    let l:defineVarStr = matchstr(currentText, '^\t\+var \+\w\+ \+s$')
+    if defineVarStr != ""
+        call setline(currentLine, currentText."tring")
+    endif
+    " var xxx i
+    let l:defineVarInt = matchstr(currentText, '^\t\+var \+\w\+ \+i$')
+    if defineVarInt != ""
+        call setline(currentLine, currentText."nt")
+    endif
+    " var xxx f
+    let l:defineVarFloat6 = matchstr(currentText, '^\t\+var \+\w\+ \+f$')
+    if defineVarFloat6 != ""
+        call setline(currentLine, currentText."loat64")
+    endif
+    " var xxx b
+    let l:defineVarBool = matchstr(currentText, '^\t\+var \+\w\+ \+b$')
+    if defineVarBool != ""
+        call setline(currentLine, currentText."ool")
+    endif
+
+    " xxx s
+    let l:structFieldStr = matchstr(currentText, '^\t\+\w\+ \+s$')
+    if structFieldStr != ""
+        call setline(currentLine, currentText."tring")
+    endif
+    " xxx
+    let l:structFieldStr2 = matchstr(currentText, '^\t\+\w\+ *$')
+    if structFieldStr2 != ""
+        call setline(currentLine, currentText." string")
+    endif
+    " xxx ss
+    let l:structFieldStrs = matchstr(currentText, '^\t\+\w\+ \+ss$')
+    if structFieldStrs != ""
+        let l:newStructFieldStrs = substitute(structFieldStrs, " ss$", " []string",'g')
+        call setline(currentLine, newStructFieldStrs)
+    endif
+    " xxx i
+    let l:structFieldInt = matchstr(currentText, '^\t\+\w\+ \+i$')
+    if structFieldInt != ""
+        call setline(currentLine, currentText."nt")
+    endif
+    " xxx f
+    let l:structFieldFloat6 = matchstr(currentText, '^\t\+\w\+ \+f$')
+    if structFieldFloat6 != ""
+        call setline(currentLine, currentText."loat64")
+    endif
+    " xxx b
+    let l:structFieldBool = matchstr(currentText, '^\t\+\w\+ \+b$')
+    if structFieldBool != ""
+        call setline(currentLine, currentText."ool")
+    endif
+endfun
+
 
 
 " === auto add : if err != nil { ===
