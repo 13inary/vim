@@ -195,11 +195,11 @@ endsnippet
 
 #fmt.Printf("$1 = %+v\n", ${1:${VISUAL}})
 snippet ff "fmt.Printf(...) \n"
-fmt.Printf("\n========== $1 >>>>>>>>>>\n$1 = %+v\n========== $1 <<<<<<<<<<\n\n", ${1:${VISUAL}})
+fmt.Printf("\n==== $1 >>>>\n$1 = %+v\n==== $1 <<<<\n\n", ${1:${VISUAL}}) // TODO
 endsnippet
 
 snippet fn "fmt.Println(...) \n"
-fmt.Println("${1:${VISUAL}}")
+fmt.Println("${1:${VISUAL}}") // TODO
 endsnippet
 
 snippet fe "fmt.Errorf(...) \n"
