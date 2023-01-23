@@ -342,7 +342,7 @@ Plug 'ctrlpvim/ctrlp.vim', {'for':'go'} " help search text
 Plug 'buoto/gotests-vim', {'for':'go'}
 Plug 'tenfyzhong/gengotag', {'for': 'go'} " use configuration file generate struct. cd directory and go build
 Plug 'dhruvasagar/vim-table-mode', {'for':'markdown'} " make table
-Plug 'voldikss/vim-translator'
+"Plug 'voldikss/vim-translator'
 "Plug 'francoiscabrol/ranger.vim' " neoranger rnvimr
 "Plug 'godlygeek/tabular', {'for':['markdown','vim']} " format by table
 "Plug 'junegunn/vim-easy-align' " align by char
