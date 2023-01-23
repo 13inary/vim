@@ -268,50 +268,50 @@ endfun
 " ================================
 " === make annotation
 " ================================
-autocmd Filetype go,sh,proto,vim nmap <silent> <c-n> :call MyDoAnnotationMy()<CR>
-fun! MyDoAnnotationMy()
-	" //类型
-	if &filetype == 'proto' || &filetype == 'go'
-		let l:myCurrentText = getline(".")
-		let l:myText = matchstr(myCurrentText, '^\t* *//.*')
-		if myText == ""
-			:execute "normal ^i//\<Esc>j"
-		else
-			let l:newCurrentText = substitute(myCurrentText, "// *", "","")
-			call setline(line("."), newCurrentText)
-			:normal j
-		endif
-		return
-	endif
-
-	" #类型
-	if &filetype == 'sh'
-		let l:myCurrentText = getline(".")
-		let l:myText = matchstr(myCurrentText, '^\t* *#.*')
-		if myText == ""
-			:execute "normal ^i#\<Esc>j"
-		else
-			let l:newCurrentText = substitute(myCurrentText, "# *", "","")
-			call setline(line("."), newCurrentText)
-			:normal j
-		endif
-		return
-	endif
-
-	" "类型
-	if &filetype == 'vim'
-		let l:myCurrentText = getline(".")
-		let l:myText = matchstr(myCurrentText, '^\t* *".*')
-		if myText == ""
-			:execute "normal ^i\"\<Esc>j"
-		else
-			let l:newCurrentText = substitute(myCurrentText, '" *', "","")
-			call setline(line("."), newCurrentText)
-			:normal j
-		endif
-		return
-	endif
-endfun
+" autocmd Filetype go,sh,proto,vim nmap <silent> <c-n> :call MyDoAnnotationMy()<CR>
+" fun! MyDoAnnotationMy()
+" 	" //类型
+" 	if &filetype == 'proto' || &filetype == 'go'
+" 		let l:myCurrentText = getline(".")
+" 		let l:myText = matchstr(myCurrentText, '^\t* *//.*')
+" 		if myText == ""
+" 			:execute "normal ^i//\<Esc>j"
+" 		else
+" 			let l:newCurrentText = substitute(myCurrentText, "// *", "","")
+" 			call setline(line("."), newCurrentText)
+" 			:normal j
+" 		endif
+" 		return
+" 	endif
+" 
+" 	" #类型
+" 	if &filetype == 'sh'
+" 		let l:myCurrentText = getline(".")
+" 		let l:myText = matchstr(myCurrentText, '^\t* *#.*')
+" 		if myText == ""
+" 			:execute "normal ^i#\<Esc>j"
+" 		else
+" 			let l:newCurrentText = substitute(myCurrentText, "# *", "","")
+" 			call setline(line("."), newCurrentText)
+" 			:normal j
+" 		endif
+" 		return
+" 	endif
+" 
+" 	" "类型
+" 	if &filetype == 'vim'
+" 		let l:myCurrentText = getline(".")
+" 		let l:myText = matchstr(myCurrentText, '^\t* *".*')
+" 		if myText == ""
+" 			:execute "normal ^i\"\<Esc>j"
+" 		else
+" 			let l:newCurrentText = substitute(myCurrentText, '" *', "","")
+" 			call setline(line("."), newCurrentText)
+" 			:normal j
+" 		endif
+" 		return
+" 	endif
+" endfun
 
 
 
