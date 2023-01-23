@@ -243,23 +243,23 @@ endfun
 " ================================
 " === copy to system
 " ================================
-nnoremap <silent> yy yy:call MySystemCopyMy()<CR>
-xnoremap <silent> y y:call MySystemCopyMy()<CR>
-fun! MySystemCopyMy()
-	let l:currentYY = getreg()
-	let l:actualYY = strpart(currentYY, 0, strlen(currentYY)-1)
-	"let l:escape1 = substitute(actualYY, '\', '\\\','g')
-	"let l:escape2 = substitute(escape1, '`', '\\`','g')
-	"let l:escape3 = substitute(escape2, "#", "\\\\#",'g')
-	"let l:escape4 = substitute(escape3, "%", "\\\\%",'g')
-	"let l:escape5 = substitute(escape4, "?", "\\\\?",'g')
-	"let l:escape6 = substitute(escape5, "}", "\\\\}",'g')
-	"let l:escape7 = substitute(escape6, "[", "\\\\[",'g')
-	"let l:escape8 = substitute(escape7, "]", "\\\\]",'g')
-	"let l:escape = substitute(escape5, "{", "\\\\{",'g')
-	"call system("echo ".shellescape(expand(escape))." | xsel -b")
-	call system("echo ".shellescape(actualYY)." | xsel -b")
-endfun
+" nnoremap <silent> yy yy:call MySystemCopyMy()<CR>
+" xnoremap <silent> y y:call MySystemCopyMy()<CR>
+" fun! MySystemCopyMy()
+" 	let l:currentYY = getreg()
+" 	let l:actualYY = strpart(currentYY, 0, strlen(currentYY)-1)
+" 	"let l:escape1 = substitute(actualYY, '\', '\\\','g')
+" 	"let l:escape2 = substitute(escape1, '`', '\\`','g')
+" 	"let l:escape3 = substitute(escape2, "#", "\\\\#",'g')
+" 	"let l:escape4 = substitute(escape3, "%", "\\\\%",'g')
+" 	"let l:escape5 = substitute(escape4, "?", "\\\\?",'g')
+" 	"let l:escape6 = substitute(escape5, "}", "\\\\}",'g')
+" 	"let l:escape7 = substitute(escape6, "[", "\\\\[",'g')
+" 	"let l:escape8 = substitute(escape7, "]", "\\\\]",'g')
+" 	"let l:escape = substitute(escape5, "{", "\\\\{",'g')
+" 	"call system("echo ".shellescape(expand(escape))." | xsel -b")
+" 	call system("echo ".shellescape(actualYY)." | xsel -b")
+" endfun
 
 
 
