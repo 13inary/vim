@@ -68,7 +68,7 @@ set statusline=
 "set statusline+=%#LineNr#\ %1*%r%M\ %7*[%4*%l%7*-%4*%v%7*]
 set statusline+=%#LineNr#\ %1*%r%M
 "set statusline+=\ %4*%{StatuslineGit()}
-set statusline+=\ %4*-%8*%{GitStatusA()}%4*-%6*%{GitStatusM()}%4*-%1*%{GitStatusR()}%4*-
+set statusline+=\ %4*_%8*%{GitStatusA()}%4*_%6*%{GitStatusM()}%4*_%1*%{GitStatusR()}%4*_
 set statusline+=\ %1*%{coc#status()}
 set statusline+=\ %=
 "set statusline+=\ %4*%L\ %7*%Y\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*%p%%
