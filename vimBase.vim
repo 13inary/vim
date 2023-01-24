@@ -71,7 +71,8 @@ set statusline+=%#LineNr#\ %1*%r%M
 set statusline+=\ %4*-%8*%{GitStatusA()}%4*-%6*%{GitStatusM()}%4*-%1*%{GitStatusR()}%4*-
 set statusline+=\ %1*%{coc#status()}
 set statusline+=\ %=
-set statusline+=\ %4*%L\ %7*%Y\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*%p%%
+"set statusline+=\ %4*%L\ %7*%Y\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*%p%%
+set statusline+=\ %4*%L\ %2*%{&fileencoding?&fileencoding:&encoding}\ %3*%p%%
 "fun! GitBranch()
 	"return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 "endfun
