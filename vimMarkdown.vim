@@ -45,11 +45,11 @@ autocmd Filetype markdown inoremap ,a [](口口口) 口口口<Esc>F[a
 autocmd Filetype markdown inoremap ,d `` 口口口<Esc>F`i
 
 " === 大代码块 ===
-autocmd Filetype markdown inoremap ,ce ```<Enter>```<Enter><Esc>2kA
-autocmd Filetype markdown inoremap ,cs ```shell<Enter><Enter>```<Enter><Esc>2kA
-autocmd Filetype markdown inoremap ,cj ```javascript<Enter><Enter>```<Enter><Esc>2kA
-autocmd Filetype markdown inoremap ,cc ```c<Enter><Enter>```<Enter><Esc>2kA
-autocmd Filetype markdown inoremap ,cg ```go<Enter><Enter>```<Enter><Esc>2kA
+autocmd Filetype markdown inoremap ,ce ```<Enter>```<Esc>kA
+autocmd Filetype markdown inoremap ,cs ```shell<Enter><Enter>```<Esc>kA
+autocmd Filetype markdown inoremap ,cj ```javascript<Enter><Enter>```<Esc>kA
+autocmd Filetype markdown inoremap ,cc ```c<Enter><Enter>```<Esc>kA
+autocmd Filetype markdown inoremap ,cg ```go<Enter><Enter>```<Esc>kA
 
 " === 表格 ===
 " we can write : to side of '-' to right-aligned or centered
