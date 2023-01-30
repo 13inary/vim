@@ -22,7 +22,7 @@ autocmd Filetype markdown inoremap ,6 ######<Space><Space><Space><Space><Space><
 
 " === 粗体 ===
 " 其他格式: ____
-autocmd Filetype markdown inoremap ,b ****<Space>口口口<Esc>F*hi
+autocmd Filetype markdown inoremap ,b ****口口口<Esc>F*hi
 autocmd Filetype markdown inoremap ,s ~~~~<Space>口口口<Esc>F~hi
 
 " === 斜体 ===
@@ -42,7 +42,7 @@ autocmd Filetype markdown inoremap ,a [](口口口) 口口口<Esc>F[a
 "autocmd Filetype markdown inoremap ,p ![](口口口<Space>"口口口") 口口口<Esc>F[a
 
 " === 小代码块 ===
-autocmd Filetype markdown inoremap ,d `` 口口口<Esc>F`i
+autocmd Filetype markdown inoremap ,d ``口口口<Esc>F`i
 
 " === 大代码块 ===
 autocmd Filetype markdown inoremap ,ce ```<Enter>```<Esc>kA
