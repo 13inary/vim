@@ -10,6 +10,6 @@ source /usr/local/vim/vimUltisnips.vim
 source /usr/local/vim/vimGo.vim
 source /usr/local/vim/vimMarkdown.vim
 source /usr/local/vim/vimTableMode.vim
-source /usr/local/vim/vimGotests.vim
+"source /usr/local/vim/vimGotests.vim
 "source /usr/local/vim/vimRanger.vim
 "source /usr/local/vim/vimVimTranslator.vim

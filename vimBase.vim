@@ -341,8 +341,8 @@ Plug 'vim-scripts/argtextobj.vim', {'for':'go'} " cia dia yia  caa daa yaa
 "Plug 'junegunn/fzf.vim', {'for','go'}
 "Plug 'junegunn/fzf', {'for','go'}
 Plug 'ctrlpvim/ctrlp.vim', {'for':'go'} " help search text
-Plug 'buoto/gotests-vim', {'for':'go'}
-Plug 'tenfyzhong/gengotag', {'for': 'go'} " use configuration file generate struct. cd directory and go build
+"Plug 'buoto/gotests-vim', {'for':'go'}
+"Plug 'tenfyzhong/gengotag', {'for': 'go'} " use configuration file generate struct. cd directory and go build
 Plug 'dhruvasagar/vim-table-mode', {'for':'markdown'} " make table
 "Plug 'voldikss/vim-translator'
 "Plug 'francoiscabrol/ranger.vim' " neoranger rnvimr
