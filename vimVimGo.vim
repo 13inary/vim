@@ -67,10 +67,11 @@ let g:go_term_mode = "rightbelow vsplit"
 "let g:go_mod_fmt_autosave = 1
 "let g:go_asmfmt_autosave = 0
 "let g:go_template_autocreate = 1
-"let g:go_fmt_command = "goimports"
-let g:go_metalinter_autosave = 1
+"let g:go_fmt_command = "gopls" " gopls gofmt goimports
+"let g:go_imports_mode = 'gopls' " goimports gopls
+"let g:go_metalinter_autosave = 0
 "let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-let g:go_metalinter_command = "gopls"
+"let g:go_metalinter_command = "gopls" " staticcheck golangci-lint gopls
 "let g:go_metalinter_deadline = "5s"
 let g:go_def_mapping_enabled = 0
 
