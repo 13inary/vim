@@ -166,8 +166,8 @@ for ; ${3:0} < ${2:i} ; $2-- {
 }
 endsnippet
 
-snippet fr "for k, v := range items { ... }"
-for ${0:_, v} := range ${1:`!v matchstr(getline(search("\w*s.*=", "b")), '\w*s')`} {
+snippet fr "for _, v := range items { ... }"
+for _, ${0:v} := range ${1:`!v matchstr(getline(search("\w*s.*=", "b")), '\w*s')`} {
 }
 endsnippet
 
