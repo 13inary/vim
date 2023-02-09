@@ -2,7 +2,7 @@
 " === ultisnips
 " ================================
 " :smap to get map list
-let g:UltiSnipsExpandTrigger="<c-c>" " ,e <tab>
+"let g:UltiSnipsExpandTrigger="<c-c>" " <tab> ,e
 let g:UltiSnipsJumpForwardTrigger="<c-l>" " ,f <c-b>
 let g:UltiSnipsJumpBackwardTrigger="" " <c-b> <c-z> ,F
 let g:UltiSnipsListSnippets="<c-b>"
