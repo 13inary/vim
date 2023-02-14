@@ -392,7 +392,7 @@ fun! MyAutoSnippetMy()
 	"let l:curCol = col(".")
 	"exe "norm <c-y>"
 	let l:currentText = getline(".")
-	let l:funcText = matchstr(currentText, '^\t*..$')
+	let l:funcText = matchstr(currentText, '^\t*[^\t][^\t]$')
 	if funcText != ""
 		call UltiSnips#ExpandSnippet()
 	endif
