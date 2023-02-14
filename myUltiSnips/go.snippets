@@ -398,6 +398,19 @@ endsnippet
 #type ${1:<interface>} interface {
 #}
 #endsnippet
+
+snippet tc "time.NewTicker()"
+timec := time.NewTicker(${1})
+defer timec.Stop()
+${0}
+endsnippet
+
+snippet te "time.NewTimer()"
+timer := time.NewTimer(${1})
+defer timer.Stop()
+${0}
+endsnippet
+
 snippet tf "type I interface { ... \n }"
 
 type ${1:<interface>} interface {
