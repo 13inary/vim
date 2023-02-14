@@ -201,7 +201,7 @@ endsnippet
 #endsnippet
 snippet fc "func Function(...) [error] { ... }"
 
-func ${1:<name>}(${2}) ( ${0} ) {
+func ${1:<name>}( ${2} ) ( ${0} ) {
 }
 endsnippet
 
@@ -320,7 +320,7 @@ endsnippet
 #}
 #endsnippet
 snippet mt "func (self Type) Method(...) [error] { ... }"
-func (`!p snip.rv = get_head(t[1],1)` *${1:<type>}) ${2:<name>}(${3}) ( ${0} ) {
+func (`!p snip.rv = get_head(t[1],1)` *${1:<type>}) ${2:<name>}( ${3} ) ( ${0} ) {
 }
 endsnippet
 
