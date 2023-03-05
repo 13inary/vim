@@ -340,7 +340,7 @@ Plug 'vim-scripts/argtextobj.vim', {'for':'go'} " cia dia yia  caa daa yaa
 "Plug 'gcmt/wildfire.vim' " auto select text in vitual mode
 "Plug 'junegunn/fzf.vim', {'for','go'}
 "Plug 'junegunn/fzf', {'for','go'}
-Plug 'ctrlpvim/ctrlp.vim', {'for':'go'} " help search text
+Plug 'ctrlpvim/ctrlp.vim', {'for':'go'} " help search text. example: <c-p>
 "Plug 'buoto/gotests-vim', {'for':'go'}
 "Plug 'tenfyzhong/gengotag', {'for': 'go'} " use configuration file generate struct. cd directory and go build
 Plug 'dhruvasagar/vim-table-mode', {'for':'markdown'} " make table
