@@ -31,7 +31,7 @@ autocmd Filetype go nmap <space>gT :GoRemoveTags<space>
 
 
 
-let g:go_addtags_transform = 'camelcase' " Possible options are: `snakecase`(a_b_c), `camelcase`(aBc), `lispcase(a-b-c)`, `pascalcase(AbCd)`, `keep`
+let g:go_addtags_transform = 'snakecase' " Possible options are: `snakecase`(a_b_c), `camelcase`(aBc), `lispcase(a-b-c)`, `pascalcase(AbCd)`, `keep`
 
 " === debug window ===
 let g:go_debug_windows = {
