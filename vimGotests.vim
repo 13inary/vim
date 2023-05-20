@@ -1,4 +1,6 @@
 " ================================
 " === gotests
 " ================================
-let g:gotests_bin = '/home/zombie/go/bin/gotests'
+"let g:gotests_bin = ''
+let g:gotests_template_dir = ''
+let g:gotests_template = ''
