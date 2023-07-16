@@ -114,7 +114,7 @@ endfun
 
 " === 大横线 ===
 " 其他格式: *** ___
-"autocmd Filetype markdown inoremap ,l <Enter><Enter><Enter><Enter>--------------------------------<Enter><Enter><Enter><Enter><Enter>
+autocmd Filetype markdown inoremap ,n <Enter><Enter><Enter><Enter>************************************<Enter><Enter><Enter><Enter><Enter>
 autocmd Filetype markdown imap <silent> <c-k> <esc>o
 autocmd Filetype markdown imap <silent> <c-j> <esc>/^\|\(-\+\|\)\+<cr>o
 
