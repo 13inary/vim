@@ -40,6 +40,7 @@ autocmd Filetype markdown inoremap ,a [](口口口) 口口口<Esc>F[a
 " ![alt text](link "display")
 " 其他格式: ![alt text][symbol]		[symbol]: link "display"
 "autocmd Filetype markdown inoremap ,p ![](口口口<Space>"口口口") 口口口<Esc>F[a
+autocmd Filetype markdown nmap <silent> go :MarkdownPreviewToggle<CR>
 
 " === 小代码块 ===
 autocmd Filetype markdown inoremap ,d ``口口口<Esc>F`i
@@ -150,3 +151,10 @@ fun! MyOrderOrderNumberMy()
 		call setline(currentLine-1, "")
 	endif
 endfun
+
+function OpenMarkdownPreview (url)
+    execute "silent ! google-chrome --disable-gpu-driver-bug-workarounds " . a:url . " &> /dev/null &"
+    "execute "silent ! firefox " . a:url
+    execute ":redraw!"
+endfunction
+let g:mkdp_browserfunc = 'OpenMarkdownPreview'

@@ -344,6 +344,7 @@ Plug 'ctrlpvim/ctrlp.vim', {'for':'go'} " help search text. example: <c-p>
 Plug 'buoto/gotests-vim', {'for':'go'}
 "Plug 'tenfyzhong/gengotag', {'for': 'go'} " use configuration file generate struct. cd directory and go build
 Plug 'dhruvasagar/vim-table-mode', {'for':'markdown'} " make table
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' } " need install nodejs and yarn
 "Plug 'voldikss/vim-translator'
 "Plug 'francoiscabrol/ranger.vim' " neoranger rnvimr
 "Plug 'godlygeek/tabular', {'for':['markdown','vim']} " format by table
