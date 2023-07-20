@@ -71,6 +71,7 @@ if [ $fileType == 'md' ]; then
 	#myMdHead=`echo $fileName | sed 's/_/ and /g' | sed 's/-/ /g'`
 	myMdHead=`echo $fileName | sed 's/^[0-9]\+_//g' `
 	echo "
+[TOC]
 ##  $myMdHead
 缓缓缓口口口"
 exit
