@@ -163,5 +163,5 @@ let g:mkdp_browserfunc = 'OpenMarkdownPreview'
 "
 fun! MyGenDirHeadFucMy()
 	" system("InitNewFile.sh", getcwd() bufname("%"))
-	:r! /usr/local/vim/genMdca %
+	:r! /usr/local/vim/genMdCa %
 endfun
