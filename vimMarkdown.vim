@@ -19,6 +19,7 @@ autocmd Filetype markdown inoremap ,3 ###<Space><Space><Space>
 autocmd Filetype markdown inoremap ,4 ####<Space><Space><Space><Space>
 autocmd Filetype markdown inoremap ,5 #####<Space><Space><Space><Space><Space>
 autocmd Filetype markdown inoremap ,6 ######<Space><Space><Space><Space><Space><Space>
+autocmd Filetype markdown inoremap ,D <esc>:call MyGenDirHeadFucMy()<cr>o<c-u>
 
 " === 粗体 ===
 " 其他格式: ____
@@ -158,3 +159,9 @@ function OpenMarkdownPreview (url)
     execute ":redraw!"
 endfunction
 let g:mkdp_browserfunc = 'OpenMarkdownPreview'
+
+"
+fun! MyGenDirHeadFucMy()
+	" system("InitNewFile.sh", getcwd() bufname("%"))
+	:r! /usr/local/vim/genMdca %
+endfun
