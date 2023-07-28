@@ -40,7 +40,7 @@ autocmd Filetype markdown inoremap ,a [](口口口) 口口口<Esc>F[a
 " === 图片 ===
 " ![alt text](link "display")
 " 其他格式: ![alt text][symbol]		[symbol]: link "display"
-autocmd Filetype markdown inoremap ,p ![](口口口)<Esc>F[a
+autocmd Filetype markdown inoremap ,p ![images]()<Esc>F(a
 autocmd Filetype markdown nmap <silent> go :MarkdownPreview<CR>
 
 " === 小代码块 ===
