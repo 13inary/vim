@@ -35,7 +35,7 @@ autocmd Filetype markdown inoremap ,i __<Space>口口口<Esc>F_i
 " 其他格式: [ABC]	[ABC]: here write link
 " 其他格式: http://...
 " 其他格式: <...>
-autocmd Filetype markdown inoremap ,a [](口口口) 口口口<Esc>F[a
+autocmd Filetype markdown inoremap ,a [](口口口)<Esc>F[a
 
 " === 图片 ===
 " ![alt text](link "display")
