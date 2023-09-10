@@ -87,11 +87,14 @@ augroup END
 fun! MyAutoFillErrMy()
 	if &filetype == 'go'
 		let l:currentText = getline(".")
+
+        " handle matchstr() not case Case Sensitive
         let l:errCaseText = substitute(currentText, "\t", "",'g')
         let l:errIndex = stridx(currentText, "err")
         if l:errIndex != 1
             return
         endif
+
 		" 只返回err
 		let l:currentIfErr = matchstr(currentText, '\t\+err *:\?= *\(\w\+\.\)*\w\+(.*)$')
 		if currentIfErr != ""
