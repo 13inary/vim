@@ -91,7 +91,8 @@ fun! MyAutoFillErrMy()
         " handle matchstr() not case Case Sensitive
         let l:errCaseText = substitute(currentText, "\t", "",'g')
         let l:errIndex = stridx(currentText, "err")
-        if l:errIndex != 1
+        let l:equalIndex = stridx(currentText, "=")
+        if l:errIndex == -1 || l:equalIndex < l:errIndex
             return
         endif
 
