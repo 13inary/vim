@@ -52,7 +52,7 @@
 		"golang": {
 			"command": "gopls",
 			"__args": ["serve", "-debug", "0.0.0.0:8484", "-rpc.trace"],
-			"rootPatterns": ["go.mod"],
+			"rootPatterns": ["go.mod", "go.work", ".git/"],
 			"__trace.server": "verbose",
 			"filetypes": ["go"]
 		},
