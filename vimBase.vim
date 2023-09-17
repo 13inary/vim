@@ -258,7 +258,7 @@ Plug 'gvls/vim-nature-color' " color theme
 "Plug 'dense-analysis/ale' " check grammar
 Plug 'neoclide/coc.nvim', {'branch':'release'} " need install nodejs npm yarn
 Plug 'airblade/vim-gitgutter' " git : show add, change, remove
-Plug 'fatih/vim-go', {'for':'go'} " 'do':':GoInstallBinaries' IDE for golang
+Plug 'fatih/vim-go', {'for':'go', 'tag':'v1.28'} " 'do':':GoInstallBinaries' IDE for golang
 " honza/vim-snippets: get snippets
 "Plug 'L3MON4D3/LuaSnip', {'for':'go'} " be use in nvim and lua
 Plug 'SirVer/ultisnips', {'for':['go','c']} " snippets engine
