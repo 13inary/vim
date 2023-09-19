@@ -49,6 +49,15 @@
 	"coc.preferences.renameFillCurrent": true,
 	"__semanticTokens.filetypes": ["*"],
 	"languageserver": {
+        "golangci-lint-languageserver": {
+            "command": "golangci-lint-langserver",
+            "rootPatterns": ["go.mod", "go.work", ".git/"],
+            "filetypes": ["go"],
+            "initializationOptions": {,
+                // golangci-lint  run --disable-all --enable=errcheck --enable=gosimple --enable=govet --enable=ineffassign --enable=staticcheck --enable=unused
+                "command": ["golangci-lint", "run", "--disable-all", "--enable=errcheck", "--enable=gosimple", "--enable=govet", "--enable=ineffassign", "--enable=staticcheck", "--enable=unused", "--out-format", "json", "--issues-exit-code=1"]
+            }
+        },
 		"golang": {
 			"command": "gopls",
 			"__args": ["serve", "-debug", "0.0.0.0:8484", "-rpc.trace"],
