@@ -34,7 +34,8 @@ set wildmenu " in : get tip by table key
 set nohlsearch " 不高亮查找结果
 set noincsearch " hight light when search
 set ignorecase " 查找忽略大小写
-set nosmartcase " smart case when search
+set smartcase " 智能大小写，或者使用:s/\C//gc或者:s/\c//gc
+"set nosmartcase " smart case when search
 "set nocursorline " 显示光标所在的行
 set wrap " display automaticly 
 set textwidth=999 " 'Enter' automaticly
