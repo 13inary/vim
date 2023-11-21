@@ -367,6 +367,26 @@ fun! MyJumpNextValMy()
 	endif
 endfun
 
+command! -nargs=* GenFactory :call Gen_factory()
+function! Gen_factory()
+    " 使用部分文本做分析
+    "let l:doc = CocAction('getHover')
+    "if len(doc) == 0
+    "    return
+    "endif
+    "let l:line = substitute(doc[0], "\n", ";",'g')
+
+    " 使用整个文件做分析
+    let current_buffer = join(getline(1, '$'), "<LF>")
+    let l:content = system("smart-go factory ".shellescape(current_buffer)." ".line("."))
+    if l:content == ""
+        return
+    endif
+    let l:newLines = split(content, "\n", 1)
+    let l:position = l:newLines[0] + 1
+    call append(position, newLines[1:])
+endfunction
+
 " === auto do annotation ===
 "augroup myAutoAnnotationGroup
 "	autocmd!
@@ -407,3 +427,9 @@ fun! MyAutoSnippetMy()
 	endif
 	"call coc#refresh()
 endfun
+
+"function! ReadJobHandler(channel, message)
+"    call append(line("."), a:message."XX")
+"endfunction
+"
+"let s:job = job_start('ping qq.com', {'out_cb': 'ReadJobHandler'})
