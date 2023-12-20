@@ -57,7 +57,7 @@ autocmd Filetype markdown inoremap ,cg ```go<Enter><Enter>```<Esc>kA
 " we can write : to side of '-' to right-aligned or centered
 " -: right	:- left		:-:	center
 " \|-\|-\|<Enter>\|\|<Enter>\|-\|-\|<Enter><Esc>2ka
-autocmd Filetype markdown inoremap ,t <c-o>:TableModeEnable<cr>\|-\|<Enter>\|  \|<Enter>\|-\|<Enter><enter><Esc>3kla
+autocmd Filetype markdown inoremap ,t <c-o>:TableModeEnable<cr><Enter>\|  \|<Enter>\|-\|<Enter><enter><Esc>3kla
 autocmd Filetype markdown inoremap <silent> ,l <esc>:call tablemode#spreadsheet#InsertColumn(1)<CR>
 autocmd Filetype markdown inoremap <silent> ,q <esc>:call MyMdExitTableMy()<cr>a
 fun! MyMdExitTableMy()
