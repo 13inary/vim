@@ -306,7 +306,7 @@ logger.Warnf(ctx, "${1}" ${2} )
 endsnippet
 
 snippet le "logger.Errorf(...) \n"
-logger.Errorf(ctx, "${1}", ${2:err.Error()})
+logger.Errorf(ctx, "${1}"${3:, ${2} err.Error()})
 endsnippet
 
 
