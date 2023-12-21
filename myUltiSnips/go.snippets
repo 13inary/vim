@@ -297,6 +297,18 @@ snippet ln "log.Println(...) \n"
 log.Println("${0}")
 endsnippet
 
+snippet ld "logger.Debugf(...) \n"
+logger.Debugf(ctx, "${1}" ${2} )
+endsnippet
+
+snippet lw "logger.Warnf(...) \n"
+logger.Warnf(ctx, "${1}" ${2} )
+endsnippet
+
+snippet le "logger.Errorf(...) \n"
+logger.Errorf(ctx, "${1}", ${2:err.Error()})
+endsnippet
+
 
 
 # mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
