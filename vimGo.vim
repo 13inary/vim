@@ -390,7 +390,7 @@ endfunction
 function! Gen_returns()
     " 使用整个文件做分析
     let current_buffer = join(getline(1, '$'), "<LF>")
-    let l:content = system("/opt/go/src/smart-go/smart-go returns ".shellescape(current_buffer)." ".line("."))
+    let l:content = system("smart-go returns ".shellescape(current_buffer)." ".line("."))
     if l:content == ""
         return
     endif
