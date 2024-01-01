@@ -99,6 +99,7 @@ set laststatus=2
 "inoremap <s-tab> <c-x><c-f>
 " 在底部信息栏显示文件路径
 nnoremap <C-g> 1<c-g>
+nnoremap S :%s/\C/g<Left><Left>
 
 
 
