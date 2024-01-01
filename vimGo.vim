@@ -383,8 +383,25 @@ function! Gen_factory()
         return
     endif
     let l:newLines = split(content, "\n", 1)
-    let l:position = l:newLines[0] + 1
-    call append(position, newLines[1:])
+    let l:position = l:newLines[-1] + 1
+    call append(position, newLines[0:-2])
+endfunction
+
+function! Gen_returns()
+    " 使用整个文件做分析
+    let current_buffer = join(getline(1, '$'), "<LF>")
+    let l:content = system("/opt/go/src/smart-go/smart-go returns ".shellescape(current_buffer)." ".line("."))
+    if l:content == ""
+        return
+    endif
+    let l:newLines = split(content, "\n", 1)
+    let l:position = l:newLines[-1] + 1
+    " 避免覆盖下一行的数据
+    "call append(position, newLines[1:-2])
+    "call setline(position, newLines[0:0])
+    " 性能更好的做法，但会覆盖下一行数据
+    call setline(position, newLines[0:-2])
+    call cursor(position, col('$'))
 endfunction
 
 " === auto do annotation ===
@@ -421,6 +438,12 @@ fun! MyAutoSnippetMy()
 	"let l:curCol = col(".")
 	"exe "norm <c-y>"
 	let l:currentText = getline(".")
+    let l:golangReturn = matchstr(currentText, '^\t*rt$')
+    if golangReturn != ""
+        call Gen_returns()
+        return
+    endif
+
 	let l:funcText = matchstr(currentText, '^\t*[^\t ][^\t ]$')
 	if funcText != ""
 		call UltiSnips#ExpandSnippet()
