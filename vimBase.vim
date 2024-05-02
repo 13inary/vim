@@ -265,7 +265,7 @@ Plug 'fatih/vim-go', {'for':'go', 'tag':'v1.28'} " 'do':':GoInstallBinaries' IDE
 "Plug 'L3MON4D3/LuaSnip', {'for':'go'} " be use in nvim and lua
 Plug 'SirVer/ultisnips', {'for':['go','c']} " snippets engine
 "Plug 'LunarWatcher/auto-pairs'
-Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto','html']} " {} [] () ...
+Plug 'jiangmiao/auto-pairs', {'for':['go','vim','sh','markdown','json','proto','html','python']} " {} [] () ...
 Plug 'tpope/vim-surround' " CUID surround of text
 Plug 'vim-scripts/argtextobj.vim', {'for':'go'} " cia dia yia  caa daa yaa
 "Plug 'gcmt/wildfire.vim' " auto select text in vitual mode
