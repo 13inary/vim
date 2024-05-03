@@ -404,6 +404,33 @@ function! Gen_returns()
     call cursor(position, col('$'))
 endfunction
 
+" 需要coc-nvim插件的CocAction('getHover')支持
+"command! -nargs=* GenReqCheck :call Golang_gen_req_check()
+function! Golang_gen_req_check()
+    let l:doc = CocAction('getHover')
+    if len(doc) == 0
+        return
+    endif
+
+    let l:line = substitute(doc[0], "\n", ";",'g')
+    let l:rmCode = substitute(line, "```", "//",'g')
+    let l:rmTag = substitute(rmCode, "`[^`]*`", "",'g')
+    let l:struct = substitute(rmTag, "", "",'g')
+
+    "let head = search('^func', 'bnW')
+    "call append(line("."), shellescape(struct))
+    "execute "r!"."genReqCheck ".shellescape(struct)
+    let l:content = system("genReqCheck ".shellescape(getline('.'))." ".col('.')." ".shellescape(struct)) "换行失败
+    if l:content == ""
+        return
+    endif
+    call append(line("."), "")
+    let l:newContent = split(content, ";")
+    for line in newContent
+        call append(line("."), line)
+    endfor
+endfunction
+
 " === auto do annotation ===
 "augroup myAutoAnnotationGroup
 "	autocmd!
