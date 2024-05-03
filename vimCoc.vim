@@ -294,7 +294,7 @@ function! ToggleOutline() abort
 	endif
 endfunction
 
-autocmd BufEnter * call CheckOutline()
+"autocmd BufEnter * call CheckOutline()
 function! CheckOutline() abort
 	if &filetype ==# 'coctree' && winnr('$') == 1
 		if tabpagenr('$') != 1
@@ -311,3 +311,30 @@ fun! MyCocSearchMy(para)
 endfun
 
 "autocmd User CocLocationsChange CocList --normal location
+"+ "autocmd BufWritePre *.go :silent! call CocAction('runCommand', 'editor.action.organizeImport')
+"autocmd FileType json syntax match Comment +\/\/.\+$+
+"let g:coc_borderchars = "3"
+"
+"To load and expand custom snippets, install `coc-snippets` extension is recommended
+"
+" autocmd VimEnter,Tabnew *
+      "\ if empty(&buftype) | call CocActionAsync('showOutline', 1) | endif
+" autocmd BufEnter * call CheckOutline()
+"  function! CheckOutline() abort
+"    if &filetype ==# 'coctree' && winnr('$') == 1
+"      if tabpagenr('$') != 1
+"        close
+"      else
+"        bdelete
+"      endif
+"    endif
+"  endfunction
+"  nnoremap <silent><nowait> <space>o  :call ToggleOutline()<CR>
+"  function! ToggleOutline() abort
+"    let winid = coc#window#find('cocViewId', 'OUTLINE')
+"    if winid == -1
+"      call CocActionAsync('showOutline', 1)
+"    else
+"      call coc#window#close(winid)
+"    endif
+"  endfunction
