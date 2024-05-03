@@ -18,7 +18,7 @@ autocmd Filetype go nmap <silent> <c-h> :GoDefPop<CR>
 "autocmd Filetype go nmap <space>g[ :lclose<cr>
 "autocmd Filetype go nmap <space>gi :GoImplements<cr>:lfirst<cr>
 autocmd Filetype go nmap <space>gI :GoImpl<space>
-let g:go_fillstruct_mode = 'gopls' " 'fillstruct'
+"let g:go_fillstruct_mode = 'gopls' " 'fillstruct' fillstruct can handle more struct but slow
 autocmd Filetype go nmap <silent> <space>gs :GoFillStruct<CR>[m/:<CR>w
 autocmd Filetype go nmap <silent> <space>gv :GoSameIdsAutoToggle<CR>
 "let g:go_decls_includes = "func,type"
